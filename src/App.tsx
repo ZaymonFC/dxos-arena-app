@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import {
   GenericFallback,
   ResetDialog,
@@ -6,20 +5,22 @@ import {
   ThemeProvider,
   appkitTranslations,
 } from "@dxos/react-appkit";
-import { types } from "./proto";
 import {
   ClientProvider,
   Config,
+  Defaults,
   Dynamics,
   Local,
-  Defaults,
 } from "@dxos/react-client";
+import { useSpace } from "@dxos/react-client/echo";
+import { Chess, Piece } from "chess.js";
+import { deepSignal } from "deepsignal";
+import React, { useEffect } from "react";
+import { Chessboard } from "react-chessboard";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
-import { Chessboard } from "react-chessboard";
-import { Chess, Move, Piece } from "chess.js";
-import { deepSignal } from "deepsignal";
 import { cn } from "./lib/utils";
+import { types } from "./proto";
 
 const game = deepSignal(new Chess());
 
@@ -114,6 +115,8 @@ const computeSquareStyle = (lastSquare: string | undefined, game: Chess) => {
 };
 
 export const ChessGame = () => {
+  const space = useSpace();
+
   const [moves, setMoves] = React.useState<string[]>([]); // TODO(zan): Start empty
   const [lastMove, setLastMove] = React.useState<string>();
 
