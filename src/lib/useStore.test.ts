@@ -1,6 +1,7 @@
 import { test, expect } from "vitest";
 import { applyAction, useStore } from "./useStore";
 
+// --- Definitions ------------------------------------------------------------
 type TestState = {
   count: number;
 };
@@ -36,6 +37,19 @@ const exec = (
   }
 };
 
+// --- HELPERS ----------------------------------------------------------------
+const applyMany = (state: TestState, actions: TestAction[]) => {
+  let nextState = state;
+
+  for (const action of actions) {
+    const { nextState: statePrime } = applyAction(nextState, action, exec);
+    nextState = statePrime;
+  }
+
+  return nextState;
+};
+
+// --- TEST CASES -------------------------------------------------------------
 test("applyAction throws when looping forever", () => {
   expect(() =>
     applyAction(stateZero, { type: "loop-increment" }, exec)
@@ -52,22 +66,19 @@ test("applyAction increment until returns the correct state", () => {
 });
 
 test("applyAction returns the correct state 2 actions", () => {
-  const { nextState: one } = applyAction(
-    stateZero,
+  const finalState = applyMany(stateZero, [
     { type: "increment" },
-    exec
-  );
-  const { nextState: two } = applyAction(one, { type: "increment" }, exec);
-  expect(two.count).toBe(2);
+    { type: "increment" },
+  ]);
+  expect(finalState.count).toBe(2);
 });
 
 test("applyAction returns the correct state 3 actions", () => {
-  const { nextState: one } = applyAction(
-    stateZero,
+  const finalState = applyMany(stateZero, [
     { type: "increment" },
-    exec
-  );
-  const { nextState: two } = applyAction(one, { type: "increment" }, exec);
-  const { nextState: three } = applyAction(two, { type: "decrement" }, exec);
-  expect(three.count).toBe(1);
+    { type: "increment" },
+    { type: "decrement" },
+  ]);
+
+  expect(finalState.count).toBe(1);
 });
