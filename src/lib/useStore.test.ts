@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { applyAction } from "./useStore";
+import { Exec, applyAction } from "./useStore";
 
 // --- Definitions ------------------------------------------------------------
 type TestState = {
@@ -35,16 +35,20 @@ const exec = (state: TestState, action: TestAction): [TestState, TestAction[]] =
 };
 
 // --- HELPERS ----------------------------------------------------------------
-const applyMany = (state: TestState, actions: TestAction[]) => {
-  let nextState = state;
+export const mkApplyMany =
+  <TState, TAction>(exec: Exec<TState, TAction>) =>
+  (state: TState, actions: TAction[]) => {
+    let nextState = state;
 
-  for (const action of actions) {
-    const { nextState: statePrime } = applyAction(nextState, action, exec);
-    nextState = statePrime;
-  }
+    for (const action of actions) {
+      const { nextState: statePrime } = applyAction(nextState, action, exec);
+      nextState = statePrime;
+    }
 
-  return nextState;
-};
+    return nextState;
+  };
+
+const applyMany = mkApplyMany(exec);
 
 // --- TEST CASES -------------------------------------------------------------
 test("applyAction throws when looping forever", () => {

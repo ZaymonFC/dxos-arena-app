@@ -1,18 +1,9 @@
-import { test, expect } from "vitest";
-import { applyAction } from "./useStore";
-import { GameAction, GameState, exec, zeroState } from "./game";
+import { expect, test } from "vitest";
+import { exec, zeroState } from "./game";
+import { mkApplyMany } from "./useStore.test";
 
 // --- HELPERS ----------------------------------------------------------------
-const applyMany = (state: GameState, actions: GameAction[]) => {
-  let nextState = state;
-
-  for (const action of actions) {
-    const { nextState: statePrime } = applyAction(nextState, action, exec);
-    nextState = statePrime;
-  }
-
-  return nextState;
-};
+const applyMany = mkApplyMany(exec);
 
 // --- TEST CASES -------------------------------------------------------------
 

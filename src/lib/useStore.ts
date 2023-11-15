@@ -3,7 +3,7 @@ import { inc } from "./utils";
 
 const EXECUTION_LIMIT = 10000;
 
-type Exec<TState, TAction> = (state: TState, action: TAction) => [TState, TAction[]];
+export type Exec<TState, TAction> = (state: TState, action: TAction) => [TState, TAction[]];
 
 type Accumulator<TState> = {
   count: number;
