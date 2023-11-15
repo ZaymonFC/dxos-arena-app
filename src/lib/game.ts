@@ -24,6 +24,7 @@ type GameStatus = "waiting" | "in-progress" | "complete";
 export type GameState = {
   variant: "standard";
   moves: Move[];
+  movesWithNotation: string[];
   boards: string[];
   players?: { white: string; black: string };
   status: GameStatus;
@@ -33,6 +34,7 @@ export type GameState = {
 export const zeroState: GameState = {
   variant: "standard",
   moves: [],
+  movesWithNotation: [],
   boards: [new Chess().fen()],
   status: "waiting",
 };
@@ -66,7 +68,7 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
           // TODO(zan): To support variants, we can use a different rules engine
           const chess = new Chess(state.boards[state.boards.length - 1]);
 
-          chess.move({
+          const move = chess.move({
             from: action.payload.source,
             to: action.payload.target,
             promotion: "q",
@@ -82,6 +84,7 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
           }
 
           draft.moves.push(action.payload);
+          draft.movesWithNotation.push(move.san);
           draft.boards.push(chess.fen());
 
           if (chess.isGameOver) {

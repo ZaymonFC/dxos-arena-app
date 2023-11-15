@@ -69,3 +69,19 @@ test("Scholars mate should end the game in checkmate", () => {
   expect(state.status).toBe("complete");
   expect(state.gameOverReason).toBe("checkmate");
 });
+
+test("White Kingside Castle", () => {
+  const state = applyMany(zeroState, [
+    { type: "game-created", payload: { players: { white: "zan", black: "zhenya" } } },
+    { type: "move-made", payload: { source: "e2", target: "e4" } },
+    { type: "move-made", payload: { source: "e7", target: "e5" } },
+    { type: "move-made", payload: { source: "g1", target: "f3" } },
+    { type: "move-made", payload: { source: "b8", target: "c6" } },
+    { type: "move-made", payload: { source: "f1", target: "e2" } },
+    { type: "move-made", payload: { source: "g8", target: "f6" } },
+    { type: "move-made", payload: { source: "e1", target: "g1" } }, // King side castle
+  ]);
+
+  expect(state.moves).toHaveLength(7);
+  expect(state.movesWithNotation[state.movesWithNotation.length - 1]).toBe("O-O");
+});
