@@ -1,5 +1,5 @@
-import { test, expect } from "vitest";
-import { applyAction, useStore } from "./useStore";
+import { expect, test } from "vitest";
+import { applyAction } from "./useStore";
 
 // --- Definitions ------------------------------------------------------------
 type TestState = {
@@ -16,10 +16,7 @@ type TestAction =
   | { type: "loop-increment" }
   | { type: "increment-until"; payload: number };
 
-const exec = (
-  state: TestState,
-  action: TestAction
-): [TestState, TestAction[]] => {
+const exec = (state: TestState, action: TestAction): [TestState, TestAction[]] => {
   switch (action.type) {
     case "increment":
       return [{ count: state.count + 1 }, []];
@@ -51,25 +48,16 @@ const applyMany = (state: TestState, actions: TestAction[]) => {
 
 // --- TEST CASES -------------------------------------------------------------
 test("applyAction throws when looping forever", () => {
-  expect(() =>
-    applyAction(stateZero, { type: "loop-increment" }, exec)
-  ).toThrow("infinite loop");
+  expect(() => applyAction(stateZero, { type: "loop-increment" }, exec)).toThrow("infinite loop");
 });
 
 test("applyAction increment until returns the correct state", () => {
-  const { nextState } = applyAction(
-    stateZero,
-    { type: "increment-until", payload: 100 },
-    exec
-  );
+  const { nextState } = applyAction(stateZero, { type: "increment-until", payload: 100 }, exec);
   expect(nextState.count).toBe(100);
 });
 
 test("applyAction returns the correct state 2 actions", () => {
-  const finalState = applyMany(stateZero, [
-    { type: "increment" },
-    { type: "increment" },
-  ]);
+  const finalState = applyMany(stateZero, [{ type: "increment" }, { type: "increment" }]);
   expect(finalState.count).toBe(2);
 });
 
