@@ -13,10 +13,11 @@ import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
-import { GameState, exec, zeroState } from "./lib/game";
+import { GameState, InGameCursor, exec, useInGameCursor, zeroState } from "./lib/game";
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 import { types } from "./proto";
+import { Button } from "@dxos/react-ui";
 
 const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean }) => {
   const [time, setTime] = React.useState(initialTime);
@@ -71,7 +72,7 @@ const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState
     <div
       className={cn(
         "flex flex-row justify-between",
-        "bg-slate-100 my-2 rounded-md text-zinc-800 p-4 font-mono border shadow-lg transition-all duration-100 ease-in-out",
+        "bg-slate-100 rounded-md text-zinc-800 p-4 font-mono border shadow-sm transition-all duration-100 ease-in-out",
         borderColor,
         turnIndicatorClasses
       )}
@@ -117,52 +118,80 @@ const computeSquareStyle = (lastSquare: string | undefined, fen: string) => {
   return squareStyles;
 };
 
+const Controls = ({ cursor }: { cursor: InGameCursor }) => {
+  return (
+    <div className="flex flex-row gap-1">
+      <Button onClick={cursor.firstMove} disabled={!cursor.canMoveBackward}>
+        First
+      </Button>
+      <Button onClick={cursor.previousMove} disabled={!cursor.canMoveBackward}>
+        Previous
+      </Button>
+      <Button onClick={cursor.nextMove} disabled={!cursor.canMoveForward}>
+        Next
+      </Button>
+      <Button onClick={cursor.latestMove} disabled={!cursor.canMoveForward}>
+        Latest
+      </Button>
+    </div>
+  );
+};
+
 export const ChessGame = () => {
   const space = useSpace();
 
   const { state: game, send } = useStore(zeroState, exec);
+  const cursor = useInGameCursor(game);
 
   const onDrop = (source: string, target: string) => {
-    const move = send({ type: "move-made", payload: { source, target } });
-    return true;
+    if (cursor.canInteractWithBoard) {
+      const move = send({ type: "move-made", payload: { source, target } });
+      return true;
+    }
+    return false;
   };
 
   return (
-    <div className="p-4 flex flex-row justify-center gap-1">
-      <div className="m-2 p-6 rounded-md border border-gray-400 shadow-sm bg-slate-100">
-        {game.movesWithNotation
-          .reduce((acc, _, idx, src) => {
-            // Group moves into pairs
-            if (idx % 2 === 0) acc.push(src.slice(idx, idx + 2));
-            return acc;
-          }, [])
-          .map((pair, moveNumber) => (
-            <div key={moveNumber} className="flex items-center justify-start gap-5">
-              <span className="font-semibold text-gray-800 w-8">{moveNumber + 1}.</span>
-              {pair.map((move, idx) => (
-                <span key={idx} className="text-gray-700 w-8">
-                  {move}
-                </span>
-              ))}
-            </div>
-          ))}
-      </div>
-
-      <div className="flex flex-col gap-1">
-        <PlayerInfo color={"Black"} game={game} />
-        <div className="w-[480px] h-[480px] aspect-ratio-1">
-          <Chessboard
-            customSquareStyles={computeSquareStyle(
-              game.moves[game.moves.length - 1]?.target,
-              game.boards[game.boards.length - 1]
-            )}
-            position={game.boards[game.boards.length - 1]}
-            onPieceDrop={onDrop}
-            areArrowsAllowed
-            id={"main"}
-          />
+    <div>
+      <div className="p-4 flex flex-row justify-center gap-2">
+        <div className="p-6 rounded-md border border-gray-400 shadow-sm bg-slate-100 font-mono">
+          {game.movesWithNotation
+            .reduce((acc, _, idx, src) => {
+              // Group moves into pairs
+              if (idx % 2 === 0) acc.push(src.slice(idx, idx + 2));
+              return acc;
+            }, [])
+            .map((pair, moveNumber) => (
+              <div key={moveNumber} className="flex items-center justify-start gap-5">
+                <span className="font-semibold text-gray-800 w-8">{moveNumber + 1}.</span>
+                {pair.map((move, idx) => (
+                  <span key={idx} className="text-gray-700 w-8">
+                    {move}
+                  </span>
+                ))}
+              </div>
+            ))}
         </div>
-        <PlayerInfo color="White" game={game} />
+
+        <div className="flex flex-col gap-4">
+          <PlayerInfo color={"Black"} game={game} />
+          <div className="w-[480px] h-[480px] aspect-ratio-1">
+            <Chessboard
+              customSquareStyles={computeSquareStyle(
+                game.moves[game.moves.length - 1]?.target,
+                game.boards[game.boards.length - 1]
+              )}
+              position={cursor.board}
+              onPieceDrop={onDrop}
+              areArrowsAllowed
+              id={"main"}
+              animationDuration={50}
+            />
+          </div>
+          <PlayerInfo color="White" game={game} />
+
+          <Controls cursor={cursor} />
+        </div>
       </div>
     </div>
   );
