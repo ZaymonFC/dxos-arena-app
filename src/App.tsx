@@ -7,17 +7,18 @@ import {
 } from "@dxos/react-appkit";
 import { ClientProvider, Config, Defaults, Dynamics, Local } from "@dxos/react-client";
 import { useSpace } from "@dxos/react-client/echo";
+import { Button } from "@dxos/react-ui";
 import { Chess, Piece } from "chess.js";
 import React, { useEffect } from "react";
 import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
+import { FirstIcon, LastIcon, NextIcon, PreviousIcon } from "./icons";
 import { GameState, InGameCursor, Move, exec, useInGameCursor, zeroState } from "./lib/game";
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 import { types } from "./proto";
-import { Button } from "@dxos/react-ui";
 
 const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean }) => {
   const [time, setTime] = React.useState(initialTime);
@@ -119,24 +120,26 @@ const computeSquareStyle = (lastMove: Move | undefined, fen: string) => {
   return squareStyles;
 };
 
-const Controls = ({ cursor }: { cursor: InGameCursor }) => {
-  return (
-    <div className="flex flex-row gap-1">
-      <Button onClick={cursor.firstMove} disabled={!cursor.canMoveBackward}>
-        First
-      </Button>
-      <Button onClick={cursor.previousMove} disabled={!cursor.canMoveBackward}>
-        Previous
-      </Button>
-      <Button onClick={cursor.nextMove} disabled={!cursor.canMoveForward}>
-        Next
-      </Button>
-      <Button onClick={cursor.latestMove} disabled={!cursor.canMoveForward}>
-        Latest
-      </Button>
-    </div>
-  );
-};
+const Controls = ({ cursor }: { cursor: InGameCursor }) => (
+  <div className="flex flex-row gap-1">
+    <Button onClick={cursor.firstMove} disabled={!cursor.canMoveBackward} aria-label="first move">
+      <FirstIcon />
+    </Button>
+    <Button
+      onClick={cursor.previousMove}
+      disabled={!cursor.canMoveBackward}
+      aria-label="previous move"
+    >
+      <PreviousIcon />
+    </Button>
+    <Button onClick={cursor.nextMove} disabled={!cursor.canMoveForward} aria-label="next move">
+      <NextIcon />
+    </Button>
+    <Button onClick={cursor.latestMove} disabled={!cursor.canMoveForward} aria-label="last move">
+      <LastIcon />
+    </Button>
+  </div>
+);
 
 export const ChessGame = () => {
   const space = useSpace();
