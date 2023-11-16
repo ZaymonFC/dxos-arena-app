@@ -88,6 +88,22 @@ test("White Kingside Castle", () => {
   expect(last(state.movesWithNotation)).toBe("O-O");
 });
 
+test("Black Kingside Castle", () => {
+  const state = applyMany(zeroState, [
+    { type: "game-created", payload: { players: { white: "zan", black: "zhenya" } } },
+    { type: "move-made", payload: { source: "e2", target: "e4" } }, // White's first move
+    { type: "move-made", payload: { source: "e7", target: "e5" } }, // Black's first move
+    { type: "move-made", payload: { source: "g1", target: "f3" } }, // White's second move
+    { type: "move-made", payload: { source: "g8", target: "f6" } }, // Black's second move
+    { type: "move-made", payload: { source: "d2", target: "d4" } }, // White's third move
+    { type: "move-made", payload: { source: "f8", target: "e7" } }, // Black's third move
+    { type: "move-made", payload: { source: "b1", target: "c3" } }, // White's fourth move
+    { type: "move-made", payload: { source: "e8", target: "g8" } }, // Black's kingside castle
+  ]);
+
+  expect(last(state.movesWithNotation)).toBe("O-O");
+});
+
 test("En Passant", () => {
   const state = applyMany(zeroState, [
     { type: "game-created", payload: { players: { white: "zan", black: "zhenya" } } },
