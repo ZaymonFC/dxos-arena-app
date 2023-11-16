@@ -39,7 +39,7 @@ const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean
 
   return (
     <>
-      <div className="h-min p-2 rounded-lg text-2xl leading-none font-mono text-gray-90 bg-gray-50 border border-gray-200 shadow-sm">
+      <div className="h-min p-2 rounded-lg text-2xl leading-none font-mono text-gray-90 bg-gray-50 border border-gray-200 shadow-inner shadow-gray-100">
         {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </div>
     </>
