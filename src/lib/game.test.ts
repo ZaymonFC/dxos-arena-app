@@ -5,6 +5,8 @@ import { mkApplyMany } from "./useStore.test";
 // --- HELPERS ----------------------------------------------------------------
 const applyMany = mkApplyMany(exec);
 
+const last = <T>(arr: T[]) => arr[arr.length - 1];
+
 // --- TEST CASES -------------------------------------------------------------
 
 test("Can create a game", () => {
@@ -83,5 +85,19 @@ test("White Kingside Castle", () => {
   ]);
 
   expect(state.moves).toHaveLength(7);
-  expect(state.movesWithNotation[state.movesWithNotation.length - 1]).toBe("O-O");
+  expect(last(state.movesWithNotation)).toBe("O-O");
+});
+
+test("En Passant", () => {
+  const state = applyMany(zeroState, [
+    { type: "game-created", payload: { players: { white: "zan", black: "zhenya" } } },
+    { type: "move-made", payload: { source: "e2", target: "e4" } },
+    { type: "move-made", payload: { source: "a7", target: "a6" } }, // Black's waiting move
+    { type: "move-made", payload: { source: "e4", target: "e5" } },
+    { type: "move-made", payload: { source: "d7", target: "d5" } }, // Black pawn moves adjacent to white pawn
+    { type: "move-made", payload: { source: "e5", target: "d6" } }, // White captures en passant
+  ]);
+
+  expect(state.moves).toHaveLength(5);
+  expect(last(state.movesWithNotation)).toBe("exd6");
 });
