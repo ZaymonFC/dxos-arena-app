@@ -39,7 +39,7 @@ const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean
 
   return (
     <>
-      <div className="text-2xl font-mono mt-2">
+      <div className="h-min p-2 rounded-lg text-2xl leading-none font-mono text-gray-90 bg-gray-50 border border-gray-200 shadow-sm">
         {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </div>
     </>
@@ -49,7 +49,7 @@ const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean
 const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState }) => {
   const turn = game.moves.length % 2 === 0 ? color === "White" : color === "Black";
 
-  const borderColor = color === "White" ? "border-gray-400" : "border-gray-700";
+  const borderColor = color === "White" ? "border-gray-200" : "border-gray-400";
   const turnIndicatorClasses = turn ? "ring-1 ring-offset-2 ring-green-300" : "";
   const textColor = turn ? "text-green-600" : "text-red-600";
 
@@ -71,7 +71,7 @@ const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState
   return (
     <div
       className={cn(
-        "flex flex-row justify-between",
+        "flex flex-row justify-between items-center",
         "bg-slate-100 rounded-md text-zinc-800 p-4 font-mono border shadow-sm transition-all duration-100 ease-in-out",
         borderColor,
         turnIndicatorClasses
@@ -154,7 +154,7 @@ export const ChessGame = () => {
   return (
     <div>
       <div className="p-4 flex flex-row justify-center gap-2">
-        <div className="p-6 rounded-md border border-gray-400 shadow-sm bg-slate-100 font-mono">
+        <div className="p-6 rounded-md border border-gray-100 shadow-sm bg-gray-50 font-mono">
           {game.movesWithNotation
             .reduce((acc, _, idx, src) => {
               // Group moves into pairs
