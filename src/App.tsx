@@ -10,9 +10,10 @@ import { useSpace } from "@dxos/react-client/echo";
 import { Chess, Piece } from "chess.js";
 import React, { useEffect } from "react";
 import { Chessboard } from "react-chessboard";
+import { match } from "ts-pattern";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
-import { exec, zeroState } from "./lib/game";
+import { GameState, exec, zeroState } from "./lib/game";
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 import { types } from "./proto";
@@ -44,11 +45,27 @@ const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean
   );
 };
 
-const PlayerInfo = ({ color, turn }: { color; turn: boolean }) => {
+const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState }) => {
+  const turn = game.moves.length % 2 === 0 ? color === "White" : color === "Black";
+
   const borderColor = color === "White" ? "border-gray-400" : "border-gray-700";
   const turnIndicatorClasses = turn ? "ring-1 ring-offset-2 ring-green-300" : "";
   const textColor = turn ? "text-green-600" : "text-red-600";
-  const statusText = turn ? "Your Turn" : "Waiting";
+
+  const statusText = match(game.status)
+    .with("waiting", () => "Waiting for first move")
+    .with("in-progress", () => (turn ? "Your turn" : "Waiting"))
+    .with("complete", () =>
+      match(game.gameOverReason)
+        .with("black-resignation", () => "Black resigned")
+        .with("white-resignation", () => "White resigned")
+        .with("checkmate", () => "Checkmate")
+        .with("stalemate", () => "Stalemate")
+        .with("insufficient-material", () => "Insufficient material")
+        .with("threefold-repetition", () => "Threefold repetition")
+        .exhaustive()
+    )
+    .exhaustive();
 
   return (
     <div
@@ -63,7 +80,7 @@ const PlayerInfo = ({ color, turn }: { color; turn: boolean }) => {
         <div className="text-lg font-bold">{color}</div>
         <div className={cn("text-sm", textColor)}>{statusText}</div>
       </div>
-      <Timer initialTime={60 * 10} ticking={turn} />
+      <Timer initialTime={60 * 10} ticking={turn && game.status === "in-progress"} />
     </div>
   );
 };
@@ -102,6 +119,7 @@ const computeSquareStyle = (lastSquare: string | undefined, fen: string) => {
 
 export const ChessGame = () => {
   const space = useSpace();
+
   const { state: game, send } = useStore(zeroState, exec);
 
   const onDrop = (source: string, target: string) => {
@@ -131,7 +149,7 @@ export const ChessGame = () => {
       </div>
 
       <div className="flex flex-col gap-1">
-        <PlayerInfo color={"Black"} turn={game.moves.length % 2 == 1} />
+        <PlayerInfo color={"Black"} game={game} />
         <div className="w-[480px] h-[480px] aspect-ratio-1">
           <Chessboard
             customSquareStyles={computeSquareStyle(
@@ -144,7 +162,7 @@ export const ChessGame = () => {
             id={"main"}
           />
         </div>
-        <PlayerInfo color="White" turn={game.moves.length % 2 == 0} />
+        <PlayerInfo color="White" game={game} />
       </div>
     </div>
   );
