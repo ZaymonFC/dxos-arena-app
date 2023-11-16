@@ -146,7 +146,7 @@ export const ChessGame = () => {
 
   const onDrop = (source: string, target: string) => {
     if (cursor.canInteractWithBoard) {
-      const move = send({ type: "move-made", payload: { source, target } });
+      send({ type: "move-made", payload: { source, target } });
       return true;
     }
     return false;
@@ -179,7 +179,7 @@ export const ChessGame = () => {
           <div className="w-[480px] h-[480px] aspect-ratio-1">
             <Chessboard
               customSquareStyles={computeSquareStyle(
-                game.moves[game.moves.length - 1],
+                game.moves[cursor.__index - 1],
                 game.boards[game.boards.length - 1]
               )}
               position={cursor.board}
