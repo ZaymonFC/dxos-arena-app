@@ -13,7 +13,7 @@ import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
-import { GameState, InGameCursor, exec, useInGameCursor, zeroState } from "./lib/game";
+import { GameState, InGameCursor, Move, exec, useInGameCursor, zeroState } from "./lib/game";
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 import { types } from "./proto";
@@ -72,7 +72,7 @@ const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState
     <div
       className={cn(
         "flex flex-row justify-between items-center",
-        "bg-slate-100 rounded-md text-zinc-800 p-4 font-mono border shadow-sm transition-all duration-100 ease-in-out",
+        "bg-gray-50 rounded-md text-zinc-800 p-4 font-mono border shadow-sm transition-all duration-100 ease-in-out",
         borderColor,
         turnIndicatorClasses
       )}
@@ -94,13 +94,14 @@ const findPiece = (game: Chess, piece: Piece) => {
     .find((p) => p.color === piece.color && p.type === piece.type);
 };
 
-const computeSquareStyle = (lastSquare: string | undefined, fen: string) => {
+const computeSquareStyle = (lastMove: Move | undefined, fen: string) => {
   const game = new Chess(fen);
   let squareStyles = {};
 
-  if (lastSquare !== undefined) {
+  if (lastMove !== undefined) {
     squareStyles = {
-      [lastSquare]: { backgroundColor: "rgba(30, 150, 0, 0.2)" },
+      [lastMove.source]: { backgroundColor: "rgba(30, 150, 0, 0.152)" },
+      [lastMove.target]: { backgroundColor: "rgba(30, 150, 0, 0.2)" },
       ...squareStyles,
     };
   }
@@ -178,7 +179,7 @@ export const ChessGame = () => {
           <div className="w-[480px] h-[480px] aspect-ratio-1">
             <Chessboard
               customSquareStyles={computeSquareStyle(
-                game.moves[game.moves.length - 1]?.target,
+                game.moves[game.moves.length - 1],
                 game.boards[game.boards.length - 1]
               )}
               position={cursor.board}

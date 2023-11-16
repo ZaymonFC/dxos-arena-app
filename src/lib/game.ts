@@ -3,7 +3,7 @@ import { produce } from "immer";
 import React from "react";
 import { match } from "ts-pattern";
 
-type Move = {
+export type Move = {
   source: string;
   target: string;
   promotion?: "q" | "r" | "b" | "n";
