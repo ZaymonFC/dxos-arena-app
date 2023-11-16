@@ -129,7 +129,7 @@ export const ChessGame = () => {
 
   return (
     <div className="p-4 flex flex-row justify-center gap-1">
-      <div className="m-2 p-6 rounded-md border border-gray-400 shadow-sm bg-white">
+      <div className="m-2 p-6 rounded-md border border-gray-400 shadow-sm bg-slate-100">
         {game.movesWithNotation
           .reduce((acc, _, idx, src) => {
             // Group moves into pairs
