@@ -147,7 +147,8 @@ type InGameCursorAction =
   | { type: "move-forward" }
   | { type: "move-backward" }
   | { type: "move-to-beginning" }
-  | { type: "move-to-latest" };
+  | { type: "move-to-latest" }
+  | { type: "select-move"; move: number };
 
 export const useInGameCursor = ({ boards }: GameState) => {
   const [current, setCurrent] = React.useState(true);
@@ -181,6 +182,10 @@ export const useInGameCursor = ({ boards }: GameState) => {
         case "move-to-latest":
           selectBoardByIndex(numberOfMoves);
           break;
+        case "select-move": {
+          selectBoardByIndex(action.move);
+          break;
+        }
       }
     },
     [index, numberOfMoves]
