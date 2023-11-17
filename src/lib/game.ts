@@ -1,6 +1,6 @@
 import { Chess } from "chess.js";
 import { produce } from "immer";
-import React from "react";
+import React, { useCallback } from "react";
 import { match } from "ts-pattern";
 
 export type Move = {
@@ -143,6 +143,12 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
   return [newState, actions];
 };
 
+type InGameCursorAction =
+  | { type: "move-forward" }
+  | { type: "move-backward" }
+  | { type: "move-to-beginning" }
+  | { type: "move-to-latest" };
+
 export const useInGameCursor = (state: GameState) => {
   const [current, setCurrent] = React.useState(true);
   const [index, setIndex] = React.useState(0);
@@ -164,25 +170,37 @@ export const useInGameCursor = (state: GameState) => {
   const selectBoardByIndex = (index: number) => {
     const latestIndex = state.boards.length - 1;
     const adjustedIndex = Math.max(0, Math.min(index, latestIndex));
+
     setCurrent(adjustedIndex === latestIndex);
     setIndex(adjustedIndex);
   };
 
-  const nextMove = () => selectBoardByIndex(index + 1);
-  const previousMove = () => selectBoardByIndex(index - 1);
-  const firstMove = () => selectBoardByIndex(0);
-  const latestMove = () => selectBoardByIndex(state.boards.length - 1);
+  const dispatch = useCallback(
+    (action: InGameCursorAction) => {
+      switch (action.type) {
+        case "move-forward":
+          selectBoardByIndex(index + 1);
+          break;
+        case "move-backward":
+          selectBoardByIndex(index - 1);
+          break;
+        case "move-to-beginning":
+          selectBoardByIndex(0);
+          break;
+        case "move-to-latest":
+          selectBoardByIndex(state.boards.length - 1);
+          break;
+      }
+    },
+    [index, state.boards.length]
+  );
 
   return {
     __index: index,
-    canMoveForward: index < state.boards.length - 1,
-    canMoveBackward: index > 0,
+    can: { moveForward: index < state.boards.length - 1, moveBackward: index > 0 },
     board,
     canInteractWithBoard: current,
-    nextMove,
-    previousMove,
-    firstMove,
-    latestMove,
+    dispatch,
   };
 };
 

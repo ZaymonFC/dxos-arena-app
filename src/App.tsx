@@ -120,26 +120,41 @@ const computeSquareStyle = (lastMove: Move | undefined, fen: string) => {
   return squareStyles;
 };
 
-const Controls = ({ cursor }: { cursor: InGameCursor }) => (
-  <div className="flex flex-row gap-1">
-    <Button onClick={cursor.firstMove} disabled={!cursor.canMoveBackward} aria-label="first move">
-      <FirstIcon />
-    </Button>
-    <Button
-      onClick={cursor.previousMove}
-      disabled={!cursor.canMoveBackward}
-      aria-label="previous move"
-    >
-      <PreviousIcon />
-    </Button>
-    <Button onClick={cursor.nextMove} disabled={!cursor.canMoveForward} aria-label="next move">
-      <NextIcon />
-    </Button>
-    <Button onClick={cursor.latestMove} disabled={!cursor.canMoveForward} aria-label="last move">
-      <LastIcon />
-    </Button>
-  </div>
-);
+const Controls = ({ cursor }: { cursor: InGameCursor }) => {
+  return (
+    <div className="flex flex-row gap-1">
+      <Button
+        onClick={() => cursor.dispatch({ type: "move-to-beginning" })}
+        disabled={!cursor.can.moveBackward}
+        aria-label="first move"
+      >
+        <FirstIcon />
+      </Button>
+      <Button
+        onClick={() => cursor.dispatch({ type: "move-backward" })}
+        disabled={!cursor.can.moveBackward}
+        aria-label="previous move"
+      >
+        <PreviousIcon />
+      </Button>
+      <Button
+        onClick={() => cursor.dispatch({ type: "move-forward" })}
+        disabled={!cursor.can.moveForward}
+        aria-label="next move"
+      >
+        <NextIcon />
+      </Button>
+      <Button
+        onClick={() => cursor.dispatch({ type: "move-to-latest" })}
+        disabled={!cursor.can.moveForward}
+        aria-label="last move"
+      >
+        <LastIcon />
+      </Button>
+    </div>
+  );
+};
+
 
 export const ChessGame = () => {
   const space = useSpace();
