@@ -96,7 +96,7 @@ const findPiece = (game: Chess, piece: Piece) => {
     .find((p) => p.color === piece.color && p.type === piece.type);
 };
 
-const computeSquareStyle = (lastMove: Move | undefined, fen: string) => {
+const computeSquareStyles = (lastMove: Move | undefined, fen: string) => {
   const game = new Chess(fen);
   let squareStyles = {};
 
@@ -210,7 +210,7 @@ export const ChessGame = () => {
           <PlayerInfo color={"Black"} game={game} />
           <div className="w-[480px] h-[480px] aspect-ratio-1">
             <Chessboard
-              customSquareStyles={computeSquareStyle(
+              customSquareStyles={computeSquareStyles(
                 game.moves[cursor.__index - 1],
                 game.boards[game.boards.length - 1]
               )}

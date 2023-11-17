@@ -149,26 +149,17 @@ type InGameCursorAction =
   | { type: "move-to-beginning" }
   | { type: "move-to-latest" };
 
-export const useInGameCursor = (state: GameState) => {
+export const useInGameCursor = ({ boards }: GameState) => {
   const [current, setCurrent] = React.useState(true);
   const [index, setIndex] = React.useState(0);
 
-  const board = state.boards[index];
+  const board = boards[index];
+  const numberOfMoves = boards.length - 1;
 
-  // Update to useEffect:
-  // - The dependency array now only includes 'state.boards.length'
-  // - This useEffect now only sets the index to the latest move if 'current' is true
-  React.useEffect(() => {
-    if (current) {
-      setIndex(state.boards.length - 1);
-    }
-  }, [state.boards.length]);
+  React.useEffect(() => current && setIndex(numberOfMoves), [numberOfMoves]);
 
-  // selectBoardByIndex function now updates 'current'
-  // - If the selected index is not the latest move, set 'current' to false
-  // - Otherwise, keep it true
   const selectBoardByIndex = (index: number) => {
-    const latestIndex = state.boards.length - 1;
+    const latestIndex = numberOfMoves;
     const adjustedIndex = Math.max(0, Math.min(index, latestIndex));
 
     setCurrent(adjustedIndex === latestIndex);
@@ -188,16 +179,16 @@ export const useInGameCursor = (state: GameState) => {
           selectBoardByIndex(0);
           break;
         case "move-to-latest":
-          selectBoardByIndex(state.boards.length - 1);
+          selectBoardByIndex(numberOfMoves);
           break;
       }
     },
-    [index, state.boards.length]
+    [index, numberOfMoves]
   );
 
   return {
     __index: index,
-    can: { moveForward: index < state.boards.length - 1, moveBackward: index > 0 },
+    can: { moveForward: index < numberOfMoves, moveBackward: index > 0 },
     board,
     canInteractWithBoard: current,
     dispatch,
