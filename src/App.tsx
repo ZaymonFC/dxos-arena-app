@@ -19,6 +19,7 @@ import { GameState, InGameCursor, Move, exec, useInGameCursor, zeroState } from 
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 import { types } from "./proto";
+import { arrayToPairs } from "./lib/array";
 
 const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean }) => {
   const [time, setTime] = React.useState(initialTime);
@@ -155,6 +156,37 @@ const Controls = ({ cursor }: { cursor: InGameCursor }) => {
   );
 };
 
+const MoveList = ({ movesWithNotation }: { movesWithNotation: string[] }) => {
+  const movePairs = arrayToPairs(movesWithNotation);
+
+  const gridClass = "grid grid-cols-[2fr_4fr_4fr] gap-x-3 gap-y-1";
+
+  return (
+    <div className="p-4 rounded-md border border-gray-100 shadow-sm bg-gray-50 font-mono">
+      <div className={cn(gridClass)}>
+        <div>#</div>
+        <div>White</div>
+        <div>Black</div>
+      </div>
+      <div className={gridClass}>
+        {movePairs.map((pair, moveNumber) => (
+          // The fragment should have a unique key, which is the moveNumber here.
+          <React.Fragment key={moveNumber}>
+            <div className="text-gray-800 font-semibold">{moveNumber + 1}.</div>
+            {pair.map((move, idx) => (
+              // Each move within a pair gets its own cell in the grid.
+              <div key={idx} className="text-gray-800">
+                {move}
+              </div>
+            ))}
+            {/* This checks for a pair with only one move and adds an empty cell if needed */}
+            {pair.length === 1 ? <div></div> : null}
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export const ChessGame = () => {
   const space = useSpace();
@@ -173,25 +205,7 @@ export const ChessGame = () => {
   return (
     <div>
       <div className="p-4 flex flex-row justify-center gap-2">
-        <div className="p-6 rounded-md border border-gray-100 shadow-sm bg-gray-50 font-mono">
-          {game.movesWithNotation
-            .reduce((acc, _, idx, src) => {
-              // Group moves into pairs
-              if (idx % 2 === 0) acc.push(src.slice(idx, idx + 2));
-              return acc;
-            }, [])
-            .map((pair, moveNumber) => (
-              <div key={moveNumber} className="flex items-center justify-start gap-5">
-                <span className="font-semibold text-gray-800 w-8">{moveNumber + 1}.</span>
-                {pair.map((move, idx) => (
-                  <span key={idx} className="text-gray-700 w-8">
-                    {move}
-                  </span>
-                ))}
-              </div>
-            ))}
-        </div>
-
+        <MoveList movesWithNotation={game.movesWithNotation} />
         <div className="flex flex-col gap-4">
           <PlayerInfo color={"Black"} game={game} />
           <div className="w-[480px] h-[480px] aspect-ratio-1">
