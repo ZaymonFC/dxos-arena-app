@@ -14,7 +14,7 @@ import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
-import { FirstIcon, LastIcon, NextIcon, PreviousIcon } from "./icons";
+import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
 import { GameState, InGameCursor, Move, exec, useInGameCursor, zeroState } from "./lib/game";
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
@@ -121,7 +121,7 @@ const computeSquareStyles = (lastMove: Move | undefined, fen: string) => {
   return squareStyles;
 };
 
-const Controls = ({ cursor }: { cursor: InGameCursor }) => {
+const Controls = ({ cursor, onResign }: { cursor: InGameCursor; onResign: () => void }) => {
   return (
     <div className="flex flex-row gap-1">
       <Button
@@ -151,6 +151,10 @@ const Controls = ({ cursor }: { cursor: InGameCursor }) => {
         aria-label="last move"
       >
         <LastIcon />
+      </Button>
+      {/* TODO(zan): Resign disabled when not game in-progress */}
+      <Button onClick={onResign} aria-label="Resign">
+        <ResignIcon />
       </Button>
     </div>
   );
@@ -223,7 +227,10 @@ export const ChessGame = () => {
           </div>
           <PlayerInfo color="White" game={game} />
 
-          <Controls cursor={cursor} />
+          <Controls
+            cursor={cursor}
+            onResign={() => send({ type: "player-resigned", payload: { player: "white" } })}
+          />
         </div>
       </div>
     </div>
