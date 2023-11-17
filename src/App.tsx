@@ -208,7 +208,7 @@ const MoveList = ({
         {movePairs.map((pair, pairIdx) => (
           // The fragment should have a unique key, which is the moveNumber here.
           <React.Fragment key={pairIdx}>
-            <div className="text-gray-800 font-semibold">{pairIdx + 1}.</div>
+            <div>{pairIdx + 1}.</div>
             {pair.map((move, idx) => {
               const moveNumber = pairIdx * 2 + idx + 1;
 
@@ -248,15 +248,15 @@ export const ChessGame = () => {
 
   return (
     <div>
-      <div className="p-4 flex flex-row justify-center gap-2">
+      <div className="p-4 flex flex-row justify-center gap-3">
         <MoveList
           currentMove={cursor.__index - 1}
           movesWithNotation={game.movesWithNotation}
           onSelectMove={(move) => cursor.dispatch({ type: "select-move", move: move })}
         />
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           <PlayerInfo color={"Black"} game={game} />
-          <div className="w-[480px] h-[480px] aspect-ratio-1">
+          <div className="p-1 w-[480px] h-[480px] bg-gray-50 aspect-ratio-1 shadow-sm border border-gray-200 rounded-sm">
             <Chessboard
               customSquareStyles={computeSquareStyles(
                 game.moves[cursor.__index - 1],
@@ -286,6 +286,7 @@ const config = async () => new Config(await Dynamics(), Local(), Defaults());
 
 export const App = () => {
   const serviceWorker = useRegisterSW();
+
   return (
     <ThemeProvider
       appNs="arena-app"
