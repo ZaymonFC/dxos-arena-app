@@ -242,7 +242,7 @@ export const ChessGame = () => {
     console.log("Identity", identity);
   }, [space, identity]);
 
-  const { state: game, send } = useStore(zeroState(), exec);
+  const { state: game, send } = useStore(zeroState, exec);
   const cursor = useInGameCursor(game);
 
   let [dbGame] = useQuery(space, { type: "chess" });
