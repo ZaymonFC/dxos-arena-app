@@ -6,26 +6,26 @@ settings:
 
 dependencies:
   '@dxos/client':
-    specifier: 0.3.6
-    version: 0.3.6
+    specifier: 0.3.7
+    version: 0.3.7
   '@dxos/config':
-    specifier: 0.3.6
-    version: 0.3.6
+    specifier: 0.3.7
+    version: 0.3.7
   '@dxos/echo-schema':
-    specifier: 0.3.6
-    version: 0.3.6
+    specifier: 0.3.7
+    version: 0.3.7
   '@dxos/react-appkit':
-    specifier: 0.3.6
-    version: 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react-router-dom@6.18.0)(react@18.2.0)
+    specifier: 0.3.7
+    version: 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react-router-dom@6.18.0)(react@18.2.0)
   '@dxos/react-client':
-    specifier: 0.3.6
-    version: 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 0.3.7
+    version: 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
   '@dxos/react-ui':
-    specifier: 0.3.6
-    version: 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 0.3.7
+    version: 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
   '@dxos/vault':
-    specifier: 0.3.6
-    version: 0.3.6(@braneframe/plugin-layout@0.3.6)(@braneframe/plugin-theme@0.3.6)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)
+    specifier: 0.3.7
+    version: 0.3.7(@braneframe/plugin-layout@0.3.7)(@braneframe/plugin-theme@0.3.7)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)
   '@phosphor-icons/react':
     specifier: ^2.0.5
     version: 2.0.14(react-dom@18.2.0)(react@18.2.0)
@@ -74,17 +74,20 @@ dependencies:
   ts-pattern:
     specifier: ^5.0.5
     version: 5.0.5
+  uuid:
+    specifier: ^9.0.1
+    version: 9.0.1
 
 devDependencies:
   '@dxos/cli':
-    specifier: 0.3.6
-    version: 0.3.6(@types/node@18.18.9)(@types/react@18.2.37)(typescript@5.2.2)
+    specifier: 0.3.7
+    version: 0.3.7(@types/node@18.18.9)(@types/react@18.2.37)(typescript@5.2.2)
   '@dxos/echo-typegen':
-    specifier: 0.3.6
-    version: 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
+    specifier: 0.3.7
+    version: 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
   '@dxos/react-ui-theme':
-    specifier: 0.3.6
-    version: 0.3.6
+    specifier: 0.3.7
+    version: 0.3.7
   '@storybook/addon-essentials':
     specifier: ^7.0.6
     version: 7.5.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -1367,16 +1370,16 @@ packages:
     resolution: {integrity: sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==}
     dev: true
 
-  /@braneframe/plugin-graph@0.3.6(@dxos/app-framework@0.3.6)(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-oBjEFv8Zo6kMol5OEvpaBplr6vuekpXYqQSL9PMsBqU01uVDeHZzZlKb4r94Nk6bL2tXrb9WfAOLqmY4ArzAYQ==}
+  /@braneframe/plugin-graph@0.3.7(@dxos/app-framework@0.3.7)(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ikcgnFLT/kHXIr9Njnt0sb4PxwQkcisNq/JG61FL2+Wtd4WmJac1lve5+pU+Cu/tkilRIQe0ankp66xQI7B/eg==}
     peerDependencies:
-      '@dxos/app-framework': 0.3.6
+      '@dxos/app-framework': 0.3.7
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@dxos/app-framework': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/app-graph': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/debug': 0.3.6
+      '@dxos/app-framework': 0.3.7(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/app-graph': 0.3.7(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/debug': 0.3.7
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -1384,27 +1387,27 @@ packages:
       - preact
     dev: false
 
-  /@braneframe/plugin-layout@0.3.6(@braneframe/plugin-graph@0.3.6)(@braneframe/plugin-theme@0.3.6)(@dxos/app-framework@0.3.6)(@dxos/react-ui-theme@0.3.6)(@dxos/react-ui@0.3.6)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Bwhp1p+hvPKnsuuwJZTbW10O7aOV4+3NxLczCSQlhlRdKXQvYGjqp8w5/EGglyBxnwKN8YOVBWH7ud4ecW+Apw==}
+  /@braneframe/plugin-layout@0.3.7(@braneframe/plugin-graph@0.3.7)(@braneframe/plugin-theme@0.3.7)(@dxos/app-framework@0.3.7)(@dxos/react-ui-theme@0.3.7)(@dxos/react-ui@0.3.7)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PzgA9+VYCrcNPLB+oi7mtj7OKcaNSfKoVTRMhakZ5x4fT/9yaTAF7RlH7LZCXKN6jmLx+WVMLc5iA8MfGBKJCQ==}
     peerDependencies:
-      '@braneframe/plugin-graph': 0.3.6
-      '@braneframe/plugin-theme': 0.3.6
-      '@dxos/app-framework': 0.3.6
-      '@dxos/react-ui': 0.3.6
-      '@dxos/react-ui-theme': 0.3.6
+      '@braneframe/plugin-graph': 0.3.7
+      '@braneframe/plugin-theme': 0.3.7
+      '@dxos/app-framework': 0.3.7
+      '@dxos/react-ui': 0.3.7
+      '@dxos/react-ui-theme': 0.3.7
       '@phosphor-icons/react': ^2.0.5
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@braneframe/plugin-graph': 0.3.6(@dxos/app-framework@0.3.6)(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@braneframe/plugin-theme': 0.3.6(@dxos/app-framework@0.3.6)(@dxos/react-ui-theme@0.3.6)(@dxos/react-ui@0.3.6)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/app-framework': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/local-storage': 0.3.6(preact@10.19.2)(react@18.2.0)
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-mosaic': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-theme': 0.3.6
+      '@braneframe/plugin-graph': 0.3.7(@dxos/app-framework@0.3.7)(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@braneframe/plugin-theme': 0.3.7(@dxos/app-framework@0.3.7)(@dxos/react-ui-theme@0.3.7)(@dxos/react-ui@0.3.7)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/app-framework': 0.3.7(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/local-storage': 0.3.7(preact@10.19.2)(react@18.2.0)
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-mosaic': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-theme': 0.3.7
       '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       '@preact/signals-react': 1.3.6(react@18.2.0)
       deepsignal: 1.4.0-shallow.0(preact@10.19.2)(react@18.2.0)
@@ -1418,30 +1421,30 @@ packages:
       - ts-node
     dev: false
 
-  /@braneframe/plugin-navtree@0.3.6(@braneframe/plugin-theme@0.3.6)(@dxos/app-framework@0.3.6)(@dxos/react-ui-theme@0.3.6)(@dxos/react-ui@0.3.6)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-EyifT8YozH/r4lXG30NJnYtNRwdmE2ygNn6enMlutUBeJvSG6g2Z6cHbvaa3IN3X/GhH0ZD9RQtFxdS3P/PJ5Q==}
+  /@braneframe/plugin-navtree@0.3.7(@braneframe/plugin-theme@0.3.7)(@dxos/app-framework@0.3.7)(@dxos/react-ui-theme@0.3.7)(@dxos/react-ui@0.3.7)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-XtT15z5GAcTTKn3E3BKbxkAmOJ5+mRU5UcHYBnzx76FrYDEU+rwp4XHpSDjzOPxGLKeMcByqA0yv+vzYlNqxkw==}
     peerDependencies:
-      '@braneframe/plugin-theme': 0.3.6
-      '@dxos/app-framework': 0.3.6
-      '@dxos/react-ui': 0.3.6
-      '@dxos/react-ui-theme': 0.3.6
+      '@braneframe/plugin-theme': 0.3.7
+      '@dxos/app-framework': 0.3.7
+      '@dxos/react-ui': 0.3.7
+      '@dxos/react-ui-theme': 0.3.7
       '@phosphor-icons/react': ^2.0.5
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@braneframe/plugin-theme': 0.3.6(@dxos/app-framework@0.3.6)(@dxos/react-ui-theme@0.3.6)(@dxos/react-ui@0.3.6)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@braneframe/types': 0.3.6
-      '@dxos/app-framework': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/app-graph': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/async': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/react-client': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-mosaic': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-navtree': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-theme': 0.3.6
-      '@dxos/util': 0.3.6
+      '@braneframe/plugin-theme': 0.3.7(@dxos/app-framework@0.3.7)(@dxos/react-ui-theme@0.3.7)(@dxos/react-ui@0.3.7)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@braneframe/types': 0.3.7
+      '@dxos/app-framework': 0.3.7(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/app-graph': 0.3.7(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/async': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/react-client': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-mosaic': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-navtree': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-theme': 0.3.7
+      '@dxos/util': 0.3.7
       '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       '@preact/signals-react': 1.3.6(react@18.2.0)
       date-fns: 2.30.0
@@ -1461,21 +1464,21 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@braneframe/plugin-telemetry@0.3.6(@braneframe/plugin-layout@0.3.6)(@dxos/app-framework@0.3.6)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-c6YNynuw4n4OnKgL3LNMK053tOPjcT7rbidiNBAqUbX3hP2DM4KczeR2xNjnZirPH45c1jog0SP2OTC7JwxhOQ==}
+  /@braneframe/plugin-telemetry@0.3.7(@braneframe/plugin-layout@0.3.7)(@dxos/app-framework@0.3.7)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-CYQhWWEdbgVQyhrWyv2LkbfIBa0yhZ3hp6zBekNZwH3cTM3csn5L3BxfvqVe2lE5t3N/eWe3KGySQBfzPYbx4w==}
     peerDependencies:
-      '@braneframe/plugin-layout': 0.3.6
-      '@dxos/app-framework': 0.3.6
+      '@braneframe/plugin-layout': 0.3.7
+      '@dxos/app-framework': 0.3.7
       react: ^18.2.0
     dependencies:
-      '@braneframe/plugin-layout': 0.3.6(@braneframe/plugin-graph@0.3.6)(@braneframe/plugin-theme@0.3.6)(@dxos/app-framework@0.3.6)(@dxos/react-ui-theme@0.3.6)(@dxos/react-ui@0.3.6)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/app-framework': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/async': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/react-client': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/sentry': 0.3.6
-      '@dxos/telemetry': 0.3.6
-      '@dxos/util': 0.3.6
+      '@braneframe/plugin-layout': 0.3.7(@braneframe/plugin-graph@0.3.7)(@braneframe/plugin-theme@0.3.7)(@dxos/app-framework@0.3.7)(@dxos/react-ui-theme@0.3.7)(@dxos/react-ui@0.3.7)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/app-framework': 0.3.7(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/async': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/react-client': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/sentry': 0.3.7
+      '@dxos/telemetry': 0.3.7
+      '@dxos/util': 0.3.7
       localforage: 1.10.0
       react: 18.2.0
     transitivePeerDependencies:
@@ -1491,18 +1494,18 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@braneframe/plugin-theme@0.3.6(@dxos/app-framework@0.3.6)(@dxos/react-ui-theme@0.3.6)(@dxos/react-ui@0.3.6)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-m/mTpdarDb4VBhFbG5qrfPh7izojdO3acU43IHAzhRDzQBAzccWNmheEf/U13ILcOJ7P5vKND7o6+hgJ+vCbcg==}
+  /@braneframe/plugin-theme@0.3.7(@dxos/app-framework@0.3.7)(@dxos/react-ui-theme@0.3.7)(@dxos/react-ui@0.3.7)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-//7iImkTpYTJ1cTGfNhl8jlx7NuJCk4e/bdAQkd8yZwzUvQPGwAcCzXsdlmAMuBMGxhPZGkN7Ybcx6zrOo2qMg==}
     peerDependencies:
-      '@dxos/app-framework': 0.3.6
-      '@dxos/react-ui': 0.3.6
-      '@dxos/react-ui-theme': 0.3.6
+      '@dxos/app-framework': 0.3.7
+      '@dxos/react-ui': 0.3.7
+      '@dxos/react-ui-theme': 0.3.7
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@dxos/app-framework': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-theme': 0.3.6
+      '@dxos/app-framework': 0.3.7(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-theme': 0.3.7
       deepsignal: 1.4.0-shallow.0(preact@10.19.2)(react@18.2.0)
       i18next: 21.10.0
       react: 18.2.0
@@ -1511,11 +1514,11 @@ packages:
       - preact
     dev: false
 
-  /@braneframe/types@0.3.6:
-    resolution: {integrity: sha512-ZSF2ZGuZaodB0NhHlg2T47TowflX11ji7NxILjqeNK6aNR8kMgAsXL8XVD3umF4YGTEkSc0pGgnfq2U29YWBUg==}
+  /@braneframe/types@0.3.7:
+    resolution: {integrity: sha512-cMucg+c7dg3sq/iJfUbCHWin+t9473fruJHwYUzOIgFHwuAWROuOifqiN1ytfv142qftyxJj6jKorYGiek61JQ==}
     dependencies:
-      '@dxos/echo-schema': 0.3.6
-      '@dxos/node-std': 0.3.6
+      '@dxos/echo-schema': 0.3.7
+      '@dxos/node-std': 0.3.7
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -1597,30 +1600,30 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@dxos/agent@0.3.6:
-    resolution: {integrity: sha512-63Ai2DkcjylgBokcnlhOuW7QEdmKrE9hlG/yqQ2F7+PuFthAYaxWhh8+CBEFH7qAFZezmf+1GBqrXJUklM05Jg==}
+  /@dxos/agent@0.3.7:
+    resolution: {integrity: sha512-k/NUToroLRV9BmL49pj+caVs3sBH89Cq8DsqtQgWmFbtpwRlTqyeNJggWhJ5IT4tMFvGpzjUchsn9XwsVM0Gbg==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/client': 0.3.6
-      '@dxos/client-protocol': 0.3.6
-      '@dxos/client-services': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/credentials': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/echo-db': 0.3.6
-      '@dxos/echo-schema': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/network-manager': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/phoenix': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/util': 0.3.6
-      '@dxos/websocket-rpc': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/client': 0.3.7
+      '@dxos/client-protocol': 0.3.7
+      '@dxos/client-services': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/credentials': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/echo-db': 0.3.7
+      '@dxos/echo-schema': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/network-manager': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/phoenix': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/util': 0.3.7
+      '@dxos/websocket-rpc': 0.3.7
       date-fns: 2.30.0
       express: 4.18.2
       isomorphic-ws: 4.0.1(ws@7.5.9)
@@ -1634,37 +1637,38 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@dxos/app-framework@0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-1H8Bh73JksIRTTP0fgnmtZ401WU5Tj9r9kuWoopeAACya1NkMwry+tmtUwrzNMtiKzOm0waIrM1SR4GPIbT2lg==}
+  /@dxos/app-framework@0.3.7(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8n7D0LiY06ghveBYmsbB1bXAgSa0BwRGI0KkXBSu7XSyqPgvud616RIzfhxDktQ22HIjK2gM3oeGW+glCfeEnw==}
     peerDependencies:
       react: '*'
     dependencies:
-      '@dxos/app-graph': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/async': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
+      '@dxos/app-graph': 0.3.7(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/async': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/local-storage': 0.3.7(preact@10.19.2)(react@18.2.0)
+      '@dxos/log': 0.3.7
+      '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       '@preact/signals-react': 1.3.6(react@18.2.0)
       deepsignal: 1.4.0-shallow.0(preact@10.19.2)(react@18.2.0)
       react: 18.2.0
       zod: 3.22.4
     transitivePeerDependencies:
-      - '@phosphor-icons/react'
       - preact
       - react-dom
     dev: false
 
-  /@dxos/app-graph@0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-icEMcPALGTxTfJ/kHwFqXowm2HagwQ7knZf88rFLL7HZUT9ILx0DHU+d/OslCxWAfYpaEZJ6PxZkvkGg4xAdNw==}
+  /@dxos/app-graph@0.3.7(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Tx0kuS8CZSj0zzPPMUbKq2Z3wVf7cQMWFaFAterk7IGoCpcVAgqUmIS0/YYFo5qdoupbNEx0FH2BHv+TbXzDiA==}
     peerDependencies:
       '@phosphor-icons/react': ^2.0.5
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/util': 0.3.7
       '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       '@preact/signals-react': 1.3.6(react@18.2.0)
       deepsignal: 1.4.0-shallow.0(preact@10.19.2)(react@18.2.0)
@@ -1677,22 +1681,22 @@ packages:
       - preact
     dev: false
 
-  /@dxos/async@0.3.6:
-    resolution: {integrity: sha512-uwgNTpi/fL2kRK91oXJHVSTlZGP/cpcILVDEe7JiwEJrlBHq2XIly+5ZguDSHajh3qk8mIsMXGG/zWw/XTh6+g==}
+  /@dxos/async@0.3.7:
+    resolution: {integrity: sha512-DpZspA+lUsiPie47QSqJwSb4Zred3YP++LszB1fjh/47Ucb0Bh3PyDqRKP3uWC/umgIqveDCUTwamR9agbcbUQ==}
     dependencies:
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/util': 0.3.7
       zen-observable: 0.10.0
       zen-push: 0.3.1
 
-  /@dxos/bare-template@0.3.6(@types/node@18.18.9)(typescript@5.2.2):
-    resolution: {integrity: sha512-Fz1mnjbTADZopzKyf3xLIJepKWnDIZcYPZGilSlZj+YND76eocp7X8S79Dh2Kd6ln9LG+LLn975mW85jGutbKQ==}
+  /@dxos/bare-template@0.3.7(@types/node@18.18.9)(typescript@5.2.2):
+    resolution: {integrity: sha512-KxYEnnoA6BVvojrTzQh0XGGqMtFUq1RMEdpk+3SzVH7sGllZrmMzJfTzfYyHe5IhRmtxCEClIAR+iIm2WRgFkw==}
     dependencies:
-      '@dxos/plate': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
-      '@dxos/process': 0.3.6
+      '@dxos/plate': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/process': 0.3.7
       chalk: 4.1.2
       lodash.merge: 4.6.2
       sanitize-filename: 1.6.3
@@ -1704,31 +1708,31 @@ packages:
       - typescript
     dev: true
 
-  /@dxos/cli@0.3.6(@types/node@18.18.9)(@types/react@18.2.37)(typescript@5.2.2):
-    resolution: {integrity: sha512-jw2am+6LKguEdByuwR+d2rUDh+XUjRDq8fRePxMbHhbut85R5kMRdON0TvQj5qPN0Rx+R9HdbrQFx1Ta+FnChw==}
+  /@dxos/cli@0.3.7(@types/node@18.18.9)(@types/react@18.2.37)(typescript@5.2.2):
+    resolution: {integrity: sha512-rH7P6cdOC72m1n1FMe44X1nXvJ7/oEh+WuUwE1mjXDBZysqwBz7dT0DHSDGcVTH1b4TKqY1pbytNuZS0aZkxBA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      '@dxos/agent': 0.3.6
-      '@dxos/async': 0.3.6
-      '@dxos/bare-template': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
-      '@dxos/client': 0.3.6
-      '@dxos/client-protocol': 0.3.6
-      '@dxos/config': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/functions': 0.3.6
-      '@dxos/hello-template': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/plate': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
-      '@dxos/process': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/sentry': 0.3.6
-      '@dxos/tasks-template': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
-      '@dxos/telemetry': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/agent': 0.3.7
+      '@dxos/async': 0.3.7
+      '@dxos/bare-template': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/client': 0.3.7
+      '@dxos/client-protocol': 0.3.7
+      '@dxos/config': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/functions': 0.3.7
+      '@dxos/hello-template': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/plate': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/process': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/sentry': 0.3.7
+      '@dxos/tasks-template': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/telemetry': 0.3.7
+      '@dxos/util': 0.3.7
       '@oclif/core': 2.15.0(@types/node@18.18.9)(typescript@5.2.2)
       '@oclif/plugin-help': 5.2.20(@types/node@18.18.9)(typescript@5.2.2)
       '@octokit/core': 4.2.4
@@ -1766,22 +1770,22 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@dxos/client-protocol@0.3.6:
-    resolution: {integrity: sha512-Olzs8uBo+Yg57WFH/5KEgCqY4KC2G6plinWcGqi3SSdjCF182/EAge/PIJkWvQG4g4Kho/ayKqtu+7YlatTU/w==}
+  /@dxos/client-protocol@0.3.7:
+    resolution: {integrity: sha512-iYrzQCNx96GS3qKRgabCIjTDCkVuFla7V5rwXzO4hrXCf/sa2lfHKDttHCbnUxy8mfnSDX7Cc4p6kWVw9VjyUg==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/config': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/document-model': 0.3.6
-      '@dxos/echo-db': 0.3.6
-      '@dxos/echo-schema': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/model-factory': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/text-model': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/config': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/document-model': 0.3.7
+      '@dxos/echo-db': 0.3.7
+      '@dxos/echo-schema': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/model-factory': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/text-model': 0.3.7
       base-x: 3.0.9
     transitivePeerDependencies:
       - bufferutil
@@ -1789,42 +1793,42 @@ packages:
       - supports-color
       - utf-8-validate
 
-  /@dxos/client-services@0.3.6:
-    resolution: {integrity: sha512-QhSvYXnSc+ymwvlYH0a/rV4tWYQYbDuNq+RXTP0wWIqZbfRe7q0rDsFrgDXImnVv+88MuSk/bMvb3Uf4oXWojg==}
+  /@dxos/client-services@0.3.7:
+    resolution: {integrity: sha512-UmkdV41FSq1IfY41JtwlF3HdmOaSfx80wz/cJQEeANRdEYguPNZr+XEHtyMTbxCQwhjGPm27WLR9SkPRdmLAwg==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/client-protocol': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/config': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/credentials': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/document-model': 0.3.6
-      '@dxos/echo-db': 0.3.6
-      '@dxos/echo-pipeline': 0.3.6
-      '@dxos/echo-schema': 0.3.6
-      '@dxos/feed-store': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keyring': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/lock-file': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/messaging': 0.3.6
-      '@dxos/model-factory': 0.3.6
-      '@dxos/network-manager': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/random-access-storage': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/teleport': 0.3.6
-      '@dxos/teleport-extension-gossip': 0.3.6
-      '@dxos/teleport-extension-object-sync': 0.3.6
-      '@dxos/text-model': 0.3.6
-      '@dxos/timeframe': 0.3.6
-      '@dxos/tracing': 0.3.6
-      '@dxos/util': 0.3.6
-      '@dxos/websocket-rpc': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/client-protocol': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/config': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/credentials': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/document-model': 0.3.7
+      '@dxos/echo-db': 0.3.7
+      '@dxos/echo-pipeline': 0.3.7
+      '@dxos/echo-schema': 0.3.7
+      '@dxos/feed-store': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keyring': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/lock-file': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/messaging': 0.3.7
+      '@dxos/model-factory': 0.3.7
+      '@dxos/network-manager': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/random-access-storage': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/teleport': 0.3.7
+      '@dxos/teleport-extension-gossip': 0.3.7
+      '@dxos/teleport-extension-object-sync': 0.3.7
+      '@dxos/text-model': 0.3.7
+      '@dxos/timeframe': 0.3.7
+      '@dxos/tracing': 0.3.7
+      '@dxos/util': 0.3.7
+      '@dxos/websocket-rpc': 0.3.7
       platform: 1.3.6
     transitivePeerDependencies:
       - bufferutil
@@ -1832,36 +1836,36 @@ packages:
       - supports-color
       - utf-8-validate
 
-  /@dxos/client@0.3.6:
-    resolution: {integrity: sha512-SVDE/6+8MgDfDfqGXY5MhT4Er6JHDXxDRaKwor7DSKiiUqRNnmC47fli/7qI6mxd+m5RaJerKr64n/YopAKgbg==}
+  /@dxos/client@0.3.7:
+    resolution: {integrity: sha512-MBxR++8+xFpTgoYAcovAh0iqFSkZm6B7K4o+hqlQ8brCVTq7VfyQ8qQdQEC+r6xBrW5XwJryR8tlktDWV172wQ==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/client-protocol': 0.3.6
-      '@dxos/client-services': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/config': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/credentials': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/document-model': 0.3.6
-      '@dxos/echo-db': 0.3.6
-      '@dxos/echo-schema': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/messaging': 0.3.6
-      '@dxos/model-factory': 0.3.6
-      '@dxos/network-manager': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/rpc-tunnel': 0.3.6
-      '@dxos/text-model': 0.3.6
-      '@dxos/timeframe': 0.3.6
-      '@dxos/util': 0.3.6
-      '@dxos/websocket-rpc': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/client-protocol': 0.3.7
+      '@dxos/client-services': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/config': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/credentials': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/document-model': 0.3.7
+      '@dxos/echo-db': 0.3.7
+      '@dxos/echo-schema': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/messaging': 0.3.7
+      '@dxos/model-factory': 0.3.7
+      '@dxos/network-manager': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/rpc-tunnel': 0.3.7
+      '@dxos/text-model': 0.3.7
+      '@dxos/timeframe': 0.3.7
+      '@dxos/util': 0.3.7
+      '@dxos/websocket-rpc': 0.3.7
       base-x: 3.0.9
       lodash.isequal: 4.5.0
       lodash.isequalwith: 4.4.0
@@ -1871,25 +1875,25 @@ packages:
       - supports-color
       - utf-8-validate
 
-  /@dxos/codec-protobuf@0.3.6:
-    resolution: {integrity: sha512-Mb2xyVgdTvngNyZDTb+pnk3ceqCYKALqzykvIO+uCTQdXixAX30rUid9IeqGXFMdGLmHLkspHMat598c7RlGeA==}
+  /@dxos/codec-protobuf@0.3.7:
+    resolution: {integrity: sha512-jfID9Q64QZSF+2CaN+QgFx2hzHu/P8umdrNCLcOKAqtxkIwLHFOjp1/poVD4cozsStPQMKspQs1c+vg3bIlVEw==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/util': 0.3.7
       compress-json: 2.1.2
       lodash.merge: 4.6.2
       protobufjs: 7.2.5
 
-  /@dxos/config@0.3.6:
-    resolution: {integrity: sha512-Mhpf2Wmx+BzWUgl8XrpO+o92OqPDJzkZAYPsY5nUvB6VaV6pQpFJ8O48/lJ7AL5yKySWTaOxanWP1Bhk7FjwGQ==}
+  /@dxos/config@0.3.7:
+    resolution: {integrity: sha512-zQ9pPdX0gu9C5EyHLtp942gDg3e2r2gETmbq10Mitli2AAnQ9tgYbpRiFKjiupr9k2JGJ/mLu8nnu9en0OAerg==}
     dependencies:
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
       boolean: 3.2.0
       js-yaml: 4.1.0
       lodash.defaultsdeep: 4.6.1
@@ -1897,29 +1901,29 @@ packages:
       lodash.set: 4.3.2
       pkg-up: 3.1.0
 
-  /@dxos/context@0.3.6:
-    resolution: {integrity: sha512-ZG+jXVke46ZdkloKztYw0wDJipN7roHsaOnUm2dswSusFa6u+iYpyBLwlCVF1+gHpMMxj1YqoUfbEaGCX6PFxw==}
+  /@dxos/context@0.3.7:
+    resolution: {integrity: sha512-1pEMyTc9jsszM0fEFHztaoXiW8/60XLZk53KRyFfAo5trbHH6BQvDgN0SDxlwqIIYB1bgOTTkeiGQ9e0K3Am6w==}
     dependencies:
-      '@dxos/log': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/log': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/credentials@0.3.6:
-    resolution: {integrity: sha512-q74NygJSfys9RbW+rWNKs69J/TOxP4TwGzKIZWQ6DX5Q/uVSPsI2jKAO0YQ44JSiJUxvU0a+I84yX34E9EJsjg==}
+  /@dxos/credentials@0.3.7:
+    resolution: {integrity: sha512-jK6oOIQlaX5Haj4ijse8WUOq5dF0gnqOpTI681MWiFBAX9jHtFUdEAzvN1wiLJZC019Z5j4QwoDXX16YeH+nQQ==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/feed-store': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keyring': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/timeframe': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/feed-store': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keyring': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/timeframe': 0.3.7
+      '@dxos/util': 0.3.7
       bip39: 3.1.0
       buffer-json-encoding: 1.0.2
       encoding-down: 6.3.0
@@ -1933,89 +1937,89 @@ packages:
       pump: 3.0.0
       stream-to-array: 2.3.0
 
-  /@dxos/crypto@0.3.6:
-    resolution: {integrity: sha512-xflaYr3EPiqAKEAZxbufRhFK4i0DaZBpheN03xVeEmMBsaY/aaNEafFBuEPrQYpvLdQLKtINQEz8hUpB36al3Q==}
+  /@dxos/crypto@0.3.7:
+    resolution: {integrity: sha512-ZOYLINRuQjyevk/0RM43WbdmGlhbtmQsmL9mOK2VCB5o27Btv+Yzov0V5sNKScqFj0VqWO+hu/EjljKk5ZuTUw==}
     dependencies:
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/node-std': 0.3.6
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/node-std': 0.3.7
       hypercore-crypto: 2.3.2
 
-  /@dxos/debug@0.3.6:
-    resolution: {integrity: sha512-EYN0ZW3rN/gihxIUxKFjw2NeBXuxeSq1HHBNhHwrUN0n8lumZLCirfU+3IcTeHIPvY0ClX40G2qauzVLIH3Qjg==}
+  /@dxos/debug@0.3.7:
+    resolution: {integrity: sha512-AC/9K/8V46QoWSA7G548QY/lxz03O1fZRPNuxWrVJ443ioGCUumlu7wc80xiIgvMenQ54wJI32K0K/x0QFuJ5w==}
     dependencies:
-      '@dxos/node-std': 0.3.6
+      '@dxos/node-std': 0.3.7
 
-  /@dxos/display-name@0.3.6:
-    resolution: {integrity: sha512-ZEKaladZGxa2rPGQNlNaCv7qWJqsgUsptchKapx1MfCraNKSDndBvn8whV/Q+Zc+o2QhAYB7kstYorRF2xhP2A==}
+  /@dxos/display-name@0.3.7:
+    resolution: {integrity: sha512-tQW3vCV+pWL9ER7mj0ETVurn9md8SMN4vvMpDHWSdJHcJHPYdHQs5IeLxPrtkbMgsInrF7XxnfOqs1jIaX8mUw==}
     dev: false
 
-  /@dxos/document-model@0.3.6:
-    resolution: {integrity: sha512-AW6Nzg2ddw+cdZln4wP//7/ugx1uqbiHxpt08OfbXYuqvic7VQvX5VDCNY+F3Ru0TZSMr916BuwElj0w9BVLHg==}
+  /@dxos/document-model@0.3.7:
+    resolution: {integrity: sha512-htwUgzpXtAK/Q1oLsd3Z6Hm4IxESyLGAUAc55h0vnZ7zpW7Mv+x7d8IUTDCEzxm1ECIyJoHgl0whjpGaqX5COQ==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/model-factory': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/model-factory': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/util': 0.3.7
       lodash.clonedeep: 4.5.0
       lodash.get: 4.4.2
       lodash.set: 4.3.2
       minisearch: 3.3.0
       yjs: 13.6.8
 
-  /@dxos/echo-db@0.3.6:
-    resolution: {integrity: sha512-/Eca7sPV4LbjCglgoY0qnBKlyErzaDVPK4B54irfHHRSvIFWbXOxFQlX8XoG0AWTSS9bO6DQPIrOY9XHwsybZQ==}
+  /@dxos/echo-db@0.3.7:
+    resolution: {integrity: sha512-WXMoCkMUVrnpJccIrKqE5J4Df0rL6vEG3vHVC0CTw0J/rbjWcGNoULrDTrHZqNSu2VLYRqr05Mxrmgms7/YxQg==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/document-model': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/model-factory': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/timeframe': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/document-model': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/model-factory': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/timeframe': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/echo-pipeline@0.3.6:
-    resolution: {integrity: sha512-CZSxPHkmtXTZ2k8koJfITWrA/6gjcgDSBT4NK8aKUrJi6UTzssve3j6wPvIRpSTL8f+8K/5XiPKjNeP4QIdspw==}
+  /@dxos/echo-pipeline@0.3.7:
+    resolution: {integrity: sha512-J0suoDf2x/Y9FVY1QaVsnrQpeIipmjSSI2+ZQwTYAvYPd0Cixc2fVF6iJVJ78hSW9X4tCB99Ao3VHPUOxMERgw==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/credentials': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/document-model': 0.3.6
-      '@dxos/echo-db': 0.3.6
-      '@dxos/feed-store': 0.3.6
-      '@dxos/hypercore': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keyring': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/messaging': 0.3.6
-      '@dxos/model-factory': 0.3.6
-      '@dxos/network-manager': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/random-access-storage': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/teleport': 0.3.6
-      '@dxos/teleport-extension-gossip': 0.3.6
-      '@dxos/teleport-extension-object-sync': 0.3.6
-      '@dxos/teleport-extension-replicator': 0.3.6
-      '@dxos/text-model': 0.3.6
-      '@dxos/timeframe': 0.3.6
-      '@dxos/tracing': 0.3.6
-      '@dxos/typings': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/credentials': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/document-model': 0.3.7
+      '@dxos/echo-db': 0.3.7
+      '@dxos/feed-store': 0.3.7
+      '@dxos/hypercore': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keyring': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/messaging': 0.3.7
+      '@dxos/model-factory': 0.3.7
+      '@dxos/network-manager': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/random-access-storage': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/teleport': 0.3.7
+      '@dxos/teleport-extension-gossip': 0.3.7
+      '@dxos/teleport-extension-object-sync': 0.3.7
+      '@dxos/teleport-extension-replicator': 0.3.7
+      '@dxos/text-model': 0.3.7
+      '@dxos/timeframe': 0.3.7
+      '@dxos/tracing': 0.3.7
+      '@dxos/typings': 0.3.7
+      '@dxos/util': 0.3.7
       crc-32: 1.2.2
     transitivePeerDependencies:
       - bufferutil
@@ -2023,24 +2027,24 @@ packages:
       - supports-color
       - utf-8-validate
 
-  /@dxos/echo-schema@0.3.6:
-    resolution: {integrity: sha512-4EBYWx2gzr7naY0pH4qiUI2nkmy73i6ohTy7epQUuKiFWlv840bPKbyiNr68Xt1MZPfxDgOeaUodi2QoUpgXzw==}
+  /@dxos/echo-schema@0.3.7:
+    resolution: {integrity: sha512-IKFdM00AJXxFvGmVsqqOTNtscuanzjAmkVUiHLW2COvD2fe/qRy1DtbHGsu9iQJSy1fvSlX+7JDHozdg0WxZjg==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/document-model': 0.3.6
-      '@dxos/echo-db': 0.3.6
-      '@dxos/echo-pipeline': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/model-factory': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/text-model': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/document-model': 0.3.7
+      '@dxos/echo-db': 0.3.7
+      '@dxos/echo-pipeline': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/model-factory': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/text-model': 0.3.7
+      '@dxos/util': 0.3.7
       lodash.defaultsdeep: 4.6.1
       lodash.get: 4.4.2
     transitivePeerDependencies:
@@ -2049,10 +2053,10 @@ packages:
       - supports-color
       - utf-8-validate
 
-  /@dxos/echo-signals@0.3.6:
-    resolution: {integrity: sha512-xGj1HxAgO7qEJ8tIChZMnwEKtE/Kwz2bvrkuns4nJBQC2t+D0u+iMBKuICnneboDrW6fKcWtZhPBTkA3y1M+cA==}
+  /@dxos/echo-signals@0.3.7:
+    resolution: {integrity: sha512-M30xOtm06sNt7Bu9kXVLPI+AiP4DMB1ZYX+nTZIZG35mbjsqeBo6xl7OqAVfr8KB7DqF6vslI2yMOyEtSqeXAg==}
     dependencies:
-      '@dxos/echo-schema': 0.3.6
+      '@dxos/echo-schema': 0.3.7
       '@preact/signals': 1.2.1(preact@10.19.2)
       '@preact/signals-core': 1.5.0
       '@preact/signals-react': 1.3.6(react@18.2.0)
@@ -2066,14 +2070,14 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@dxos/echo-typegen@0.3.6(@types/node@18.18.9)(typescript@5.2.2):
-    resolution: {integrity: sha512-Zuo/VJX4QeOPIFjAeyeUZnn0JkqWGdfEAG4pfWriH/90bilJmbye6ZTdf8l9i46gs8t9kz+V6ipTz02IncjcMg==}
+  /@dxos/echo-typegen@0.3.7(@types/node@18.18.9)(typescript@5.2.2):
+    resolution: {integrity: sha512-TlwOJpNqJl5vt4ZSeGVnCE35TalLccaxmY20aUdCgRq4FuUWiYS71KqUabuVQJpwT8QUBZLCkd3KzRPRX0GlVw==}
     hasBin: true
     dependencies:
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/plate': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
-      '@dxos/protobuf-compiler': 0.3.6(typescript@5.2.2)
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/plate': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/protobuf-compiler': 0.3.7(typescript@5.2.2)
       protobufjs: 7.2.5
     transitivePeerDependencies:
       - '@swc/helpers'
@@ -2082,22 +2086,22 @@ packages:
       - typescript
     dev: true
 
-  /@dxos/feed-store@0.3.6:
-    resolution: {integrity: sha512-EJ5sCe6Q3OdeWhIeSlbO2FNz5K/UGfDsvDcd0qgULQsKvVELz6o5sy1cBhsPs7esJu2xlfaWtwk7/G8RxlZjvw==}
+  /@dxos/feed-store@0.3.7:
+    resolution: {integrity: sha512-Ue9E4StTsySqdqMGLjaXpz9l2/HR5EwG/rx8L4iVcMZMk+CPqJDY7ghLD1gDYSwO2/KOAPlMGUg2LU8McVDGwg==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/hypercore': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keyring': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/random-access-storage': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/hypercore': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keyring': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/random-access-storage': 0.3.7
+      '@dxos/util': 0.3.7
       lodash.defaultsdeep: 4.6.1
       race-as-promised: 0.0.2
       random-access-storage: 3.0.1
@@ -2105,17 +2109,17 @@ packages:
     optionalDependencies:
       '@faker-js/faker': 8.3.1
 
-  /@dxos/functions@0.3.6:
-    resolution: {integrity: sha512-qh6uV21P0bpNna/30ixZJ4qOfBD4jqOcLu1D/peY673gAr4PEGWXzBL4P8DlA1ECpZnfSzrAkSuH8xXLjNze8g==}
+  /@dxos/functions@0.3.7:
+    resolution: {integrity: sha512-gVC4Uv3+S4ZLlcA+srW3BJUend/aCOQyuJdbxTRobcNZzbkU0M/lpvx03WvcwrSEO0sHOfpGuyrHck3cQs5y8Q==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/client': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/echo-schema': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/client': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/echo-schema': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/util': 0.3.7
       express: 4.18.2
       portfinder: 1.0.32
     transitivePeerDependencies:
@@ -2125,11 +2129,11 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@dxos/hello-template@0.3.6(@types/node@18.18.9)(typescript@5.2.2):
-    resolution: {integrity: sha512-XEVammr2SeQSnjmqf9cOTdKKMusax/YWG1B1SBq3GCXbai3j4IZC2Ea8Ans+ur7P7fGB4w7rvTDUoADepuL1bg==}
+  /@dxos/hello-template@0.3.7(@types/node@18.18.9)(typescript@5.2.2):
+    resolution: {integrity: sha512-UOrx1gJ/PL4A/cR91d3x7cXEKvxkrlWtcosckkWHA+nCTIyMzn9LZAwuuvpM0HSz7MRwjEs9FxL2Cgu5U07klg==}
     dependencies:
-      '@dxos/bare-template': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
-      '@dxos/plate': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/bare-template': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/plate': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
       postcss: 8.4.31
       tailwindcss: 3.3.5
     transitivePeerDependencies:
@@ -2140,58 +2144,58 @@ packages:
       - typescript
     dev: true
 
-  /@dxos/hypercore@0.3.6:
-    resolution: {integrity: sha512-EakyRdVxQR0sY/HX7N5hGLudO+oYs2dsd3VlVVJ6hI9FEBXpi9fBkJmLtU+WkAXwbdiwxxTKLXCRTgi4NoMzKg==}
+  /@dxos/hypercore@0.3.7:
+    resolution: {integrity: sha512-VmGEjh0tmHJ8chRyMOMqnLgBHByuV44+cz7f2rVGVq6kjO5Wb2wqPZvmdx/AhR25a1WKo24TvvABKpfAsSR8+Q==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/random-access-storage': 0.3.6
-      '@dxos/typings': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/random-access-storage': 0.3.7
+      '@dxos/typings': 0.3.7
+      '@dxos/util': 0.3.7
       readable-stream: 3.6.2
       sodium-native: 3.4.1
       sodium-universal: 3.1.0
       streamx: 2.15.5
 
-  /@dxos/invariant@0.3.6:
-    resolution: {integrity: sha512-nrkj/c0Bn0bdzXVI7bsj6HPrgV5j+q2qbPbu8yx6NJeXJuu+MwoWcaZRfsYDLYKB1XgvEEtO5SSAoZSRaZGnYw==}
+  /@dxos/invariant@0.3.7:
+    resolution: {integrity: sha512-wgasjf0CBz9okkXdjXNR2ILEiIfvhxb1g6+UNccyr+b2LukcymefVGLUn4C69W53eGc93Dd0jwcyd3UUpQKr0g==}
     dependencies:
-      '@dxos/node-std': 0.3.6
+      '@dxos/node-std': 0.3.7
 
-  /@dxos/keyring@0.3.6:
-    resolution: {integrity: sha512-bnxbWb4usFoPVaIG2NLsbv03Qs/A5UvvQMCX+qCgf8ACmvp0DReYfIzYmt89Bl8Sd+FcvrmLhxuttj+ZsE04Nw==}
+  /@dxos/keyring@0.3.7:
+    resolution: {integrity: sha512-wmFs/RjdBXBTmivQ68TBepEKyGnKtWk9no6gxL9XW6muQfjTv/yK7bRYBPSDTsOrxwKFhtd2kf/gEnwtKnWlGw==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/random-access-storage': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/random-access-storage': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/keys@0.3.6:
-    resolution: {integrity: sha512-3QUv0tuin/6SZNECf+tdGyzX5tfVos5kZXD0IkyG/2cJtH6N3uuNZXG7bGP4Ca3zDO7uhAlUob8j03BNv/VNqw==}
+  /@dxos/keys@0.3.7:
+    resolution: {integrity: sha512-hlyQCyeORBbs71SRcNeXWRMHbtXa9GUjHV4RLYnDfT7P+iyS6f1QGhfc//nrWbgvQA6Lld9MQXG9GWmz82fMSw==}
     dependencies:
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/node-std': 0.3.6
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/node-std': 0.3.7
       randombytes: 2.1.0
 
-  /@dxos/local-storage@0.3.6(preact@10.19.2)(react@18.2.0):
-    resolution: {integrity: sha512-esOjQZ1lnjMk7bP8MzLxGUp6pwWlPp/otfOflAdZhqGH7VERs9+5K6/OjO5HqchMWzuziEcDvLGMslkeyeE+9A==}
+  /@dxos/local-storage@0.3.7(preact@10.19.2)(react@18.2.0):
+    resolution: {integrity: sha512-qxM0jbLY6eTmW+J9C584eYe/j6GMl5271gbeNhJXIK61j7eY5h7dlQi72qyCOpemz92k9M+YDm+gNr9znr1c2w==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
-      '@dxos/node-std': 0.3.6
+      '@dxos/node-std': 0.3.7
       '@preact/signals-core': 1.5.0
       deepsignal: 1.4.0-shallow.0(preact@10.19.2)(react@18.2.0)
       react: 18.2.0
@@ -2199,19 +2203,19 @@ packages:
       - preact
     dev: false
 
-  /@dxos/lock-file@0.3.6:
-    resolution: {integrity: sha512-ImdusjOYr6y8S26MD3iAQo5b7xRPEe4wjZUqTdeyT5tAAMIE7UgnUAE6BFJ2ij0ubHWrOs0x6W2uJfz3zeiNuw==}
+  /@dxos/lock-file@0.3.7:
+    resolution: {integrity: sha512-PXWnTHtPk/gcTrqumZJSUu2TnOXTHmSLiPc4f9H5Hgpi4Ln19FVxE37uxiQlx59/oPNB9DGO3CTKjp41bmYTUg==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
       fs-ext: 2.0.0
 
-  /@dxos/log@0.3.6:
-    resolution: {integrity: sha512-akcJaRxzmIFKbqyCHyRMMpiAIkqWeJzex/oEKsbidZEqcl7FkBwiT454wOeH0PCPJaYi6rsJ9bZ/wGRwUWl8XQ==}
+  /@dxos/log@0.3.7:
+    resolution: {integrity: sha512-PtUCu9k7jZIdhAVkLKochCQxlLK46KFu+3P4NVSU839ZsSpeIDNMmYBB+EhVQMuutfnQjcCAmFcp1z5C1qA7Tw==}
     dependencies:
-      '@dxos/node-std': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/node-std': 0.3.7
+      '@dxos/util': 0.3.7
       chalk: 4.1.2
       js-yaml: 4.1.0
       lodash.defaultsdeep: 4.6.1
@@ -2219,59 +2223,59 @@ packages:
       lodash.pick: 4.4.0
       lodash.pickby: 4.6.0
 
-  /@dxos/messaging@0.3.6:
-    resolution: {integrity: sha512-dBegax798egRuncJZoIAQzoeo0BGTtA9+MeSfy9L+SRR2hc614exUuuRj3DzCf9n6XZD139o951zI2pqqyFSYQ==}
+  /@dxos/messaging@0.3.7:
+    resolution: {integrity: sha512-0LsNWQh1Y6oTUuJbfeTY8hBZOYzsPds4uwRR02UFvygBXE2kIcwAPntT6NjNde7+8/hZO3i0QB7bTL8MFfXZUg==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/util': 0.3.7
       isomorphic-ws: 4.0.1(ws@7.5.9)
       ws: 7.5.9
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  /@dxos/model-factory@0.3.6:
-    resolution: {integrity: sha512-VfFSMEr0EoZrTpvn/p9qO+xoVWenpKlu1euSsxA5fLf8s5jtwYNK4Jdleiyy9q3UzpaNQUDNN7kMChjsxxxOqA==}
+  /@dxos/model-factory@0.3.7:
+    resolution: {integrity: sha512-+4vCASdyGua+b6dekCmL3BrtueIQzoHRpEQGGvD2GUOCoihtYMhQ29h0ne9cXPENveH20OlndwG0/HIWSqoAGw==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/feed-store': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/timeframe': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/feed-store': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/timeframe': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/network-manager@0.3.6:
-    resolution: {integrity: sha512-kheTAKoUwD4LeIjJslcOkzseAprM2SJ4reW4ZB7oT463Sr/XcMIu3WqRFsb7GoBmFYJTFqoWJpEi/qZy/dE7Mw==}
+  /@dxos/network-manager@0.3.7:
+    resolution: {integrity: sha512-HzB4fQPmdrVJB/D3Bt5jDkZ0DKdcf/ecoWdue8ogPyyehznGBQAjpjLqYK+oEgOjwnN8qn9GdBcCUXjGsro75A==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/credentials': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/messaging': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/teleport': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/credentials': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/messaging': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/teleport': 0.3.7
+      '@dxos/util': 0.3.7
       '@koush/wrtc': 0.5.3
       isomorphic-ws: 4.0.1(ws@7.5.9)
       nanomessage-rpc: 3.2.0
@@ -2288,8 +2292,8 @@ packages:
       - supports-color
       - utf-8-validate
 
-  /@dxos/node-std@0.3.6:
-    resolution: {integrity: sha512-8QlSk5CPBIFdosnwis0yitrEyaehMilJthKwyqRhCli4Ok/mLct42sZVOKCFxJ7l6c3dKdqqK9Pk0KYBHkWrrg==}
+  /@dxos/node-std@0.3.7:
+    resolution: {integrity: sha512-Qa5f8y8nNHw+8u9tqe/0Vmkm5EvB7K5sUBOfOJg+9qXqhrfoaebHjteNro6n9b/PNrdRVYLN6t9hsfBAAlZnAQ==}
     dependencies:
       assert: 2.1.0
       buffer: 6.0.3
@@ -2298,22 +2302,22 @@ packages:
       readable-stream: 3.6.2
       util: 0.12.5
 
-  /@dxos/phoenix@0.3.6:
-    resolution: {integrity: sha512-FxC0HzY/6cN16oBOHOqcROHUh96Ng2GvM8LG8EpcJpk8+/jBtjTaD9APWT5lI55VZnZ/jpgqNTOGA0ymlJNkjg==}
+  /@dxos/phoenix@0.3.7:
+    resolution: {integrity: sha512-UyWrCj2hhktE3yo+UIpqzg06CTsW8DD5zsJ/BEVkPtfYFoeGXU/VJHijndPTmN0UMxefp706o8A9jwkPfIFdsA==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/lock-file': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/lock-file': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/util': 0.3.7
       pkg-up: 3.1.0
     dev: true
 
-  /@dxos/plate@0.3.6(@types/node@18.18.9)(typescript@5.2.2):
-    resolution: {integrity: sha512-j6USpkr7RP5VjK4dwpcYyG8Y8b6TdnV8koa6yje32jLBLLVEW4QAGsg8JD9PwZgL4ARf/W51vahcL5OdrBAKyQ==}
+  /@dxos/plate@0.3.7(@types/node@18.18.9)(typescript@5.2.2):
+    resolution: {integrity: sha512-YonD/31K3EzLjO/iYecb0luDkKCTQ4EpAOjv4Gm5Z3ItaTLG0Vowawrz3V33crzcBDPriLbjivSUyMiomB3eLg==}
     hasBin: true
     dependencies:
       '@swc/core': 1.3.70
@@ -2339,19 +2343,19 @@ packages:
       - typescript
     dev: true
 
-  /@dxos/process@0.3.6:
-    resolution: {integrity: sha512-rq8ymLhO50rrEsHmZF0MMCoGRfaMvmn5cAKskpE4tlyypjJSICqD2JQXlFlMghpmlOO0/6J6EgxliJ+LKL51Ng==}
+  /@dxos/process@0.3.7:
+    resolution: {integrity: sha512-ksVSN0V2qbC5j6TPwAFcqnAgyh9fD4c5FQjEzTBDu18p09DUxUO+eHpC1tgLYE+INcn21c+ZlEZ5xPxALbDsQQ==}
     dev: true
 
-  /@dxos/protobuf-compiler@0.3.6(typescript@5.2.2):
-    resolution: {integrity: sha512-hDTisTHQ8fco4Ly0rv3wSy80pOjYPQ0k+PJuU1poil1P1gVTiDoZJ1bc4F3lhX+3zYxS1Y8WzgwQVXXaVZ266w==}
+  /@dxos/protobuf-compiler@0.3.7(typescript@5.2.2):
+    resolution: {integrity: sha512-Re6KfL3MorTrU1XnRhgmQKoaQH4GKeQRYqtb0/pDttmkons6GkABqiI9Nw8G3/7nqh24uOpKn5ehyDBy+MCA2Q==}
     hasBin: true
     peerDependencies:
       typescript: ^5.2.2
     dependencies:
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
       argparse: 2.0.1
       chalk: 4.1.2
       glob: 7.1.7
@@ -2361,25 +2365,25 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /@dxos/protocols@0.3.6:
-    resolution: {integrity: sha512-oQCryQCLFrIYJkk8JwA+Y1IQknmIppjtlDqdHonyYxT1N6aClKiHGE+xfO8BmRezSTgHOcMfIydkRoFhyQ6qSw==}
+  /@dxos/protocols@0.3.7:
+    resolution: {integrity: sha512-62cOd2DYRuwEpRsVHh+0QWd0CpFOIDcQ1i9zrg/BuQ+sRmohjrDUX1k2PFafEds6xchkRA3LaAyOaT3OLkTYsg==}
     dependencies:
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/timeframe': 0.3.6
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/timeframe': 0.3.7
 
-  /@dxos/random-access-storage@0.3.6:
-    resolution: {integrity: sha512-qkujQsRWUrwa5Fx85Ln11NI2e6OHwNDoAsw51ctQIf3qmIVDbNPQkmQQ4g0w8J2Tc/yvG3gjEA8yByWh5+hcCg==}
+  /@dxos/random-access-storage@0.3.7:
+    resolution: {integrity: sha512-jN6JMFJnx5K1mI+L98FFLJ4yfr6QCUdr7MwED4anxcrMKeRMi03HA/iEUuhK0UQGb0w7zBOiEzTK6/BuTXLkLA==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/tracing': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/tracing': 0.3.7
+      '@dxos/util': 0.3.7
       del: 5.1.0
       pify: 5.0.0
       random-access-file: 2.2.1
@@ -2388,8 +2392,8 @@ packages:
       random-access-storage: 3.0.1
       random-access-web: 2.0.3
 
-  /@dxos/react-appkit@0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react-router-dom@6.18.0)(react@18.2.0):
-    resolution: {integrity: sha512-Aj6ZkAlk4ZuqbAw55cz+tLdAlJNC4TqiTUOz1acxBiOmsSFaitt25r9ayslxOUHk558Lk7D7NoYhY1wvWtFXvw==}
+  /@dxos/react-appkit@0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react-router-dom@6.18.0)(react@18.2.0):
+    resolution: {integrity: sha512-w9Xh25bJ5GK6aaK0ogM6AxEks1He6JU/F1UEOqncw3FNl8OS29i64jDJfSxXPkfIS4w5M9v6mXlWkBHIeiKcMg==}
     peerDependencies:
       '@phosphor-icons/react': ^2.0.5
       react: ^18.2.0
@@ -2399,15 +2403,15 @@ packages:
       '@dnd-kit/core': 6.1.0(react-dom@18.2.0)(react@18.2.0)
       '@dnd-kit/sortable': 7.0.2(@dnd-kit/core@6.1.0)(react@18.2.0)
       '@dnd-kit/utilities': 3.2.2(react@18.2.0)
-      '@dxos/async': 0.3.6
-      '@dxos/echo-schema': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/react-client': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-theme': 0.3.6
-      '@dxos/sentry': 0.3.6
-      '@dxos/telemetry': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/echo-schema': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/react-client': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-theme': 0.3.7
+      '@dxos/sentry': 0.3.7
+      '@dxos/telemetry': 0.3.7
+      '@dxos/util': 0.3.7
       '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.37)(react@18.2.0)
       '@radix-ui/react-navigation-menu': 1.1.4(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -2436,40 +2440,40 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@dxos/react-async@0.3.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-G77lRKmFlyioXSTxHP5nbffkfiNZeAT4zEAR2bVJMwmQioNo/Ac2OS2hQDiWbFfXCCO6fsF8+b4fV7247Kv97w==}
+  /@dxos/react-async@0.3.7(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-h+ZlBnO29sNl5IDzRpQckseF+5FTe/TWc7K8rQGq/epHQIe3o/UMnB+Sxiabw76yy+sUMNfiBw/yZcvnFM2R6w==}
     peerDependencies:
       react: '*'
       react-dom: '*'
     dependencies:
-      '@dxos/async': 0.3.6
+      '@dxos/async': 0.3.7
       immutability-helper: 3.1.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@dxos/react-client@0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Vkvav30tetazs5Yuq+w4aViuuRYZKlOCS0V3s5/GrZggo+j3lKKQBsePyhN0LW0hCWqRYjcelatZn2977g6M0A==}
+  /@dxos/react-client@0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-L1ZMM3EYDJihuNfiet5vYSDj7Fukax1sLd8Y7gLqF6Uo2438OHjbpy0yifvp66sF4V30WWpCkrljLzHgv/tkGQ==}
     peerDependencies:
       react: '*'
       react-dom: '*'
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/client': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/config': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/echo-signals': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/react-async': 0.3.6(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/client': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/config': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/echo-signals': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/react-async': 0.3.7(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/util': 0.3.7
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     optionalDependencies:
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/text-model': 0.3.6
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/text-model': 0.3.7
       '@faker-js/faker': 8.3.1
       yjs: 13.6.8
     transitivePeerDependencies:
@@ -2483,8 +2487,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@dxos/react-hooks@0.3.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-aZy5YRAylE9iM56h3yASTvmKv3EMrbvx2MH6agbyezarPuNjtJhahRoZAcSmapDVBK4WH4PuGrzauBJg2QFH+w==}
+  /@dxos/react-hooks@0.3.7(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-GGRo1BHM4SNApbnn5mp2AdRgXfYByCecFzHRgUm19ogJhbCHAmXvX8chCdIDD6mpg38qeOD/gV0qps8MLArT7g==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2494,13 +2498,13 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@dxos/react-input@0.3.6(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-2DPCkuvePrauw30S6xRPBDGtaf09HdieBMMdvmMk6isVonqthrpxJQrohmFeRaYzsly1YnYmdbXLHHHSZ528UA==}
+  /@dxos/react-input@0.3.7(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8z0sBONVvyf3I9JGP9g5h75l4pbj8u0rJKpIzvik00ejx9okAh1pGpQkzASMnzQhMYVJY4xJQnaePmW7f2dNMw==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@dxos/react-hooks': 0.3.6(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-hooks': 0.3.7(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.37)(react@18.2.0)
       '@radix-ui/react-context': 1.0.1(@types/react@18.2.37)(react@18.2.0)
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -2515,13 +2519,13 @@ packages:
       - '@types/react-dom'
     dev: false
 
-  /@dxos/react-list@0.3.6(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-kDa1xwTR/2lajOVGc1g7DzrlZ/O72FmOctXk9tHL/tZ5zNVYzEn2TAe/g4Ujk1saEHWVL0QmAIGgfm9VAyGvFQ==}
+  /@dxos/react-list@0.3.7(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-KXMwjvRuolVn3N8gOyFz89iMCeRB0kECivpb+Ih9opur9YdvlqZ0YVfqHL+rrMbsO6Kh41+MoBMHqpOFGS4Ufg==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@dxos/react-hooks': 0.3.6(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-hooks': 0.3.7(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-collapsible': 1.0.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-context': 1.0.1(@types/react@18.2.37)(react@18.2.0)
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -2535,22 +2539,22 @@ packages:
       - '@types/react-dom'
     dev: false
 
-  /@dxos/react-shell@0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-2+fWjsxBmaPKVWEvwkR+RnXazpK79zmnA/8CDu2bYvVY8ud6BoZtENgtVvitbAHdu8E34XVUqAT0wIg/xx1uhw==}
+  /@dxos/react-shell@0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-EqzfZBnL1xniaf1f6xKDdqc6N6bdl59bLovRZjphuuvUcmbZM04uxXE6kcKFthfNicDAETUIV39bn/YXFjlpgg==}
     peerDependencies:
       '@phosphor-icons/react': ^2.0.5
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/display-name': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/react-client': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-theme': 0.3.6
-      '@dxos/react-ui-types': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/display-name': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/react-client': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-theme': 0.3.7
+      '@dxos/react-ui-types': 0.3.7
+      '@dxos/util': 0.3.7
       '@fluentui/react-tabster': 9.14.5(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
       '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-accordion': 1.1.2(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -2577,8 +2581,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@dxos/react-ui-mosaic@0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-yrYJitcq0LEIvVlAlWfy5yuSDffIXCo/AEN2uHPvacdyPzaHPanjQypRPG1VnNqxBFcoAk6Y8p9utoEOF2PPyg==}
+  /@dxos/react-ui-mosaic@0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-06HDQspPquwrAFHv3sD36q35YsPS5piwjNa3j+2xR56mi5pJPoTsSkEulS1XDmEkpLq7RIyTfnHV14QT34repg==}
     peerDependencies:
       '@phosphor-icons/react': ^2.0.5
       react: ^18.2.0
@@ -2588,13 +2592,13 @@ packages:
       '@dnd-kit/modifiers': 6.0.1(@dnd-kit/core@6.1.0)(react@18.2.0)
       '@dnd-kit/sortable': 7.0.2(@dnd-kit/core@6.1.0)(react@18.2.0)
       '@dnd-kit/utilities': 3.2.2(react@18.2.0)
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-theme': 0.3.6
-      '@dxos/react-ui-types': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-theme': 0.3.7
+      '@dxos/react-ui-types': 0.3.7
+      '@dxos/util': 0.3.7
       '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       '@preact/signals-core': 1.5.0
       '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.37)(react@18.2.0)
@@ -2612,17 +2616,17 @@ packages:
       - ts-node
     dev: false
 
-  /@dxos/react-ui-navtree@0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Jo2YfeOWezyy+PE7CZvsKz10CfSzUYLNf4uS5Ad6yYgYcCRPK450zS7uM3d/jaIkC54CUojCDJQZZFzaCMOoCA==}
+  /@dxos/react-ui-navtree@0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-it/tXmRMDebQXEavzR2AGTdqzCb3SekBO0E2loFkf7n87DDQyecQR+Y4BHwFBMzt35O8yX+byqCSpGSkpRJxKw==}
     peerDependencies:
       '@phosphor-icons/react': ^2.0.5
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@dxos/app-graph': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-mosaic': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-theme': 0.3.6
+      '@dxos/app-graph': 0.3.7(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-mosaic': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-theme': 0.3.7
       '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2634,10 +2638,10 @@ packages:
       - ts-node
     dev: false
 
-  /@dxos/react-ui-theme@0.3.6:
-    resolution: {integrity: sha512-HaB8RYZ0J5TRCyjXUdxXeu9Kb6lXJjRoG+R9NYOFK7E669uwTbqNKycUIfBm99Rix+AhPiXHtnGjs2vYed4sMA==}
+  /@dxos/react-ui-theme@0.3.7:
+    resolution: {integrity: sha512-kngxCTaes/a5p6meknTyOU0T9uXPaTZ8RU/UNoArMaS2ITPsdBDETA8HfkRd8HDfndQST6NV93fWKh50Zn7GAQ==}
     dependencies:
-      '@dxos/node-std': 0.3.6
+      '@dxos/node-std': 0.3.7
       '@fluent-blocks/colors': 9.2.0
       '@fontsource/fira-code': 4.5.13
       '@fontsource/roboto-flex': 4.5.5
@@ -2655,21 +2659,21 @@ packages:
     transitivePeerDependencies:
       - ts-node
 
-  /@dxos/react-ui-types@0.3.6:
-    resolution: {integrity: sha512-nla0tHM+rrQ2NkuFNeFGyX0VBqOyQL8ZmzuyIjlQQX2x93V7BOTU2fAF7iVd9DPzBR3OZgrgYIMDo3SALRnwdA==}
+  /@dxos/react-ui-types@0.3.7:
+    resolution: {integrity: sha512-7PL0dpSgeh5kNS6tABdps1tg7FLexCbKRkdHbzGOsWxBjBhKQE9RShElvRhNLc9G+Vvwbh7DmTCNIvcFyKMzwg==}
     dev: false
 
-  /@dxos/react-ui@0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-S8oYm1meS+LFWgtGcGOzCX8rE1lzHofoquvSd7UmkpLRdvBKu2CwKD2DCUxotAgM/3NTUqGF35Yrqlp+tOk+dg==}
+  /@dxos/react-ui@0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-jh/YYfnJ21/B5Y2x+tnNxvA160ggTAJBk4ixOPB8UvVGu6LMa/oj2Zdycn4oNKrSWszAYtp9HheFpiF+cuecbQ==}
     peerDependencies:
       '@phosphor-icons/react': ^2.0.5
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@dxos/react-hooks': 0.3.6(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-input': 0.3.6(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-list': 0.3.6(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-types': 0.3.6
+      '@dxos/react-hooks': 0.3.7(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-input': 0.3.7(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-list': 0.3.7(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-types': 0.3.7
       '@phosphor-icons/react': 2.0.14(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-alert-dialog': 1.0.5(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-avatar': 1.0.4(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
@@ -2691,7 +2695,6 @@ packages:
       '@radix-ui/react-toolbar': 1.0.4(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-tooltip': 1.0.7(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.2.37)(react@18.2.0)
-      downshift: 8.2.3(react@18.2.0)
       i18next: 21.10.0
       jdenticon: 3.2.0
       keyborg: 2.2.0
@@ -2704,35 +2707,35 @@ packages:
       - react-native
     dev: false
 
-  /@dxos/rpc-tunnel@0.3.6:
-    resolution: {integrity: sha512-cHKtJMPsinEHqvaqx50FsC93gJaKu3JwY0/d0AN/S6QsU6udd8aE578j7P/rO+6daULuJYdZmlQsR4qK9x2vdw==}
+  /@dxos/rpc-tunnel@0.3.7:
+    resolution: {integrity: sha512-s5EAIVvafrS57ipHml5dULfBzwQU55V0JUCSL1zA8JQoJIgIv+d8L5sHvuWAgp/DGn89h72HWUyUuYZnu8sUXQ==}
     dependencies:
-      '@dxos/log': 0.3.6
-      '@dxos/rpc': 0.3.6
+      '@dxos/log': 0.3.7
+      '@dxos/rpc': 0.3.7
       ua-parser-js: 1.0.37
 
-  /@dxos/rpc@0.3.6:
-    resolution: {integrity: sha512-OnEvbQKu1WF2aMVDM8J3fr2i8wwY5M54x1hy/XoKa6ZwXFHnY6hrmmaMeCGSDCr2buKWFrLQImYcSo/1poTPfQ==}
+  /@dxos/rpc@0.3.7:
+    resolution: {integrity: sha512-6pfBp+g1vmEq/4mV7cGfB7E+AhsTAi+93J370uWqKpMxF7hzvvgSrUJub0N5ACkCnxrNfv68+H4VN4IR6a1h9g==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/sentry@0.3.6:
-    resolution: {integrity: sha512-HF9sk9G7fIZo8gVJughyq26Fz0lwQkpCZry8KwYWHW/Mwus/z14XwmEPkZFqyLi8vmOJ5PAz4cw+8VwG6xTcng==}
+  /@dxos/sentry@0.3.7:
+    resolution: {integrity: sha512-ltAQO1UoCtxQ7XhXy3mfKr2w5sfBw6kTilyBUHNXvC9aIzh9qp7sOCZdGQDgqgbYjStwZEurW5fCf1ro4c1fOg==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/util': 0.3.7
       '@sentry/browser': 7.80.1
       '@sentry/integrations': 7.45.0
       '@sentry/node': 7.80.1
@@ -2740,11 +2743,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@dxos/tasks-template@0.3.6(@types/node@18.18.9)(typescript@5.2.2):
-    resolution: {integrity: sha512-bzScTFxuxhvQZGd7vVtYru6oCGZiL72HMDzGHbQo5o4dSPMIkw7zXX8b7f1ixRTPUdqQvNJyzMYbcodCPkbkvw==}
+  /@dxos/tasks-template@0.3.7(@types/node@18.18.9)(typescript@5.2.2):
+    resolution: {integrity: sha512-5ruA//KqJNxhbT1P0aVGB8uRaeLxsQcMih826xHIIiGNI8AAvvU9tyCeYfHUQn26RxQpGf9mS4A2S/q8ul327A==}
     dependencies:
-      '@dxos/bare-template': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
-      '@dxos/plate': 0.3.6(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/bare-template': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
+      '@dxos/plate': 0.3.7(@types/node@18.18.9)(typescript@5.2.2)
       postcss: 8.4.31
       tailwindcss: 3.3.5
     transitivePeerDependencies:
@@ -2755,154 +2758,154 @@ packages:
       - typescript
     dev: true
 
-  /@dxos/telemetry@0.3.6:
-    resolution: {integrity: sha512-7xzUVXw6YOWzYkvTogjLx2MiQHSvTkPvX2IKhB4XvjbKfOyjJHdPe4iZ9AmI/HSmSGmW3j7ZSBQYOwHbp6Q44w==}
+  /@dxos/telemetry@0.3.7:
+    resolution: {integrity: sha512-k9neVAzaaMSC9X5n3lXsRGdH8foqgq4wsJDFggKJFT+DLFiWv4pPRSFE+fkrZncNAdnRXpQVUpUrYcbktImMqA==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/config': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/sentry': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/config': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/sentry': 0.3.7
+      '@dxos/util': 0.3.7
       '@segment/snippet': 4.16.2
       analytics-node: 6.2.0
     transitivePeerDependencies:
       - debug
       - supports-color
 
-  /@dxos/teleport-extension-gossip@0.3.6:
-    resolution: {integrity: sha512-V2CpZxjJlcjoaYGoRMNvBGXFKzgxZLFKkiIPI5nggq86S3f8ydfzlarb+q/koVOU0mYxukbCs9+vhYrS4vj7dQ==}
+  /@dxos/teleport-extension-gossip@0.3.7:
+    resolution: {integrity: sha512-mEpildXqH7DpXvlNjbiH8GxYm1d7s0GCCC3a7Iffkcl8tZXaDwYdQa5BAdPISEdGFbt0t1sPTXH5xqDeg/7KgA==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/teleport': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/teleport': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/teleport-extension-object-sync@0.3.6:
-    resolution: {integrity: sha512-TTHdMXaOjFOxizgJkvSxBh6/Bsv5j8KD5f2vGizyxm9/fNAjNU21Y4bec87tyyOb2vsYq6cRnvOIu301CPDQVg==}
+  /@dxos/teleport-extension-object-sync@0.3.7:
+    resolution: {integrity: sha512-dotrYvCdrsUu8P8YAHYPB2LpPCE4bHrMnsOsHTaHnbOXvrHPeqgsJCK+Y4VCshYkNz4uTO6E8KZDV/Wh6XZ/CA==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/crypto': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/random-access-storage': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/teleport': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/crypto': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/random-access-storage': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/teleport': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/teleport-extension-replicator@0.3.6:
-    resolution: {integrity: sha512-eselT57ZRJh9tUlYRMSnDBiUAQITsANjAP2Nn273pnNzA/tNSQZkrYB0lC+L27BacxBKyioUakCkrexymfektQ==}
+  /@dxos/teleport-extension-replicator@0.3.7:
+    resolution: {integrity: sha512-VD4onsKAzPTaeQcJYPx+Q1xTo6x+UCR5ppheLpKSZq1h6aT9S2Wp9DusYvkajJb+y8Vq04AlY1SzQH2FlZ/3RA==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/feed-store': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/teleport': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/feed-store': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/teleport': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/teleport@0.3.6:
-    resolution: {integrity: sha512-3A58FImUOFwiXJ0MYzyYg0IWJtpB+Kq7ChXfHNXFWIiiZaAzS+sFQnBR/vTaJQvkjhIekkbt7AzQIObExxVI6g==}
+  /@dxos/teleport@0.3.7:
+    resolution: {integrity: sha512-xr+n+ijjqWvj+syNwsIClzDp8Fpoo9/15oOKVoWl7x2ox3qj76VzO07Yb4NpcAaV8PZTASIMsqBmjtpFXhor+w==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/util': 0.3.7
       randombytes: 2.1.0
       varint: 6.0.0
 
-  /@dxos/text-model@0.3.6:
-    resolution: {integrity: sha512-+5Ui7mjEFD7NIhT3GZAMRqcQzBcOQukW2BaSXE3qXTzxU4JsIIyg3M9rwl1aek2vqtulSfbp1Pk35uCMUiDrPg==}
+  /@dxos/text-model@0.3.7:
+    resolution: {integrity: sha512-7q6eKXk6723rFhxNHDOgqGD82ce2SD1X5brbyBjAyWIuETt15VYo2cCe8gHG71p+UYNKd5ofFpHIUzwEEuD5Qg==}
     dependencies:
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/model-factory': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/model-factory': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
       '@types/node': 18.18.9
       yjs: 13.6.8
 
-  /@dxos/timeframe@0.3.6:
-    resolution: {integrity: sha512-dJzaooKmWWcxboSIYCNf2/clhvGU6gWx+37N5lrW3qkdXYC9TmDgBMKl7h47Gz6bkZF+IymSrI90Imboq3gzFg==}
+  /@dxos/timeframe@0.3.7:
+    resolution: {integrity: sha512-dwaKr55typao1HB92J0nwR0cCIlnC6s6RXqWtJkvosPJpnRdxKlmKN/QcVO+Gl0ZwM/3JRpiEN4fGP0SS68Rxw==}
     dependencies:
-      '@dxos/debug': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/debug': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/tracing@0.3.6:
-    resolution: {integrity: sha512-4EVBOmeQAICCiiFoqTzijh78zYq8EsLqSxLF36dT9uuuAs25/JimYrFW40tGqjctyRAo3iXSVh50eOY7yEnh4Q==}
+  /@dxos/tracing@0.3.7:
+    resolution: {integrity: sha512-Ge0V8cOAbWh06qqqAAnRShUw7p4RaKwD8Ele7D4tsk0VrVydUyHyRwyIvfbhAA2IhshmUNUiBGZOV3wMOfDw+A==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/util': 0.3.7
 
-  /@dxos/typings@0.3.6:
-    resolution: {integrity: sha512-KGEibhmTWwzwYOEjfOoIFAT0mPGeq5BbHKkyrOfopQfJRZnsTbWqirwCQXWldLB0DNSpF0n+lw+yGiCCvr0LbQ==}
+  /@dxos/typings@0.3.7:
+    resolution: {integrity: sha512-qyFmTXfVAPMsKLDEi5Xpc9RKDwjk13Xz+skPKdGwZPtScUsmHLGXtA385vsM+x2Piie9n08FuAOeIJCCTvhRkA==}
 
-  /@dxos/util@0.3.6:
-    resolution: {integrity: sha512-xtpbGy97tcZmrMYChD6+fdC7MrPzr50Qk20aIH3GZIzhjhBMw/NgFLdLJ+CMyXOkihi0AaRhP0K+dtM4TZTapg==}
+  /@dxos/util@0.3.7:
+    resolution: {integrity: sha512-ct2YG0RX/aCnsFiIH9MR4/nCYUeVvX3PImsnj9J89B7CdYI3hWr2LNESmjsvWpoBp0H0VP7YFbaoGj2Zr1qkbg==}
     dependencies:
-      '@dxos/debug': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/node-std': 0.3.6
+      '@dxos/debug': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/node-std': 0.3.7
 
-  /@dxos/vault@0.3.6(@braneframe/plugin-layout@0.3.6)(@braneframe/plugin-theme@0.3.6)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2):
-    resolution: {integrity: sha512-mQ4qKuAHHuxB0ogP8dNIOXWtLl176Kz6BY+YcYfgghP8K71Ta+d6oZiSFjdg1kC6+9tMCevl7BbkZOGoeR/oLw==}
+  /@dxos/vault@0.3.7(@braneframe/plugin-layout@0.3.7)(@braneframe/plugin-theme@0.3.7)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2):
+    resolution: {integrity: sha512-k6kso3KdKsyUXgXdCpk4aAh9Q8h0dBe/qb0pE+LHyVRsAese2F/BCL9TnmVXMrE9774iYvj+kJ4d8Wb5mIVfAw==}
     hasBin: true
     dependencies:
-      '@braneframe/plugin-navtree': 0.3.6(@braneframe/plugin-theme@0.3.6)(@dxos/app-framework@0.3.6)(@dxos/react-ui-theme@0.3.6)(@dxos/react-ui@0.3.6)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@braneframe/plugin-telemetry': 0.3.6(@braneframe/plugin-layout@0.3.6)(@dxos/app-framework@0.3.6)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/app-framework': 0.3.6(@phosphor-icons/react@2.0.14)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/async': 0.3.6
-      '@dxos/client': 0.3.6
-      '@dxos/client-protocol': 0.3.6
-      '@dxos/client-services': 0.3.6
-      '@dxos/config': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/echo-signals': 0.3.6
-      '@dxos/invariant': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/react-client': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-shell': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui': 0.3.6(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-      '@dxos/react-ui-theme': 0.3.6
-      '@dxos/rpc-tunnel': 0.3.6
-      '@dxos/util': 0.3.6
+      '@braneframe/plugin-navtree': 0.3.7(@braneframe/plugin-theme@0.3.7)(@dxos/app-framework@0.3.7)(@dxos/react-ui-theme@0.3.7)(@dxos/react-ui@0.3.7)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@braneframe/plugin-telemetry': 0.3.7(@braneframe/plugin-layout@0.3.7)(@dxos/app-framework@0.3.7)(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/app-framework': 0.3.7(preact@10.19.2)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/async': 0.3.7
+      '@dxos/client': 0.3.7
+      '@dxos/client-protocol': 0.3.7
+      '@dxos/client-services': 0.3.7
+      '@dxos/config': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/echo-signals': 0.3.7
+      '@dxos/invariant': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/react-client': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-shell': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui': 0.3.7(@phosphor-icons/react@2.0.14)(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+      '@dxos/react-ui-theme': 0.3.7
+      '@dxos/rpc-tunnel': 0.3.7
+      '@dxos/util': 0.3.7
       '@fastify/cors': 8.4.1
       '@fastify/static': 6.12.0
       '@sentry/react': 7.80.1(react@18.2.0)
@@ -2930,18 +2933,18 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@dxos/websocket-rpc@0.3.6:
-    resolution: {integrity: sha512-sCwwwf/5FTkJaZ1pya/gA89naJt3RiXZ2C/mr3BjoC5DE6O6U/aXJ/nuo0o2ybjEYhipmEGv9UQ4D5PVyBO8jQ==}
+  /@dxos/websocket-rpc@0.3.7:
+    resolution: {integrity: sha512-M5TfPRHY6OrDy6S3gnvgs704DeO8hvSOMjOhiupUBnPCxTfj7Vxt/b20omAJO4gEZJjG016Mgsse1/BB8BlBew==}
     dependencies:
-      '@dxos/async': 0.3.6
-      '@dxos/codec-protobuf': 0.3.6
-      '@dxos/context': 0.3.6
-      '@dxos/keys': 0.3.6
-      '@dxos/log': 0.3.6
-      '@dxos/node-std': 0.3.6
-      '@dxos/protocols': 0.3.6
-      '@dxos/rpc': 0.3.6
-      '@dxos/util': 0.3.6
+      '@dxos/async': 0.3.7
+      '@dxos/codec-protobuf': 0.3.7
+      '@dxos/context': 0.3.7
+      '@dxos/keys': 0.3.7
+      '@dxos/log': 0.3.7
+      '@dxos/node-std': 0.3.7
+      '@dxos/protocols': 0.3.7
+      '@dxos/rpc': 0.3.7
+      '@dxos/util': 0.3.7
       isomorphic-ws: 4.0.1(ws@7.5.9)
       ws: 7.5.9
     transitivePeerDependencies:
@@ -7673,10 +7676,6 @@ packages:
       - supports-color
     dev: true
 
-  /compute-scroll-into-view@3.1.0:
-    resolution: {integrity: sha512-rj8l8pD4bJ1nx+dAkMhV1xB5RuZEyVysfxJqB1pRchh1KVvwOv9b7CGB8ZfjTImVv2oF+sYMUkMZq6Na5Ftmbg==}
-    dev: false
-
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
@@ -8048,19 +8047,6 @@ packages:
     resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
     dev: true
-
-  /downshift@8.2.3(react@18.2.0):
-    resolution: {integrity: sha512-1HkvqaMTZpk24aqnXaRDnT+N5JCbpFpW+dCogB11+x+FCtfkFX0MbAO4vr/JdXi1VYQF174KjNUveBXqaXTPtg==}
-    peerDependencies:
-      react: '>=16.12.0'
-    dependencies:
-      '@babel/runtime': 7.23.2
-      compute-scroll-into-view: 3.1.0
-      prop-types: 15.8.1
-      react: 18.2.0
-      react-is: 18.2.0
-      tslib: 2.6.2
-    dev: false
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -11276,6 +11262,7 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+    dev: true
 
   /protobufjs@6.11.4:
     resolution: {integrity: sha512-5kQWPaJHi1WoCpjTGszzQ32PG2F4+wRY6BmAT4Vfw56Q2FZ4YZzK20xUYQH4YkfehY1e6QSICrJquM6xXZNcrw==}
@@ -11655,6 +11642,7 @@ packages:
 
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: true
 
   /react-native-fetch-api@3.0.0:
     resolution: {integrity: sha512-g2rtqPjdroaboDKTsJCTlcmtw54E25OjyaunUP0anOZn4Fuo2IKs8BVfe02zVggA/UysbmfSnRJIqtNkAgggNA==}
@@ -13367,7 +13355,6 @@ packages:
   /uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
-    dev: true
 
   /v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
