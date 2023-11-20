@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { inc } from "./utils";
 
 const EXECUTION_LIMIT = 10000;
@@ -38,10 +38,15 @@ export const applyAction = <TState, TAction>(
 export const useStore = <TState, TAction>(initial: TState, exec: Exec<TState, TAction>) => {
   const [state, setState] = useState(initial);
 
-  let send = (action: TAction) => {
-    const { nextState } = applyAction(state, action, exec);
-    setState(nextState);
-  };
+  const send = useCallback(
+    (action: TAction) => {
+      setState((prevState) => {
+        const { nextState } = applyAction(prevState, action, exec);
+        return nextState;
+      });
+    },
+    [exec, setState]
+  );
 
   return {
     state,
