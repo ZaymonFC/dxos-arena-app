@@ -6,7 +6,8 @@ import {
   appkitTranslations,
 } from "@dxos/react-appkit";
 import { ClientProvider, Config, Defaults, Dynamics, Local } from "@dxos/react-client";
-import { useSpace } from "@dxos/react-client/echo";
+import { Expando, useQuery, useSpace } from "@dxos/react-client/echo";
+import { useIdentity } from "@dxos/react-client/halo";
 import { Button } from "@dxos/react-ui";
 import { Chess, Piece } from "chess.js";
 import React, { useEffect } from "react";
@@ -15,11 +16,11 @@ import { match } from "ts-pattern";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
+import { arrayToPairs } from "./lib/array";
 import { GameState, InGameCursor, Move, exec, useInGameCursor, zeroState } from "./lib/game";
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 import { types } from "./proto";
-import { arrayToPairs } from "./lib/array";
 
 const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean }) => {
   const [time, setTime] = React.useState(initialTime);
@@ -233,10 +234,29 @@ const MoveList = ({
 };
 
 export const ChessGame = () => {
+  const identity = useIdentity();
   const space = useSpace();
 
-  const { state: game, send } = useStore(zeroState, exec);
+  useEffect(() => {
+    console.log("Space", space);
+    console.log("Identity", identity);
+  }, [space, identity]);
+
+  const { state: game, send } = useStore(zeroState(), exec);
   const cursor = useInGameCursor(game);
+
+  let [dbGame] = useQuery(space, { type: "chess" });
+
+  useEffect(() => {
+    if (!space) return;
+    if (!dbGame) {
+      console.log("Creating game object");
+      let expando = new Expando({ type: "chess", ...game });
+      space.db.add(expando);
+    } else {
+      console.log("Loaded game object from db", dbGame);
+    }
+  }, [space, dbGame]);
 
   const onDrop = (source: string, target: string) => {
     if (cursor.canInteractWithBoard) {
