@@ -9,7 +9,7 @@ import { ClientProvider, Config, Defaults, Dynamics, Local } from "@dxos/react-c
 import { Expando, useQuery, useSpace } from "@dxos/react-client/echo";
 import { useIdentity } from "@dxos/react-client/halo";
 import { Button } from "@dxos/react-ui";
-import { Chess, Piece } from "chess.js";
+import { Chess, Color, Piece, PieceSymbol, Square } from "chess.js";
 import React, { useEffect } from "react";
 import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
@@ -17,7 +17,15 @@ import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
 import { arrayToPairs } from "./lib/array";
-import { GameState, InGameCursor, Move, exec, useInGameCursor, zeroState } from "./lib/game";
+import {
+  InGameCursor,
+  Move,
+  exec,
+  useInGameCursor,
+  zeroState,
+  GameState,
+  gameStateSchema,
+} from "./lib/game";
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 import { types } from "./proto";
@@ -63,6 +71,7 @@ const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState
         .with("stalemate", () => "Stalemate")
         .with("insufficient-material", () => "Insufficient material")
         .with("threefold-repetition", () => "Threefold repetition")
+        .with(undefined, () => "")
         .exhaustive()
     )
     .exhaustive();
@@ -94,7 +103,7 @@ const findPiece = (game: Chess, piece: Piece) => {
   return game
     .board()
     .flat()
-    .filter((p) => p !== null)
+    .filter((p): p is { square: Square; type: PieceSymbol; color: Color } => p !== null)
     .find((p) => p.color === piece.color && p.type === piece.type);
 };
 
@@ -114,10 +123,12 @@ const computeSquareStyles = (lastMove: Move | undefined, fen: string) => {
     let turn = game.turn();
     let kingInCheck = findPiece(game, { type: "k", color: turn });
 
-    squareStyles = {
-      [kingInCheck.square]: { backgroundColor: "rgba(255, 0, 0, 0.2)" },
-      ...squareStyles,
-    };
+    if (kingInCheck) {
+      squareStyles = {
+        [kingInCheck.square]: { backgroundColor: "rgba(255, 0, 0, 0.2)" },
+        ...squareStyles,
+      };
+    }
   }
 
   return squareStyles;

@@ -88,7 +88,7 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
           draft.movesWithNotation.push(move.san);
           draft.boards.push(chess.fen());
 
-          if (chess.isGameOver) {
+          if (chess.isGameOver()) {
             if (chess.isCheckmate()) {
               actions.push({ type: "game-over", payload: "checkmate" });
             }
@@ -157,7 +157,11 @@ export const useInGameCursor = ({ boards }: GameState) => {
   const board = boards[index];
   const numberOfMoves = boards.length - 1;
 
-  React.useEffect(() => current && setIndex(numberOfMoves), [numberOfMoves]);
+  React.useEffect(() => {
+    if (current) {
+      setIndex(numberOfMoves);
+    }
+  }, [numberOfMoves]);
 
   const selectBoardByIndex = (index: number) => {
     const latestIndex = numberOfMoves;
