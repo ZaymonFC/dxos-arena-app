@@ -17,15 +17,7 @@ import { useRegisterSW } from "virtual:pwa-register/react";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
 import { arrayToPairs } from "./lib/array";
-import {
-  InGameCursor,
-  Move,
-  exec,
-  useInGameCursor,
-  zeroState,
-  GameState,
-  gameStateSchema,
-} from "./lib/game";
+import { GameState, InGameCursor, Move, exec, useInGameCursor, zeroState } from "./lib/game";
 import { useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 import { types } from "./proto";
@@ -254,18 +246,20 @@ export const ChessGame = () => {
   }, [space, identity]);
 
   const { state: game, send } = useStore(zeroState, exec);
-  const cursor = useInGameCursor(game);
 
   let [dbGame] = useQuery(space, { type: "chess" });
+  const cursor = useInGameCursor(game);
 
   useEffect(() => {
     if (!space) return;
+
     if (!dbGame) {
       console.log("Creating game object");
       let expando = new Expando({ type: "chess", ...game });
       space.db.add(expando);
     } else {
       console.log("Loaded game object from db", dbGame);
+      console.log(dbGame.toJSON());
     }
   }, [space, dbGame]);
 

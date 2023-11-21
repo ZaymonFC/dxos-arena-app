@@ -14,8 +14,8 @@ test("Can create a game", () => {
     { type: "game-created", payload: { players: { white: "zan", black: "zhenya" } } },
   ]);
 
-  expect(state.players.white).toBe("zan");
-  expect(state.players.black).toBe("zhenya");
+  expect(state.players?.white).toBe("zan");
+  expect(state.players?.black).toBe("zhenya");
 });
 
 test("Can play a move", () => {
