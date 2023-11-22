@@ -7,16 +7,24 @@ import {
 } from "@dxos/react-appkit";
 import { ClientProvider, Config, Defaults, Dynamics, Local } from "@dxos/react-client";
 import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useRegisterSW } from "virtual:pwa-register/react";
+import { ChessGame } from "./ChessGame";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { types } from "./proto";
-import { ChessGame } from "./ChessGame";
 
 // Dynamics allows configuration to be supplied by the hosting KUBE.
 const config = async () => new Config(await Dynamics(), Local(), Defaults());
 
 export const App = () => {
   const serviceWorker = useRegisterSW();
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <ChessGame />,
+    },
+  ]);
 
   return (
     <ThemeProvider
@@ -37,7 +45,7 @@ export const App = () => {
             }
           }}
         >
-          <ChessGame />
+          <RouterProvider router={router} />
           <ServiceWorkerToastContainer {...serviceWorker} />
         </ClientProvider>
       </ErrorBoundary>
