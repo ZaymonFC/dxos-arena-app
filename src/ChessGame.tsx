@@ -1,4 +1,4 @@
-import { Expando, useQuery, useSpace } from "@dxos/react-client/echo";
+import { useQuery, useSpace } from "@dxos/react-client/echo";
 import { useIdentity } from "@dxos/react-client/halo";
 import { Button } from "@dxos/react-ui";
 import { Chess, Color, Piece, PieceSymbol, Square } from "chess.js";
@@ -7,16 +7,8 @@ import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
 import { arrayToPairs } from "./lib/array";
-import {
-  GameAction,
-  GameState,
-  InGameCursor,
-  Move,
-  exec,
-  useInGameCursor,
-  zeroState,
-} from "./lib/game";
-import { useMutationStore, useStore } from "./lib/useStore";
+import { GameAction, GameState, InGameCursor, Move, exec, useInGameCursor } from "./lib/game";
+import { useMutationStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 
 const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean }) => {
@@ -244,7 +236,7 @@ const InnerChessGame = ({
 
   const onDrop = (source: string, target: string) => {
     if (cursor.canInteractWithBoard) {
-      send({ type: "move-made", payload: { source, target } });
+      send({ type: "move-made", move: { source, target } });
       return true;
     }
     return false;
@@ -277,7 +269,7 @@ const InnerChessGame = ({
 
           <Controls
             cursor={cursor}
-            onResign={() => send({ type: "player-resigned", payload: { player: "white" } })}
+            onResign={() => send({ type: "player-resigned", player: "white" })}
           />
         </div>
       </div>

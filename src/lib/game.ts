@@ -41,25 +41,19 @@ export const zeroState: GameState = {
 };
 
 export type GameAction =
-  | {
-      type: "game-created";
-      payload: { players: { white: string; black: string } };
-    }
-  | { type: "move-made"; payload: Move }
-  | {
-      type: "takeback-requested";
-      payload: { player: "white" | "black"; moveNumber: number };
-    }
-  | { type: "takeback-accepted"; payload: {} }
-  | { type: "player-resigned"; payload: { player: "white" | "black" } }
-  | { type: "game-over"; payload: GameOverReason };
+  | { type: "game-created"; players: { white: string; black: string } }
+  | { type: "move-made"; move: Move }
+  | { type: "takeback-requested"; player: "white" | "black"; moveNumber: number }
+  | { type: "takeback-accepted" }
+  | { type: "player-resigned"; player: "white" | "black" }
+  | { type: "game-over"; reason: GameOverReason };
 
 export const exec = (state: GameState, action: GameAction): [GameState, GameAction[]] => {
   let actions: GameAction[] = [];
 
   switch (action.type) {
     case "game-created": {
-      state.players = action.payload.players;
+      state.players = action.players;
       break;
     }
 
@@ -69,8 +63,8 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
         const chess = new Chess(state.boards[state.boards.length - 1]);
 
         const move = chess.move({
-          from: action.payload.source,
-          to: action.payload.target,
+          from: action.move.source,
+          to: action.move.target,
           promotion: "q",
         });
 
@@ -83,24 +77,24 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
           break;
         }
 
-        state.moves.push(action.payload);
+        state.moves.push(action.move);
         state.movesWithNotation.push(move.san);
         state.boards.push(chess.fen());
 
         if (chess.isGameOver()) {
           if (chess.isCheckmate()) {
-            actions.push({ type: "game-over", payload: "checkmate" });
+            actions.push({ type: "game-over", reason: "checkmate" });
           }
           if (chess.isStalemate()) {
-            actions.push({ type: "game-over", payload: "stalemate" });
+            actions.push({ type: "game-over", reason: "stalemate" });
           }
 
           if (chess.isInsufficientMaterial()) {
-            actions.push({ type: "game-over", payload: "insufficient-material" });
+            actions.push({ type: "game-over", reason: "insufficient-material" });
           }
 
           if (chess.isThreefoldRepetition()) {
-            actions.push({ type: "game-over", payload: "threefold-repetition" });
+            actions.push({ type: "game-over", reason: "threefold-repetition" });
           }
         }
       } catch (e) {
@@ -117,11 +111,11 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
       break;
 
     case "player-resigned": {
-      const { player } = action.payload;
+      const { player } = action;
 
       actions.push({
         type: "game-over",
-        payload: match(player)
+        reason: match(player)
           .with("white", () => "white-resignation")
           .with("black", () => "black-resignation")
           .exhaustive() as GameOverReason,
@@ -131,7 +125,7 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
 
     case "game-over": {
       state.status = "complete";
-      state.gameOverReason = action.payload;
+      state.gameOverReason = action.reason;
 
       break;
     }
