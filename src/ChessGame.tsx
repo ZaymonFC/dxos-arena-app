@@ -7,8 +7,16 @@ import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
 import { arrayToPairs } from "./lib/array";
-import { GameState, InGameCursor, Move, exec, useInGameCursor, zeroState } from "./lib/game";
-import { useStore } from "./lib/useStore";
+import {
+  GameAction,
+  GameState,
+  InGameCursor,
+  Move,
+  exec,
+  useInGameCursor,
+  zeroState,
+} from "./lib/game";
+import { useMutationStore, useStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 
 const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean }) => {
@@ -225,32 +233,14 @@ const MoveList = ({
   );
 };
 
-export const ChessGame = () => {
-  const identity = useIdentity();
-  const space = useSpace();
-
-  useEffect(() => {
-    console.log("Space", space);
-    console.log("Identity", identity);
-  }, [space, identity]);
-
-  const { state: game, send } = useStore(zeroState, exec);
-
-  let [dbGame] = useQuery(space, { type: "chess" });
+const InnerChessGame = ({
+  game,
+  send,
+}: {
+  game: GameState;
+  send: (action: GameAction) => void;
+}) => {
   const cursor = useInGameCursor(game);
-
-  useEffect(() => {
-    if (!space) return;
-
-    if (!dbGame) {
-      console.log("Creating game object");
-      let expando = new Expando({ type: "chess", ...game });
-      space.db.add(expando);
-    } else {
-      console.log("Loaded game object from db", dbGame);
-      console.log(dbGame.toJSON());
-    }
-  }, [space, dbGame]);
 
   const onDrop = (source: string, target: string) => {
     if (cursor.canInteractWithBoard) {
@@ -293,4 +283,37 @@ export const ChessGame = () => {
       </div>
     </div>
   );
+};
+
+export const ChessGame = () => {
+  const identity = useIdentity();
+  const space = useSpace();
+
+  useEffect(() => {
+    console.log("Space", space);
+    console.log("Identity", identity);
+  }, [space, identity]);
+
+  // const { state: game, send } = useStore(zeroState, exec);
+
+  let [dbGame] = useQuery(space, { type: "chess" });
+
+  const { send } = useMutationStore(dbGame as any as GameState, exec);
+
+  useEffect(() => {
+    if (!space) return;
+
+    if (!dbGame) {
+      // console.log("Creating game object");
+      // let expando = new Expando({ type: "chess", ...game });
+      // space.db.add(expando);
+    } else {
+      console.log("Loaded game object from db", dbGame);
+      console.log(dbGame.toJSON());
+    }
+  }, [space, dbGame]);
+
+  if (!dbGame) return null;
+
+  return <InnerChessGame game={dbGame as any as GameState} send={send} />;
 };

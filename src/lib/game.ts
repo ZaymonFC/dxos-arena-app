@@ -57,90 +57,87 @@ export type GameAction =
 export const exec = (state: GameState, action: GameAction): [GameState, GameAction[]] => {
   let actions: GameAction[] = [];
 
-  const newState = produce(state, (draft) => {
-    switch (action.type) {
-      case "game-created": {
-        draft.players = action.payload.players;
-        break;
-      }
+  switch (action.type) {
+    case "game-created": {
+      state.players = action.payload.players;
+      break;
+    }
 
-      case "move-made": {
-        try {
-          // TODO(zan): To support variants, we can use a different rules engine
-          const chess = new Chess(state.boards[state.boards.length - 1]);
+    case "move-made": {
+      try {
+        // TODO(zan): To support variants, we can use a different rules engine
+        const chess = new Chess(state.boards[state.boards.length - 1]);
 
-          const move = chess.move({
-            from: action.payload.source,
-            to: action.payload.target,
-            promotion: "q",
-          });
+        const move = chess.move({
+          from: action.payload.source,
+          to: action.payload.target,
+          promotion: "q",
+        });
 
-          // If first move is made, game is in progress
-          if (state.moves.length === 0) {
-            draft.status = "in-progress";
-          }
-
-          if (draft.status !== "in-progress") {
-            break;
-          }
-
-          draft.moves.push(action.payload);
-          draft.movesWithNotation.push(move.san);
-          draft.boards.push(chess.fen());
-
-          if (chess.isGameOver()) {
-            if (chess.isCheckmate()) {
-              actions.push({ type: "game-over", payload: "checkmate" });
-            }
-            if (chess.isStalemate()) {
-              actions.push({ type: "game-over", payload: "stalemate" });
-            }
-
-            if (chess.isInsufficientMaterial()) {
-              actions.push({ type: "game-over", payload: "insufficient-material" });
-            }
-
-            if (chess.isThreefoldRepetition()) {
-              actions.push({ type: "game-over", payload: "threefold-repetition" });
-            }
-          }
-        } catch (e) {
-          console.log("Invalid move");
+        // If first move is made, game is in progress
+        if (state.moves.length === 0) {
+          state.status = "in-progress";
         }
 
-        break;
+        if (state.status !== "in-progress") {
+          break;
+        }
+
+        state.moves.push(action.payload);
+        state.movesWithNotation.push(move.san);
+        state.boards.push(chess.fen());
+
+        if (chess.isGameOver()) {
+          if (chess.isCheckmate()) {
+            actions.push({ type: "game-over", payload: "checkmate" });
+          }
+          if (chess.isStalemate()) {
+            actions.push({ type: "game-over", payload: "stalemate" });
+          }
+
+          if (chess.isInsufficientMaterial()) {
+            actions.push({ type: "game-over", payload: "insufficient-material" });
+          }
+
+          if (chess.isThreefoldRepetition()) {
+            actions.push({ type: "game-over", payload: "threefold-repetition" });
+          }
+        }
+      } catch (e) {
+        console.log("Invalid move");
       }
 
-      case "takeback-requested":
-        break;
-
-      case "takeback-accepted":
-        break;
-
-      case "player-resigned": {
-        const { player } = action.payload;
-
-        actions.push({
-          type: "game-over",
-          payload: match(player)
-            .with("white", () => "white-resignation")
-            .with("black", () => "black-resignation")
-            .exhaustive() as GameOverReason,
-        });
-        break;
-      }
-
-      case "game-over": {
-        draft.status = "complete";
-        draft.gameOverReason = action.payload;
-
-        break;
-      }
+      break;
     }
-    return draft;
-  });
 
-  return [newState, actions];
+    case "takeback-requested":
+      break;
+
+    case "takeback-accepted":
+      break;
+
+    case "player-resigned": {
+      const { player } = action.payload;
+
+      actions.push({
+        type: "game-over",
+        payload: match(player)
+          .with("white", () => "white-resignation")
+          .with("black", () => "black-resignation")
+          .exhaustive() as GameOverReason,
+      });
+      break;
+    }
+
+    case "game-over": {
+      state.status = "complete";
+      state.gameOverReason = action.payload;
+
+      break;
+    }
+  }
+
+  return [state, actions];
 };
 
 type InGameCursorAction =

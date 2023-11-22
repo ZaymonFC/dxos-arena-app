@@ -7,14 +7,14 @@ export type Exec<TState, TAction> = (state: TState, action: TAction) => [TState,
 
 type Accumulator<TState> = {
   count: number;
-  nextState: TState | undefined;
+  nextState: TState;
 };
 
 export const applyAction = <TState, TAction>(
   state: TState,
   action: TAction,
   exec: Exec<TState, TAction>,
-  acc: Accumulator<TState> = { count: 0, nextState: undefined }
+  acc: Accumulator<TState> = { count: 0, nextState: state }
 ): Accumulator<TState> => {
   if (acc.count > EXECUTION_LIMIT) {
     throw new Error(
@@ -52,4 +52,17 @@ export const useStore = <TState, TAction>(initial: TState, exec: Exec<TState, TA
     state,
     send,
   };
+};
+
+// Experiment!
+// Can we pass in an object from echo, and then allow the exec funtion to mutate it directly?
+export const useMutationStore = <TState, TAction>(state: TState, exec: Exec<TState, TAction>) => {
+  const send = useCallback(
+    (action: TAction) => {
+      void applyAction(state, action, exec);
+    },
+    [exec, state]
+  );
+
+  return { send };
 };
