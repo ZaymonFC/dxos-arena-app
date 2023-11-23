@@ -1,13 +1,21 @@
-import { useQuery, useSpace } from "@dxos/react-client/echo";
+import { Expando, useQuery, useSpace } from "@dxos/react-client/echo";
 import { useIdentity } from "@dxos/react-client/halo";
 import { Button } from "@dxos/react-ui";
 import { Chess, Color, Piece, PieceSymbol, Square } from "chess.js";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
 import { arrayToPairs } from "./lib/array";
-import { GameAction, GameState, InGameCursor, Move, exec, useInGameCursor } from "./lib/game";
+import {
+  GameAction,
+  GameState,
+  InGameCursor,
+  Move,
+  exec,
+  useInGameCursor,
+  zeroState,
+} from "./lib/game";
 import { useMutationStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 
@@ -277,6 +285,27 @@ const InnerChessGame = ({
   );
 };
 
+const DevControls = () => {
+  const space = useSpace();
+  const [dbGame] = useQuery(space, { type: "chess" });
+
+  const onDelete = useCallback(() => {
+    if (!space) return;
+    space.db.remove(dbGame);
+  }, [space, dbGame]);
+
+  return (
+    <div className="p-1 font-mono">
+      <p>Dev Controls</p>
+      <div className="flex flex-row gap-1">
+        <Button variant="outline" onClick={onDelete}>
+          Delete Games
+        </Button>
+      </div>
+    </div>
+  );
+};
+
 export const ChessGame = () => {
   const identity = useIdentity();
   const space = useSpace();
@@ -286,19 +315,16 @@ export const ChessGame = () => {
     console.log("Identity", identity);
   }, [space, identity]);
 
-  // const { state: game, send } = useStore(zeroState, exec);
-
   let [dbGame] = useQuery(space, { type: "chess" });
-
   const { send } = useMutationStore(dbGame as any as GameState, exec);
 
   useEffect(() => {
     if (!space) return;
 
     if (!dbGame) {
-      // console.log("Creating game object");
-      // let expando = new Expando({ type: "chess", ...game });
-      // space.db.add(expando);
+      console.log("Creating game object");
+      let expando = new Expando({ type: "chess", ...zeroState });
+      space.db.add(expando);
     } else {
       console.log("Loaded game object from db", dbGame);
       console.log(dbGame.toJSON());
@@ -307,5 +333,10 @@ export const ChessGame = () => {
 
   if (!dbGame) return null;
 
-  return <InnerChessGame game={dbGame as any as GameState} send={send} />;
+  return (
+    <>
+      <InnerChessGame game={dbGame as any as GameState} send={send} />
+      <DevControls />
+    </>
+  );
 };
