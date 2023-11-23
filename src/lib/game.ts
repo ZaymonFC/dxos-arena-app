@@ -26,6 +26,7 @@ export type GameState = {
   variant: "standard";
   moves: Move[];
   movesWithNotation: string[];
+  moveTimes: string[];
   boards: string[];
   players?: { white: string; black: string };
   status: GameStatus;
@@ -36,6 +37,7 @@ export const zeroState: GameState = {
   variant: "standard",
   moves: [],
   movesWithNotation: [],
+  moveTimes: [],
   boards: [new Chess().fen()],
   status: "waiting",
 };
@@ -77,10 +79,17 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
           break;
         }
 
+        // Update move times
+        const time = new Date().toISOString();
+
+        state.moveTimes.push(time);
+
+        // Push move and new board
         state.moves.push(action.move);
         state.movesWithNotation.push(move.san);
         state.boards.push(chess.fen());
 
+        // Check for game over states
         if (chess.isGameOver()) {
           if (chess.isCheckmate()) {
             actions.push({ type: "game-over", reason: "checkmate" });

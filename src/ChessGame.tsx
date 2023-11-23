@@ -2,6 +2,7 @@ import { Expando, useQuery, useSpace } from "@dxos/react-client/echo";
 import { useIdentity } from "@dxos/react-client/halo";
 import { Button } from "@dxos/react-ui";
 import { Chess, Color, Piece, PieceSymbol, Square } from "chess.js";
+import { format, parseISO } from "date-fns";
 import React, { useCallback, useEffect } from "react";
 import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
@@ -16,26 +17,32 @@ import {
   useInGameCursor,
   zeroState,
 } from "./lib/game";
+import { timeRemaining } from "./lib/timeControl";
 import { useMutationStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
 
-const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean }) => {
-  const [time, setTime] = React.useState(initialTime);
+const Timer = ({ timeRemaining, ticking }: { timeRemaining: number; ticking: boolean }) => {
+  const [time, setTime] = React.useState(timeRemaining);
+
+  // Update time when timeRemaining changes
+  useEffect(() => {
+    setTime(timeRemaining);
+  }, [timeRemaining, setTime]);
 
   // Start the timer
   useEffect(() => {
     if (ticking) {
       const interval = setInterval(() => {
-        setTime((t) => t - 1);
+        setTime((t) => t - 1000);
       }, 1000);
 
       return () => clearInterval(interval);
     }
   }, [ticking, setTime]);
 
-  // Format the time (assuming it's in seconds)
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
+  // Format the time (assuming it's in milliseconds)
+  const minutes = Math.floor(time / 60 / 1000);
+  const seconds = Math.floor(time / 1000) - minutes * 60;
 
   return (
     <>
@@ -48,6 +55,9 @@ const Timer = ({ initialTime, ticking }: { initialTime: number; ticking: boolean
 
 const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState }) => {
   const turn = game.moves.length % 2 === 0 ? color === "White" : color === "Black";
+
+  const currentTime = new Date().toISOString();
+  const { whiteRemainingTime, blackRemainingTime } = timeRemaining(game.moveTimes, currentTime);
 
   const statusText = match(game.status)
     .with("waiting", () => "Waiting for first move")
@@ -83,7 +93,10 @@ const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState
         <div className="text-lg font-bold">{color}</div>
         <div className={cn("text-sm", textColor)}>{statusText}</div>
       </div>
-      <Timer initialTime={60 * 10} ticking={turn && game.status === "in-progress"} />
+      <Timer
+        timeRemaining={color === "White" ? whiteRemainingTime : blackRemainingTime}
+        ticking={turn && game.status === "in-progress"}
+      />
     </div>
   );
 };
@@ -243,6 +256,7 @@ const InnerChessGame = ({
   const cursor = useInGameCursor(game);
 
   const onDrop = (source: string, target: string) => {
+    console.log("onDrop", source, target);
     if (cursor.canInteractWithBoard) {
       send({ type: "move-made", move: { source, target } });
       return true;
@@ -306,6 +320,36 @@ const DevControls = () => {
   );
 };
 
+const TimeDebugger = () => {
+  const space = useSpace();
+  const [dbGame] = useQuery(space, { type: "chess" });
+
+  const game = dbGame as any as GameState | undefined;
+
+  if (!game?.moveTimes) return null;
+
+  const formatDate = (date: string) => format(parseISO(date), "HH:mm:ss.SS");
+
+  const currentTime = new Date().toISOString();
+  const { whiteRemainingTime, blackRemainingTime } = timeRemaining(game.moveTimes, currentTime);
+
+  return (
+    <div className="p-1 font-mono flex flex-col gap-2">
+      <div className="flex flex-col gap-1">
+        White time remaining: {whiteRemainingTime / 1000} Black time remaining{" "}
+        {blackRemainingTime / 1000}
+      </div>
+      <div className="flex flex-row gap-1">
+        {game.moveTimes.map((t: string, idx: number) => (
+          <div key={t} className={idx % 2 == 0 ? "text-black" : "text-gray-500"}>
+            {formatDate(t)}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export const ChessGame = () => {
   const identity = useIdentity();
   const space = useSpace();
@@ -337,6 +381,7 @@ export const ChessGame = () => {
     <>
       <InnerChessGame game={dbGame as any as GameState} send={send} />
       <DevControls />
+      <TimeDebugger />
     </>
   );
 };
