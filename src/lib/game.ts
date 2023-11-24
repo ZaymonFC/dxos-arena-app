@@ -1,5 +1,4 @@
 import { Chess } from "chess.js";
-import { produce } from "immer";
 import React, { useCallback } from "react";
 import { match } from "ts-pattern";
 
@@ -35,14 +34,14 @@ export type GameState = {
   gameOverReason?: GameOverReason;
 };
 
-export const zeroState: GameState = {
+export const zeroState = (): GameState => ({
   variant: "standard",
   moves: [],
   movesWithNotation: [],
   moveTimes: [],
   boards: [new Chess().fen()],
   status: "waiting",
-};
+});
 
 export type GameAction =
   | { type: "game-created"; players: { white: string; black: string } }

@@ -10,7 +10,7 @@ const last = <T>(arr: T[]) => arr[arr.length - 1];
 // --- TEST CASES -------------------------------------------------------------
 
 test("Can create a game", () => {
-  const state = applyMany(zeroState, [
+  const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
   ]);
 
@@ -19,7 +19,7 @@ test("Can create a game", () => {
 });
 
 test("Can play a move", () => {
-  const state = applyMany(zeroState, [
+  const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
   ]);
@@ -30,7 +30,7 @@ test("Can play a move", () => {
 });
 
 test("White can resign", () => {
-  const state = applyMany(zeroState, [
+  const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
     { type: "move-made", move: { source: "e7", target: "e5" } },
@@ -42,7 +42,7 @@ test("White can resign", () => {
 });
 
 test("Moves after game over should be ignored", () => {
-  const state = applyMany(zeroState, [
+  const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
     { type: "move-made", move: { source: "e7", target: "e5" } },
@@ -57,7 +57,7 @@ test("Moves after game over should be ignored", () => {
 });
 
 test("Scholars mate should end the game in checkmate", () => {
-  const state = applyMany(zeroState, [
+  const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
     { type: "move-made", move: { source: "e7", target: "e5" } },
@@ -73,7 +73,7 @@ test("Scholars mate should end the game in checkmate", () => {
 });
 
 test("White Kingside Castle", () => {
-  const state = applyMany(zeroState, [
+  const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
     { type: "move-made", move: { source: "e7", target: "e5" } },
@@ -89,7 +89,7 @@ test("White Kingside Castle", () => {
 });
 
 test("Black Kingside Castle", () => {
-  const state = applyMany(zeroState, [
+  const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } }, // White's first move
     { type: "move-made", move: { source: "e7", target: "e5" } }, // Black's first move
@@ -105,7 +105,7 @@ test("Black Kingside Castle", () => {
 });
 
 test("En Passant", () => {
-  const state = applyMany(zeroState, [
+  const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
     { type: "move-made", move: { source: "a7", target: "a6" } }, // Black's waiting move

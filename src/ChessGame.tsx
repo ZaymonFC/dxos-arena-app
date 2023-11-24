@@ -352,7 +352,7 @@ export const ChessGame = () => {
 
     if (!dbGame) {
       console.log("Creating game object");
-      let expando = new Expando({ type: "chess", ...zeroState });
+      let expando = new Expando({ type: "chess", ...zeroState() });
       space.db.add(expando);
     } else {
       console.log("Loaded game object from db", dbGame);
