@@ -1,7 +1,10 @@
 import { differenceInMilliseconds, parseISO } from "date-fns";
+import { atom, useAtomValue, useSetAtom } from "jotai";
 import React from "react";
 import { GameDispatch, GameState } from "./game";
-import { atom, useAtom } from "jotai";
+import { useSubscription } from "./useSubscription";
+import { interval } from "rxjs";
+import { time } from "console";
 
 export const thinkingTime = (moveTimes: string[], currentTime: string) => {
   let whiteThinkingDuration: number = 0;
@@ -62,58 +65,61 @@ export const timeRemaining = (
 };
 
 // --- Atoms -------------------------------------------------------------------
-export const whiteTimeAtom = atom(9999);
-export const blackTimeAtom = atom(9999);
+const timerAtom = atom({
+  white: 9999, // TODO(zan): Think of a better default
+  black: 9999,
+});
+
+export const whiteTimeAtom = atom((get) => get(timerAtom).white);
+export const blackTimeAtom = atom((get) => get(timerAtom).black);
+
+const intervals = {
+  normal: 1000,
+  fast: 10,
+};
+
+const timerResolutionAtom = atom((get) => {
+  const { white, black } = get(timerAtom);
+
+  return white <= 10000 || black <= 10000 ? intervals.fast : intervals.normal;
+});
+
+const timeOutAtom = atom((get) => {
+  const { white, black } = get(timerAtom);
+  return { white: white <= 0, black: black <= 0 };
+});
 
 // --- 🪝 Hooks ----------------------------------------------------------------
 export const useTimeControl = (game: GameState, send: GameDispatch) => {
-  const intervals = {
-    normal: 1000,
-    fast: 10,
-  };
+  const setTimer = useSetAtom(timerAtom);
 
-  const currentTime = React.useMemo(() => new Date().toISOString(), [game.moveTimes]);
-
-  const [whiteTime, setWhiteTime] = useAtom(whiteTimeAtom);
-  const [blackTime, setBlackTime] = useAtom(blackTimeAtom);
-
-  const [whiteIntervalMs, setWhiteIntervalMs] = React.useState(intervals.normal);
-  const [blackIntervalMs, setBlackIntervalMs] = React.useState(intervals.normal);
+  const resolution = useAtomValue(timerResolutionAtom);
+  const { white: whiteTimeOut, black: blackTimeOut } = useAtomValue(timeOutAtom);
 
   React.useEffect(() => {
-    if (whiteTime < 10 * 1000 && whiteIntervalMs !== intervals.fast) {
-      setWhiteIntervalMs(intervals.fast);
+    if (game.status === "waiting") {
+      setTimer({ white: 10000, black: 10000 });
     }
-
-    if (blackTime < 10 * 1000 && blackIntervalMs !== intervals.fast) {
-      setBlackIntervalMs(intervals.fast);
-    }
-  }, [whiteTime, blackTime, setWhiteIntervalMs, setBlackIntervalMs]);
+  }, [game.status, setTimer]);
 
   React.useEffect(() => {
-    if (whiteTime <= 0) {
+    if (whiteTimeOut) {
       send({ type: "game-over", reason: "white-timeout" });
     }
-    if (blackTime <= 0) {
+    if (blackTimeOut) {
       send({ type: "game-over", reason: "black-timeout" });
     }
-  }, [whiteTime, blackTime, send]);
+  }, [whiteTimeOut, blackTimeOut, send]);
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      const { whiteRemainingTime } = timeRemaining(game.moveTimes, currentTime);
-      setWhiteTime(whiteRemainingTime);
-    }, whiteIntervalMs);
+  useSubscription(() => {
+    if (game.status !== "in-progress") {
+      return;
+    }
 
-    return () => clearInterval(interval);
-  }, [game.status, game.moveTimes, whiteIntervalMs]);
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      const { blackRemainingTime } = timeRemaining(game.moveTimes, currentTime);
-      setBlackTime(blackRemainingTime);
-    }, blackIntervalMs);
-
-    return () => clearInterval(interval);
-  }, [game.status, game.moveTimes, blackIntervalMs]);
+    return interval(resolution).subscribe(() => {
+      const currentTime = new Date().toISOString();
+      const { whiteRemainingTime, blackRemainingTime } = timeRemaining(game.moveTimes, currentTime);
+      setTimer((_) => ({ white: whiteRemainingTime, black: blackRemainingTime }));
+    });
+  }, [resolution, setTimer, game.moveTimes, game.status]);
 };

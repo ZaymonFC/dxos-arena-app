@@ -2,7 +2,7 @@ import { Expando, useQuery, useSpace } from "@dxos/react-client/echo";
 import { useIdentity } from "@dxos/react-client/halo";
 import { Button } from "@dxos/react-ui";
 import { Chess, Color, Piece, PieceSymbol, Square } from "chess.js";
-import { format, parseISO } from "date-fns";
+import { useAtomValue } from "jotai";
 import React, { useCallback, useEffect } from "react";
 import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
@@ -17,11 +17,9 @@ import {
   useInGameCursor,
   zeroState,
 } from "./lib/game";
-import { blackTimeAtom, useTimeControl, whiteTimeAtom } from "./lib/useTimeControl";
-import { timeRemaining } from "./lib/useTimeControl";
 import { useMutationStore } from "./lib/useStore";
+import { blackTimeAtom, useTimeControl, whiteTimeAtom } from "./lib/useTimeControl";
 import { cn } from "./lib/utils";
-import { Atom, useAtomValue } from "jotai";
 
 const Timer = ({ color }: { color: "White" | "Black" }) => {
   const time = useAtomValue(color === "White" ? whiteTimeAtom : blackTimeAtom);
@@ -305,36 +303,6 @@ const DevControls = () => {
   );
 };
 
-const TimeDebugger = () => {
-  const space = useSpace();
-  const [dbGame] = useQuery(space, { type: "chess" });
-
-  const game = dbGame as any as GameState | undefined;
-
-  if (!game?.moveTimes) return null;
-
-  const formatDate = (date: string) => format(parseISO(date), "HH:mm:ss.SS");
-
-  const currentTime = new Date().toISOString();
-  const { whiteRemainingTime, blackRemainingTime } = timeRemaining(game.moveTimes, currentTime);
-
-  return (
-    <div className="p-1 font-mono flex flex-col gap-2">
-      <div className="flex flex-col gap-1">
-        White time remaining: {whiteRemainingTime / 1000} Black time remaining{" "}
-        {blackRemainingTime / 1000}
-      </div>
-      <div className="flex flex-row gap-1">
-        {game.moveTimes.map((t: string, idx: number) => (
-          <div key={t} className={idx % 2 == 0 ? "text-black" : "text-gray-500"}>
-            {formatDate(t)}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 export const ChessGame = () => {
   const identity = useIdentity();
   const space = useSpace();
@@ -366,7 +334,6 @@ export const ChessGame = () => {
     <>
       <InnerChessGame game={dbGame as any as GameState} send={send} />
       <DevControls />
-      <TimeDebugger />
     </>
   );
 };
