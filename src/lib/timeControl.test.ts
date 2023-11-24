@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { thinkingTime } from "./timeControl";
+import { thinkingTime } from "./useTimeControl";
 
 describe("thinkingTime", () => {
   it("should correctly calculate thinking time for both players, including ongoing time", () => {

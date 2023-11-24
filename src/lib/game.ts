@@ -15,7 +15,9 @@ type GameOverReason =
   | "black-resignation"
   | "stalemate"
   | "insufficient-material"
-  | "threefold-repetition";
+  | "threefold-repetition"
+  | "white-timeout"
+  | "black-timeout";
 
 // todo(zan): Time
 
@@ -49,6 +51,8 @@ export type GameAction =
   | { type: "takeback-accepted" }
   | { type: "player-resigned"; player: "white" | "black" }
   | { type: "game-over"; reason: GameOverReason };
+
+export type GameDispatch = (action: GameAction) => void;
 
 export const exec = (state: GameState, action: GameAction): [GameState, GameAction[]] => {
   let actions: GameAction[] = [];

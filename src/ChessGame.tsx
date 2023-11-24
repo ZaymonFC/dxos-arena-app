@@ -17,47 +17,32 @@ import {
   useInGameCursor,
   zeroState,
 } from "./lib/game";
-import { timeRemaining } from "./lib/timeControl";
+import { blackTimeAtom, useTimeControl, whiteTimeAtom } from "./lib/useTimeControl";
+import { timeRemaining } from "./lib/useTimeControl";
 import { useMutationStore } from "./lib/useStore";
 import { cn } from "./lib/utils";
+import { Atom, useAtomValue } from "jotai";
 
-const Timer = ({ timeRemaining, ticking }: { timeRemaining: number; ticking: boolean }) => {
-  const [time, setTime] = React.useState(timeRemaining);
+const Timer = ({ color }: { color: "White" | "Black" }) => {
+  const time = useAtomValue(color === "White" ? whiteTimeAtom : blackTimeAtom);
 
-  // Update time when timeRemaining changes
-  useEffect(() => {
-    setTime(timeRemaining);
-  }, [timeRemaining, setTime]);
-
-  // Start the timer
-  useEffect(() => {
-    if (ticking) {
-      const interval = setInterval(() => {
-        setTime((t) => t - 1000);
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }
-  }, [ticking, setTime]);
-
-  // Format the time (assuming it's in milliseconds)
+  // Format the time (ms) into minutes and seconds
   const minutes = Math.floor(time / 60 / 1000);
   const seconds = Math.floor(time / 1000) - minutes * 60;
 
+  const secondsGranular = time / 1000;
+
   return (
-    <>
-      <div className="h-min p-2 rounded-lg text-2xl leading-none font-mono text-gray-90 bg-gray-50 border border-gray-200 shadow-inner shadow-gray-100">
-        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-      </div>
-    </>
+    <div className="h-min p-2 rounded-lg text-2xl leading-none font-mono text-gray-90 bg-gray-50 border border-gray-200 shadow-inner shadow-gray-100">
+      {secondsGranular < 10
+        ? `${secondsGranular.toFixed(2)}`
+        : `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`}
+    </div>
   );
 };
 
 const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState }) => {
   const turn = game.moves.length % 2 === 0 ? color === "White" : color === "Black";
-
-  const currentTime = new Date().toISOString();
-  const { whiteRemainingTime, blackRemainingTime } = timeRemaining(game.moveTimes, currentTime);
 
   const statusText = match(game.status)
     .with("waiting", () => "Waiting for first move")
@@ -70,6 +55,8 @@ const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState
         .with("stalemate", () => "Stalemate")
         .with("insufficient-material", () => "Insufficient material")
         .with("threefold-repetition", () => "Threefold repetition")
+        .with("white-timeout", () => "White timeout")
+        .with("black-timeout", () => "Black timeout")
         .with(undefined, () => "")
         .exhaustive()
     )
@@ -93,10 +80,7 @@ const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState
         <div className="text-lg font-bold">{color}</div>
         <div className={cn("text-sm", textColor)}>{statusText}</div>
       </div>
-      <Timer
-        timeRemaining={color === "White" ? whiteRemainingTime : blackRemainingTime}
-        ticking={turn && game.status === "in-progress"}
-      />
+      <Timer color={color} />
     </div>
   );
 };
@@ -254,6 +238,7 @@ const InnerChessGame = ({
   send: (action: GameAction) => void;
 }) => {
   const cursor = useInGameCursor(game);
+  useTimeControl(game, send);
 
   const onDrop = (source: string, target: string) => {
     console.log("onDrop", source, target);
