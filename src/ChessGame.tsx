@@ -8,15 +8,9 @@ import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
 import { arrayToPairs } from "./lib/array";
-import {
-  GameAction,
-  GameState,
-  InGameCursor,
-  Move,
-  exec,
-  useInGameCursor,
-  zeroState,
-} from "./lib/game";
+import { GameAction, GameState, Move, exec, zeroState } from "./lib/game";
+import { useInGameCursor, InGameCursor } from "./lib/useInGameCursor";
+
 import { useMutationStore } from "./lib/useStore";
 import { blackTimeAtom, useTimeControl, useTimeOut, whiteTimeAtom } from "./lib/useTimeControl";
 import { cn } from "./lib/utils";
