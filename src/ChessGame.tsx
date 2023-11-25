@@ -3,7 +3,7 @@ import { useIdentity } from "@dxos/react-client/halo";
 import { Button } from "@dxos/react-ui";
 import { Chess, Color, Piece, PieceSymbol, Square } from "chess.js";
 import { useAtomValue } from "jotai";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { Chessboard } from "react-chessboard";
 import { match } from "ts-pattern";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
@@ -18,11 +18,12 @@ import {
   zeroState,
 } from "./lib/game";
 import { useMutationStore } from "./lib/useStore";
-import { blackTimeAtom, useTimeControl, whiteTimeAtom } from "./lib/useTimeControl";
+import { blackTimeAtom, useTimeControl, useTimeOut, whiteTimeAtom } from "./lib/useTimeControl";
 import { cn } from "./lib/utils";
 
 const Timer = ({ color }: { color: "White" | "Black" }) => {
-  const time = useAtomValue(color === "White" ? whiteTimeAtom : blackTimeAtom);
+  const atom = useMemo(() => (color === "White" ? whiteTimeAtom : blackTimeAtom), [color]);
+  const time = useAtomValue(atom);
 
   // Format the time (ms) into minutes and seconds
   const minutes = Math.floor(time / 60 / 1000);
@@ -236,7 +237,8 @@ const InnerChessGame = ({
   send: (action: GameAction) => void;
 }) => {
   const cursor = useInGameCursor(game);
-  useTimeControl(game, send);
+  useTimeControl(game.moveTimes, game.status);
+  useTimeOut(send, game.status);
 
   const onDrop = (source: string, target: string) => {
     console.log("onDrop", source, target);

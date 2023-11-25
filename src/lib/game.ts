@@ -20,7 +20,7 @@ type GameOverReason =
 
 // todo(zan): Time
 
-type GameStatus = "waiting" | "in-progress" | "complete";
+export type GameStatus = "waiting" | "in-progress" | "complete";
 
 // todo(zan): Think about time control
 export type GameState = {
