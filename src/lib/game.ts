@@ -136,9 +136,10 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
     }
 
     case "game-over": {
-      state.status = "complete";
-      state.gameOverReason = action.reason;
-
+      if (state.status !== "complete") {
+        state.status = "complete";
+        state.gameOverReason = action.reason;
+      }
       break;
     }
   }
