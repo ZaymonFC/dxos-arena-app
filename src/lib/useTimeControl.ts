@@ -2,7 +2,7 @@ import { differenceInMilliseconds, parseISO } from "date-fns";
 import { atom, useAtomValue, useSetAtom } from "jotai";
 import React from "react";
 import { interval } from "rxjs";
-import { GameDispatch, GameState, GameStatus } from "./game";
+import { GameDispatch, GameStatus } from "./game";
 import { useSubscription } from "./useSubscription";
 
 export const thinkingTime = (moveTimes: string[], currentTime: string) => {
@@ -64,33 +64,32 @@ export const timeRemaining = (
 };
 
 // --- Atoms -------------------------------------------------------------------
-const timerAtom = atom({
-  white: 10000, // TODO(zan): Think of a better default
-  black: 10000,
-});
+const timerAtom = atom({ white: 10000, black: 10000 });
 
 export const whiteTimeAtom = atom((get) => get(timerAtom).white);
 export const blackTimeAtom = atom((get) => get(timerAtom).black);
 
-const intervals = {
-  normal: 1000,
-  fast: 10,
-};
+const intervals = { normal: 1000, fast: 10 };
 
 const timerResolutionAtom = atom((get) => {
   const { white, black } = get(timerAtom);
-
   return white <= 10000 || black <= 10000 ? intervals.fast : intervals.normal;
 });
 
-const timeOutAtom = atom((get) => {
-  const { white, black } = get(timerAtom);
-  return { white: white <= 0, black: black <= 0 };
+const whiteTimeOutAtom = atom((get) => {
+  const white = get(whiteTimeAtom);
+  return white <= 0;
+});
+
+const blackTimeOutAtom = atom((get) => {
+  const black = get(blackTimeAtom);
+  return black <= 0;
 });
 
 // --- 🪝 Hooks ----------------------------------------------------------------
 export const useTimeOut = (send: GameDispatch, status: GameStatus) => {
-  const { white: whiteTimeOut, black: blackTimeOut } = useAtomValue(timeOutAtom);
+  const blackTimeOut = useAtomValue(blackTimeOutAtom);
+  const whiteTimeOut = useAtomValue(whiteTimeOutAtom);
 
   React.useEffect(() => {
     if (status !== "in-progress") {
@@ -107,15 +106,15 @@ export const useTimeOut = (send: GameDispatch, status: GameStatus) => {
 };
 
 export const useTimeControl = (moveTimes: string[], status: string) => {
-  const setTimer = useSetAtom(timerAtom);
   const resolution = useAtomValue(timerResolutionAtom);
+  const updateTimer = useSetAtom(timerAtom);
 
-  // Initialise
+  // TODO: Move hard coded values into game config
   React.useEffect(() => {
     if (status === "waiting") {
-      setTimer({ white: 10000, black: 10000 });
+      updateTimer({ white: 10000, black: 10000 });
     }
-  }, [status, setTimer]);
+  }, [status, updateTimer]);
 
   useSubscription(() => {
     if (status !== "in-progress") {
@@ -126,7 +125,7 @@ export const useTimeControl = (moveTimes: string[], status: string) => {
       const currentTime = new Date().toISOString();
       const { whiteRemainingTime, blackRemainingTime } = timeRemaining(moveTimes, currentTime);
 
-      setTimer((_) => ({ white: whiteRemainingTime, black: blackRemainingTime }));
+      updateTimer({ white: whiteRemainingTime, black: blackRemainingTime });
     });
-  }, [resolution, setTimer, status]);
+  }, [resolution, status, updateTimer]);
 };

@@ -9,8 +9,7 @@ import { match } from "ts-pattern";
 import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons";
 import { arrayToPairs } from "./lib/array";
 import { GameAction, GameState, Move, exec, zeroState } from "./lib/game";
-import { useInGameCursor, InGameCursor } from "./lib/useInGameCursor";
-
+import { InGameCursor, useInGameCursor } from "./lib/useInGameCursor";
 import { useMutationStore } from "./lib/useStore";
 import { blackTimeAtom, useTimeControl, useTimeOut, whiteTimeAtom } from "./lib/useTimeControl";
 import { cn } from "./lib/utils";
@@ -234,14 +233,22 @@ const InnerChessGame = ({
   useTimeControl(game.moveTimes, game.status);
   useTimeOut(send, game.status);
 
-  const onDrop = (source: string, target: string) => {
-    console.log("onDrop", source, target);
-    if (cursor.canInteractWithBoard) {
-      send({ type: "move-made", move: { source, target } });
-      return true;
-    }
-    return false;
-  };
+  const onDrop = useCallback(
+    (source: string, target: string) => {
+      console.log("onDrop", source, target);
+      if (cursor.canInteractWithBoard) {
+        send({ type: "move-made", move: { source, target } });
+        return true;
+      }
+      return false;
+    },
+    [cursor.canInteractWithBoard, send]
+  );
+
+  const squareStyles = useMemo(
+    () => computeSquareStyles(game.moves[cursor.__index - 1], game.boards[cursor.__index]),
+    [cursor.__index]
+  );
 
   return (
     <div>
@@ -255,10 +262,7 @@ const InnerChessGame = ({
           <PlayerInfo color={"Black"} game={game} />
           <div className="p-1 w-[480px] h-[480px] bg-gray-50 aspect-ratio-1 shadow-sm border border-gray-200 rounded-sm">
             <Chessboard
-              customSquareStyles={computeSquareStyles(
-                game.moves[cursor.__index - 1],
-                game.boards[cursor.__index]
-              )}
+              customSquareStyles={squareStyles}
               position={cursor.board}
               onPieceDrop={onDrop}
               areArrowsAllowed
