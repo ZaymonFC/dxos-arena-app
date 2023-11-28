@@ -2,6 +2,7 @@ import { differenceInMilliseconds, parseISO } from "date-fns";
 import { atom, useAtomValue, useSetAtom } from "jotai";
 import React from "react";
 import { interval } from "rxjs";
+import { match } from "ts-pattern";
 import { GameDispatch, GameStatus } from "./game";
 import { useSubscription } from "./useSubscription";
 
@@ -76,33 +77,35 @@ const timerResolutionAtom = atom((get) => {
   return white <= 10000 || black <= 10000 ? intervals.fast : intervals.normal;
 });
 
-const whiteTimeOutAtom = atom((get) => {
-  const white = get(whiteTimeAtom);
-  return white <= 0;
-});
-
-const blackTimeOutAtom = atom((get) => {
-  const black = get(blackTimeAtom);
-  return black <= 0;
+const timeOutAtom = atom((get) => {
+  const { white, black } = get(timerAtom);
+  if (white <= 0) {
+    return "white-timeout";
+  } else if (black <= 0) {
+    return "black-timeout";
+  }
 });
 
 // --- 🪝 Hooks ----------------------------------------------------------------
 export const useTimeOut = (send: GameDispatch, status: GameStatus) => {
-  const blackTimeOut = useAtomValue(blackTimeOutAtom);
-  const whiteTimeOut = useAtomValue(whiteTimeOutAtom);
+  const timeOut = useAtomValue(timeOutAtom);
 
   React.useEffect(() => {
     if (status !== "in-progress") {
       return;
     }
 
-    if (whiteTimeOut) {
-      send({ type: "game-over", reason: "white-timeout" });
+    if (timeOut) {
+      match(timeOut)
+        .with("white-timeout", () => {
+          send({ type: "game-over", reason: "white-timeout" });
+        })
+        .with("black-timeout", () => {
+          send({ type: "game-over", reason: "black-timeout" });
+        })
+        .exhaustive();
     }
-    if (blackTimeOut) {
-      send({ type: "game-over", reason: "black-timeout" });
-    }
-  }, [whiteTimeOut, blackTimeOut, send, status]);
+  }, [timeOut, send, status]);
 };
 
 export const useTimeControl = (moveTimes: string[], status: string) => {
