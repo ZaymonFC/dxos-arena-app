@@ -1,5 +1,4 @@
 import { Chess } from "chess.js";
-import React, { useCallback } from "react";
 import { match } from "ts-pattern";
 
 type Player = "white" | "black";
@@ -31,9 +30,28 @@ type GameOverReason =
   | "black-timeout"
   | "draw-agreed";
 
+type GameVariant = "standard";
+
+type TimeControlKind = "bullet" | "blitz" | "rapid" | "classical";
+
+export type TimeControl = { baseMinutes: number; incrementSeconds: number };
+
+function timeControlKind(timeControl: TimeControl): TimeControlKind {
+  if (timeControl.baseMinutes < 3) {
+    return "bullet";
+  } else if (timeControl.baseMinutes < 10) {
+    return "blitz";
+  } else if (timeControl.baseMinutes < 30) {
+    return "rapid";
+  }
+
+  return "classical";
+}
+
 // todo(zan): Think about time control
 export type GameState = {
-  variant: "standard";
+  variant: GameVariant;
+  timeControl: TimeControl;
   moves: Move[];
   movesWithNotation: string[];
   moveTimes: string[];
@@ -47,6 +65,7 @@ export type GameState = {
 
 export const zeroState = (): GameState => ({
   variant: "standard",
+  timeControl: { baseMinutes: 5, incrementSeconds: 3 },
   moves: [],
   movesWithNotation: [],
   moveTimes: [],

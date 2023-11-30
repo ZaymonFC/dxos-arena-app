@@ -3,7 +3,7 @@ import { atom, useAtomValue, useSetAtom } from "jotai";
 import React from "react";
 import { interval } from "rxjs";
 import { match } from "ts-pattern";
-import { GameDispatch, GameStatus } from "./game";
+import { GameDispatch, GameStatus, TimeControl } from "./game";
 import { useSubscription } from "./useSubscription";
 
 export const thinkingTime = (moveTimes: string[], currentTime: string) => {
@@ -49,19 +49,26 @@ export const thinkingTime = (moveTimes: string[], currentTime: string) => {
 };
 
 export const timeRemaining = (
+  timeControl: TimeControl,
   moveTimes: string[],
   currentTime: string
-): { whiteRemainingTime: number; blackRemainingTime: number } => {
-  const initialTime = 10 * 1000;
+) => {
+  const { baseMinutes: base, incrementSeconds: increment } = timeControl;
+  const initialTime = base * 60 * 1000;
 
   const { whiteThinkingTime, blackThinkingTime } = thinkingTime(moveTimes, currentTime);
 
-  // TODO(zan): Account for increment
+  const totalMoves = moveTimes.length;
+  const whiteMoves = Math.floor((totalMoves + 1) / 2);
+  const blackMoves = totalMoves - whiteMoves;
+
+  const whiteIncrement = whiteMoves * increment * 1000;
+  const blackIncrement = blackMoves * increment * 1000;
 
   return {
-    whiteRemainingTime: Math.max(0, initialTime - whiteThinkingTime),
-    blackRemainingTime: Math.max(0, initialTime - blackThinkingTime),
-  };
+    whiteRemainingTime: Math.max(0, initialTime - whiteThinkingTime + whiteIncrement),
+    blackRemainingTime: Math.max(0, initialTime - blackThinkingTime + blackIncrement),
+  } as const;
 };
 
 // --- Atoms -------------------------------------------------------------------
@@ -108,7 +115,7 @@ export const useTimeOut = (send: GameDispatch, status: GameStatus) => {
   }, [timeOut, send, status]);
 };
 
-export const useTimeControl = (moveTimes: string[], status: string) => {
+export const useTimeControl = (timeControl: TimeControl, moveTimes: string[], status: string) => {
   const resolution = useAtomValue(timerResolutionAtom);
   const updateTimer = useSetAtom(timerAtom);
 
@@ -126,7 +133,11 @@ export const useTimeControl = (moveTimes: string[], status: string) => {
 
     return interval(resolution).subscribe(() => {
       const currentTime = new Date().toISOString();
-      const { whiteRemainingTime, blackRemainingTime } = timeRemaining(moveTimes, currentTime);
+      const { whiteRemainingTime, blackRemainingTime } = timeRemaining(
+        timeControl,
+        moveTimes,
+        currentTime
+      );
 
       updateTimer({ white: whiteRemainingTime, black: blackRemainingTime });
     });
