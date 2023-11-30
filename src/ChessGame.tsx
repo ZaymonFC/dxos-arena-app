@@ -49,6 +49,7 @@ const PlayerInfo = ({ color, game }: { color: "White" | "Black"; game: GameState
         .with("threefold-repetition", () => "Threefold repetition")
         .with("white-timeout", () => "White timeout")
         .with("black-timeout", () => "Black timeout")
+        .with("draw-agreed", () => "Draw")
         .with(undefined, () => "")
         .exhaustive()
     )
@@ -112,7 +113,23 @@ const computeSquareStyles = (lastMove: Move | undefined, fen: string) => {
   return squareStyles;
 };
 
-const Controls = ({ cursor, onResign }: { cursor: InGameCursor; onResign: () => void }) => {
+type ControlsProps = {
+  cursor: InGameCursor;
+  playing: boolean;
+  drawOffered: boolean;
+  onResign: () => void;
+  onOfferDraw: () => void;
+  onAcceptDraw: () => void;
+};
+
+const Controls = ({
+  cursor,
+  playing,
+  drawOffered,
+  onResign,
+  onOfferDraw,
+  onAcceptDraw,
+}: ControlsProps) => {
   return (
     <div className="flex flex-row gap-1">
       <Button
@@ -143,10 +160,18 @@ const Controls = ({ cursor, onResign }: { cursor: InGameCursor; onResign: () => 
       >
         <LastIcon />
       </Button>
-      {/* TODO(zan): Resign disabled when not game in-progress */}
-      <Button onClick={onResign} aria-label="Resign">
+      <Button onClick={onResign} disabled={!playing} aria-label="Resign">
         <ResignIcon />
       </Button>
+      {!drawOffered ? (
+        <Button onClick={() => onOfferDraw()} disabled={!playing} aria-label="Offer draw">
+          Offer draw
+        </Button>
+      ) : (
+        <Button onClick={() => onAcceptDraw()} disabled={!playing} aria-label="Accept draw offer">
+          Accept draw
+        </Button>
+      )}
     </div>
   );
 };
@@ -272,9 +297,14 @@ const InnerChessGame = ({
           </div>
           <PlayerInfo color="White" game={game} />
 
+          {/* TODO(Zan): Chess game should be player aware (don't play both sides) */}
           <Controls
             cursor={cursor}
+            playing={game.status === "in-progress"}
+            drawOffered={game.drawOffer !== undefined}
             onResign={() => send({ type: "player-resigned", player: "white" })}
+            onOfferDraw={() => send({ type: "offer-draw", player: "white" })}
+            onAcceptDraw={() => send({ type: "accept-draw" })}
           />
         </div>
       </div>

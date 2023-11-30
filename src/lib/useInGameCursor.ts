@@ -19,7 +19,7 @@ export const useInGameCursor = ({ boards }: GameState) => {
     if (current) {
       setIndex(numberOfMoves);
     }
-  }, [numberOfMoves]);
+  }, [current, setIndex, numberOfMoves]);
 
   const selectBoardByIndex = (index: number) => {
     const latestIndex = numberOfMoves;
@@ -50,7 +50,7 @@ export const useInGameCursor = ({ boards }: GameState) => {
         }
       }
     },
-    [index, numberOfMoves]
+    [index, numberOfMoves, selectBoardByIndex]
   );
 
   return {
