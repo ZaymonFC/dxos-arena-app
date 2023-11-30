@@ -59,7 +59,7 @@ export const zeroState = (): GameState => ({
 export type GameAction =
   | { type: "game-created"; players: { white: string; black: string } }
   | { type: "move-made"; move: Move }
-  | { type: "request-takeback"; player: "white" | "black"; moveNumber: number }
+  | { type: "request-takeback"; player: "white" | "black" }
   | { type: "accept-takeback"; acceptingPlayer: "white" | "black" }
   | { type: "decline-takeback"; decliningPlayer: "white" | "black" }
   | { type: "offer-draw"; player: "white" | "black" }

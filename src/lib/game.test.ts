@@ -122,7 +122,7 @@ test("Can request a takeback", () => {
   const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
-    { type: "request-takeback", player: "white", moveNumber: 0 },
+    { type: "request-takeback", player: "white" },
   ]);
 
   expect(state.takebackRequest.white).toBe(0);
@@ -132,7 +132,7 @@ test("Black can't request takeback if they haven't played a move", () => {
   const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
-    { type: "request-takeback", player: "black", moveNumber: 0 },
+    { type: "request-takeback", player: "black" },
   ]);
 
   expect(state.takebackRequest.black).toBe(undefined);
@@ -142,7 +142,7 @@ test("Can accept a takeback", () => {
   const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
-    { type: "request-takeback", player: "white", moveNumber: 0 },
+    { type: "request-takeback", player: "white" },
     { type: "accept-takeback", acceptingPlayer: "black" },
   ]);
 
@@ -153,7 +153,7 @@ test("Can decline a takeback", () => {
   const state = applyMany(zeroState(), [
     { type: "game-created", players: { white: "zan", black: "zhenya" } },
     { type: "move-made", move: { source: "e2", target: "e4" } },
-    { type: "request-takeback", player: "white", moveNumber: 0 },
+    { type: "request-takeback", player: "white" },
     { type: "decline-takeback", decliningPlayer: "black" },
   ]);
 

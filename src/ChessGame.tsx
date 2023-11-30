@@ -117,18 +117,24 @@ type ControlsProps = {
   cursor: InGameCursor;
   playing: boolean;
   drawOffered: boolean;
+  takebackRequested: boolean;
   onResign: () => void;
   onOfferDraw: () => void;
   onAcceptDraw: () => void;
+  onRequestTakeback: () => void;
+  onAcceptTakeback: () => void;
 };
 
 const Controls = ({
   cursor,
   playing,
   drawOffered,
+  takebackRequested,
   onResign,
   onOfferDraw,
   onAcceptDraw,
+  onRequestTakeback,
+  onAcceptTakeback,
 }: ControlsProps) => {
   return (
     <div className="flex flex-row gap-1">
@@ -164,12 +170,21 @@ const Controls = ({
         <ResignIcon />
       </Button>
       {!drawOffered ? (
-        <Button onClick={() => onOfferDraw()} disabled={!playing} aria-label="Offer draw">
+        <Button onClick={onOfferDraw} disabled={!playing} aria-label="Offer draw">
           Offer draw
         </Button>
       ) : (
-        <Button onClick={() => onAcceptDraw()} disabled={!playing} aria-label="Accept draw offer">
+        <Button onClick={onAcceptDraw} disabled={!playing} aria-label="Accept draw offer">
           Accept draw
+        </Button>
+      )}
+      {!takebackRequested ? (
+        <Button onClick={onRequestTakeback} disabled={!playing} aria-label="Propose">
+          Propose takeback
+        </Button>
+      ) : (
+        <Button onClick={onAcceptTakeback} disabled={!playing} aria-label="Accept take back">
+          Accept takeback
         </Button>
       )}
     </div>
@@ -302,9 +317,14 @@ const InnerChessGame = ({
             cursor={cursor}
             playing={game.status === "in-progress"}
             drawOffered={game.drawOffer !== undefined}
+            takebackRequested={
+              game.takebackRequest.black !== undefined || game.takebackRequest.white !== undefined
+            }
             onResign={() => send({ type: "player-resigned", player: "white" })}
             onOfferDraw={() => send({ type: "offer-draw", player: "white" })}
             onAcceptDraw={() => send({ type: "accept-draw" })}
+            onRequestTakeback={() => send({ type: "request-takeback", player: "white" })}
+            onAcceptTakeback={() => send({ type: "accept-takeback", acceptingPlayer: "black" })}
           />
         </div>
       </div>
