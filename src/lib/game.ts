@@ -2,11 +2,19 @@ import { Chess } from "chess.js";
 import React, { useCallback } from "react";
 import { match } from "ts-pattern";
 
+type Player = "white" | "black";
+
+function oppositePlayer(player: Player): Player {
+  return player === "white" ? "black" : "white";
+}
+
 export type Move = {
   source: string;
   target: string;
   promotion?: "q" | "r" | "b" | "n";
 };
+
+export type GameStatus = "waiting" | "in-progress" | "complete";
 
 type GameOverReason =
   | "checkmate"
@@ -16,11 +24,8 @@ type GameOverReason =
   | "insufficient-material"
   | "threefold-repetition"
   | "white-timeout"
-  | "black-timeout";
-
-// todo(zan): Time
-
-export type GameStatus = "waiting" | "in-progress" | "complete";
+  | "black-timeout"
+  | "draw-agreed";
 
 // todo(zan): Think about time control
 export type GameState = {
@@ -32,6 +37,8 @@ export type GameState = {
   players?: { white: string; black: string };
   status: GameStatus;
   gameOverReason?: GameOverReason;
+  takebackRequest: { white?: number; black?: number };
+  drawOffer?: "white" | "black";
 };
 
 export const zeroState = (): GameState => ({
@@ -41,13 +48,19 @@ export const zeroState = (): GameState => ({
   moveTimes: [],
   boards: [new Chess().fen()],
   status: "waiting",
+  takebackRequest: {},
+  drawOffer: undefined,
 });
 
 export type GameAction =
   | { type: "game-created"; players: { white: string; black: string } }
   | { type: "move-made"; move: Move }
-  | { type: "takeback-requested"; player: "white" | "black"; moveNumber: number }
-  | { type: "takeback-accepted" }
+  | { type: "request-takeback"; player: "white" | "black"; moveNumber: number }
+  | { type: "accept-takeback"; acceptingPlayer: "white" | "black" }
+  | { type: "decline-takeback"; decliningPlayer: "white" | "black" }
+  | { type: "offer-draw"; player: "white" | "black" }
+  | { type: "accept-draw" }
+  | { type: "decline-draw" }
   | { type: "player-resigned"; player: "white" | "black" }
   | { type: "game-over"; reason: GameOverReason };
 
@@ -116,11 +129,72 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
       break;
     }
 
-    case "takeback-requested":
-      break;
+    case "request-takeback": {
+      const { player, moveNumber } = action;
 
-    case "takeback-accepted":
+      if (state.status !== "in-progress") {
+        break;
+      }
+
+      // TODO: Check that the player has made a move
+
+      state.takebackRequest[player] = moveNumber;
+
       break;
+    }
+
+    case "accept-takeback": {
+      const { acceptingPlayer } = action;
+
+      // TODO: Should this be the player who requested the takeback, or the player accepting?
+      // The answer will become more clear when we implement.
+      const moveNumber = state.takebackRequest[oppositePlayer(acceptingPlayer)];
+
+      if (moveNumber === undefined) {
+        break;
+      }
+
+      // Revert the game state to the move before the takeback
+      state.moves = state.moves.slice(0, moveNumber);
+      state.movesWithNotation = state.movesWithNotation.slice(0, moveNumber);
+      state.moveTimes = state.moveTimes.slice(0, moveNumber);
+      state.boards = state.boards.slice(0, moveNumber + 1);
+
+      state.takebackRequest[oppositePlayer(acceptingPlayer)] = undefined;
+
+      break;
+    }
+
+    case "decline-takeback": {
+      const { decliningPlayer } = action;
+      state.takebackRequest[oppositePlayer(decliningPlayer)] = undefined;
+
+      break;
+    }
+
+    case "offer-draw": {
+      if (state.status === "in-progress") {
+        state.drawOffer = action.player;
+      }
+
+      break;
+    }
+
+    case "accept-draw": {
+      if (state.drawOffer) {
+        actions.push({ type: "game-over", reason: "draw-agreed" });
+      }
+
+      break;
+    }
+
+    case "decline-draw": {
+      if (state.drawOffer) {
+        state.drawOffer = undefined;
+      }
+
+      break;
+    }
 
     case "player-resigned": {
       const { player } = action;

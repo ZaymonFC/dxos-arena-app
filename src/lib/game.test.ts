@@ -117,3 +117,69 @@ test("En Passant", () => {
   expect(state.moves).toHaveLength(5);
   expect(last(state.movesWithNotation)).toBe("exd6");
 });
+
+test("Can request a takeback", () => {
+  const state = applyMany(zeroState(), [
+    { type: "game-created", players: { white: "zan", black: "zhenya" } },
+    { type: "move-made", move: { source: "e2", target: "e4" } },
+    { type: "request-takeback", player: "white", moveNumber: 0 },
+  ]);
+
+  expect(state.takebackRequest.white).toBe(0);
+});
+
+test("Can accept a takeback", () => {
+  const state = applyMany(zeroState(), [
+    { type: "game-created", players: { white: "zan", black: "zhenya" } },
+    { type: "move-made", move: { source: "e2", target: "e4" } },
+    { type: "request-takeback", player: "white", moveNumber: 0 },
+    { type: "accept-takeback", acceptingPlayer: "black" },
+  ]);
+
+  expect(state.boards).toHaveLength(1);
+});
+
+test("Can decline a takeback", () => {
+  const state = applyMany(zeroState(), [
+    { type: "game-created", players: { white: "zan", black: "zhenya" } },
+    { type: "move-made", move: { source: "e2", target: "e4" } },
+    { type: "request-takeback", player: "white", moveNumber: 0 },
+    { type: "decline-takeback", decliningPlayer: "black" },
+  ]);
+
+  expect(state.takebackRequest.white).toBe(undefined);
+});
+
+test("Can offer a draw", () => {
+  const state = applyMany(zeroState(), [
+    { type: "game-created", players: { white: "zan", black: "zhenya" } },
+    { type: "move-made", move: { source: "e2", target: "e4" } },
+    { type: "offer-draw", player: "white" },
+  ]);
+
+  expect(state.drawOffer).toBe("white");
+});
+
+test("Can accept a draw offer", () => {
+  const state = applyMany(zeroState(), [
+    { type: "game-created", players: { white: "zan", black: "zhenya" } },
+    { type: "move-made", move: { source: "e2", target: "e4" } },
+    { type: "offer-draw", player: "white" },
+    { type: "accept-draw" },
+  ]);
+
+  expect(state.status).toBe("complete");
+  expect(state.drawOffer).toBe("white");
+  expect(state.gameOverReason).toBe("draw-agreed");
+});
+
+test("Can decline a draw offer", () => {
+  const state = applyMany(zeroState(), [
+    { type: "game-created", players: { white: "zan", black: "zhenya" } },
+    { type: "move-made", move: { source: "e2", target: "e4" } },
+    { type: "offer-draw", player: "white" },
+    { type: "decline-draw" },
+  ]);
+
+  expect(state.drawOffer).toBe(undefined);
+});
