@@ -56,7 +56,7 @@ export const useStore = <TState, TAction>(initial: TState, exec: Exec<TState, TA
 
 // Experiment!
 // Can we pass in an object from echo, and then allow the exec funtion to mutate it directly?
-export const useMutationStore = <TState, TAction>(state: TState, exec: Exec<TState, TAction>) => {
+export const useMutatingStore = <TState, TAction>(state: TState, exec: Exec<TState, TAction>) => {
   const send = useCallback(
     (action: TAction) => {
       void applyAction(state, action, exec);

@@ -10,7 +10,7 @@ import { FirstIcon, LastIcon, NextIcon, PreviousIcon, ResignIcon } from "./icons
 import { arrayToPairs } from "./lib/array";
 import { GameAction, GameState, Move, exec, zeroState } from "./lib/game";
 import { InGameCursor, useInGameCursor } from "./lib/useInGameCursor";
-import { useMutationStore } from "./lib/useStore";
+import { useMutatingStore } from "./lib/useStore";
 import { blackTimeAtom, useTimeControl, useTimeOut, whiteTimeAtom } from "./lib/useTimeControl";
 import { cn } from "./lib/utils";
 
@@ -313,7 +313,7 @@ export const ChessGame = () => {
   }, [space, identity]);
 
   let [dbGame] = useQuery(space, { type: "chess" });
-  const { send } = useMutationStore(dbGame as any as GameState, exec);
+  const { send } = useMutatingStore(dbGame as any as GameState, exec);
 
   useEffect(() => {
     if (!space) return;
