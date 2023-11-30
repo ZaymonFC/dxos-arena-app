@@ -14,6 +14,10 @@ export type Move = {
   promotion?: "q" | "r" | "b" | "n";
 };
 
+function whoPlayedTurn(turn: number): Player {
+  return turn % 2 === 0 ? "white" : "black";
+}
+
 export type GameStatus = "waiting" | "in-progress" | "complete";
 
 type GameOverReason =
@@ -130,15 +134,21 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
     }
 
     case "request-takeback": {
-      const { player, moveNumber } = action;
-
       if (state.status !== "in-progress") {
         break;
       }
 
-      // TODO: Check that the player has made a move
+      const { player } = action;
 
-      state.takebackRequest[player] = moveNumber;
+      if (player === whoPlayedTurn(state.moves.length - 1)) {
+        state.takebackRequest[player] = state.moves.length - 1;
+      } else {
+        if (state.moves.length < 2) {
+          break;
+        }
+
+        state.takebackRequest[player] = state.moves.length - 2;
+      }
 
       break;
     }
