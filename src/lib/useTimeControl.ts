@@ -5,6 +5,7 @@ import { interval } from "rxjs";
 import { match } from "ts-pattern";
 import { GameDispatch, GameStatus, TimeControl } from "./game";
 import { useSubscription } from "./useSubscription";
+import { ms } from "./time";
 
 export const thinkingTime = (moveTimes: string[], currentTime?: string) => {
   let whiteThinkingDuration: number = 0;
@@ -53,8 +54,8 @@ export const timeRemaining = (
   moveTimes: string[],
   currentTime?: string
 ) => {
-  const { baseMinutes: base, incrementSeconds: increment } = timeControl;
-  const initialTime = base * 60 * 1000;
+  const { baseMinutes, incrementSeconds } = timeControl;
+  const initialTime = ms({ minutes: baseMinutes });
 
   const { whiteThinkingTime, blackThinkingTime } = thinkingTime(moveTimes, currentTime);
 
@@ -62,8 +63,10 @@ export const timeRemaining = (
   const whiteMoves = Math.floor((totalMoves + 1) / 2);
   const blackMoves = totalMoves - whiteMoves;
 
-  const whiteIncrement = whiteMoves * increment * 1000;
-  const blackIncrement = blackMoves * increment * 1000;
+  // TODO(Zan): -1 is a hack to not give white an increment for making the first move.
+  // think of a nicer way to do this?
+  const whiteIncrement = ms({ seconds: whiteMoves - 1 * incrementSeconds });
+  const blackIncrement = ms({ seconds: blackMoves * incrementSeconds });
 
   return {
     whiteRemainingTime: Math.max(0, initialTime - whiteThinkingTime + whiteIncrement),
@@ -121,13 +124,13 @@ export const useTimeControl = (
   status: string,
   completedAt?: string
 ) => {
-  const resolution = useAtomValue(timerResolutionAtom);
+  const timerResolution = useAtomValue(timerResolutionAtom);
   const updateTimer = useSetAtom(timerAtom);
 
   React.useEffect(() => {
     if (status === "waiting") {
-      const ms = timeControl.baseMinutes * 60 * 1000;
-      updateTimer({ white: ms, black: ms });
+      const milliseconds = ms({ minutes: timeControl.baseMinutes });
+      updateTimer({ white: milliseconds, black: milliseconds });
     }
 
     if (status === "complete") {
@@ -146,7 +149,7 @@ export const useTimeControl = (
       return;
     }
 
-    return interval(resolution).subscribe(() => {
+    return interval(timerResolution).subscribe(() => {
       const currentTime = new Date().toISOString();
       const { whiteRemainingTime, blackRemainingTime } = timeRemaining(
         timeControl,
@@ -156,5 +159,5 @@ export const useTimeControl = (
 
       updateTimer({ white: whiteRemainingTime, black: blackRemainingTime });
     });
-  }, [resolution, status, updateTimer]);
+  }, [timerResolution, status, updateTimer]);
 };
