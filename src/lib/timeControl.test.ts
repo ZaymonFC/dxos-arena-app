@@ -53,7 +53,9 @@ describe("timeRemaining", () => {
 
     const result = timeRemaining(timeControl, moveTimes, currentTime);
 
-    expect(result.whiteRemainingTime).toEqual(5 * 60 * 1000 - 60000 + 2 * 3000);
+    // NOTE: White does not get the increment on the first move
+    expect(result.whiteRemainingTime).toEqual(5 * 60 * 1000 - 60000 + 1 * 3000);
+
     expect(result.blackRemainingTime).toEqual(5 * 60 * 1000 - 60000 + 1 * 3000);
   });
 });

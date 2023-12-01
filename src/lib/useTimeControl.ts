@@ -65,7 +65,7 @@ export const timeRemaining = (
 
   // TODO(Zan): -1 is a hack to not give white an increment for making the first move.
   // think of a nicer way to do this?
-  const whiteIncrement = ms({ seconds: whiteMoves - 1 * incrementSeconds });
+  const whiteIncrement = ms({ seconds: (whiteMoves - 1) * incrementSeconds });
   const blackIncrement = ms({ seconds: blackMoves * incrementSeconds });
 
   return {
