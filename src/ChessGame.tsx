@@ -270,7 +270,7 @@ const InnerChessGame = ({
   send: (action: GameAction) => void;
 }) => {
   const cursor = useInGameCursor(game);
-  useTimeControl(game.timeControl, game.moveTimes, game.status);
+  useTimeControl(game.timeControl, game.moveTimes, game.status, game.completedAt);
   useTimeOut(send, game.status);
 
   const onDrop = useCallback(

@@ -6,7 +6,7 @@ import { match } from "ts-pattern";
 import { GameDispatch, GameStatus, TimeControl } from "./game";
 import { useSubscription } from "./useSubscription";
 
-export const thinkingTime = (moveTimes: string[], currentTime: string) => {
+export const thinkingTime = (moveTimes: string[], currentTime?: string) => {
   let whiteThinkingDuration: number = 0;
   let blackThinkingDuration: number = 0;
   let lastMoveTime: Date | undefined;
@@ -29,7 +29,7 @@ export const thinkingTime = (moveTimes: string[], currentTime: string) => {
     lastMoveTime = move;
   });
 
-  if (moveTimes.length > 0 && lastMoveTime) {
+  if (moveTimes.length > 0 && lastMoveTime && currentTime) {
     // Calculate the ongoing move duration
     const ongoingMoveDuration = differenceInMilliseconds(parseISO(currentTime), lastMoveTime);
 
@@ -51,7 +51,7 @@ export const thinkingTime = (moveTimes: string[], currentTime: string) => {
 export const timeRemaining = (
   timeControl: TimeControl,
   moveTimes: string[],
-  currentTime: string
+  currentTime?: string
 ) => {
   const { baseMinutes: base, incrementSeconds: increment } = timeControl;
   const initialTime = base * 60 * 1000;
@@ -72,7 +72,7 @@ export const timeRemaining = (
 };
 
 // --- Atoms -------------------------------------------------------------------
-const timerAtom = atom({ white: 10000, black: 10000 });
+const timerAtom = atom({ white: 0, black: 0 });
 
 export const whiteTimeAtom = atom((get) => get(timerAtom).white);
 export const blackTimeAtom = atom((get) => get(timerAtom).black);
@@ -115,16 +115,31 @@ export const useTimeOut = (send: GameDispatch, status: GameStatus) => {
   }, [timeOut, send, status]);
 };
 
-export const useTimeControl = (timeControl: TimeControl, moveTimes: string[], status: string) => {
+export const useTimeControl = (
+  timeControl: TimeControl,
+  moveTimes: string[],
+  status: string,
+  completedAt?: string
+) => {
   const resolution = useAtomValue(timerResolutionAtom);
   const updateTimer = useSetAtom(timerAtom);
 
-  // TODO: Move hard coded values into game config
   React.useEffect(() => {
     if (status === "waiting") {
-      updateTimer({ white: 10000, black: 10000 });
+      const ms = timeControl.baseMinutes * 60 * 1000;
+      updateTimer({ white: ms, black: ms });
     }
-  }, [status, updateTimer]);
+
+    if (status === "complete") {
+      const { whiteRemainingTime, blackRemainingTime } = timeRemaining(
+        timeControl,
+        moveTimes,
+        completedAt
+      );
+
+      updateTimer({ white: whiteRemainingTime, black: blackRemainingTime });
+    }
+  }, [status, timeControl, moveTimes, updateTimer]);
 
   useSubscription(() => {
     if (status !== "in-progress") {

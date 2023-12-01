@@ -32,23 +32,8 @@ type GameOverReason =
 
 type GameVariant = "standard";
 
-type TimeControlKind = "bullet" | "blitz" | "rapid" | "classical";
-
 export type TimeControl = { baseMinutes: number; incrementSeconds: number };
 
-function timeControlKind(timeControl: TimeControl): TimeControlKind {
-  if (timeControl.baseMinutes < 3) {
-    return "bullet";
-  } else if (timeControl.baseMinutes < 10) {
-    return "blitz";
-  } else if (timeControl.baseMinutes < 30) {
-    return "rapid";
-  }
-
-  return "classical";
-}
-
-// todo(zan): Think about time control
 export type GameState = {
   variant: GameVariant;
   timeControl: TimeControl;
@@ -61,6 +46,7 @@ export type GameState = {
   gameOverReason?: GameOverReason;
   takebackRequest: { white?: number; black?: number };
   drawOffer?: "white" | "black";
+  completedAt?: string;
 };
 
 export const zeroState = (): GameState => ({
@@ -242,6 +228,7 @@ export const exec = (state: GameState, action: GameAction): [GameState, GameActi
       if (state.status !== "complete") {
         state.status = "complete";
         state.gameOverReason = action.reason;
+        state.completedAt = new Date().toISOString();
       }
       break;
     }
