@@ -13,6 +13,7 @@ import { ChessGame } from "./ChessGame";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { types } from "./proto";
 import { Nav } from "./Nav";
+import { GradientBackground } from "./GradientBackground";
 
 // Dynamics allows configuration to be supplied by the hosting KUBE.
 const config = async () => new Config(await Dynamics(), Local(), Defaults());
@@ -49,6 +50,7 @@ export const App = () => {
           <Nav />
           <RouterProvider router={router} />
           <ServiceWorkerToastContainer {...serviceWorker} />
+          <GradientBackground />
         </ClientProvider>
       </ErrorBoundary>
     </ThemeProvider>

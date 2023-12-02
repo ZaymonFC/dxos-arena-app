@@ -342,7 +342,7 @@ const DevControls = () => {
   }, [space, dbGame]);
 
   return (
-    <div className="p-1 font-mono">
+    <div className="pl-4 font-mono">
       <p>Dev Controls</p>
       <div className="flex flex-row gap-1">
         <Button variant="outline" onClick={onDelete}>
