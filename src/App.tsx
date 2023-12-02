@@ -12,6 +12,7 @@ import { useRegisterSW } from "virtual:pwa-register/react";
 import { ChessGame } from "./ChessGame";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { types } from "./proto";
+import { Nav } from "./Nav";
 
 // Dynamics allows configuration to be supplied by the hosting KUBE.
 const config = async () => new Config(await Dynamics(), Local(), Defaults());
@@ -45,6 +46,7 @@ export const App = () => {
             }
           }}
         >
+          <Nav />
           <RouterProvider router={router} />
           <ServiceWorkerToastContainer {...serviceWorker} />
         </ClientProvider>
